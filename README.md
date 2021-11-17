@@ -20,6 +20,7 @@
 - [Manual Tecnico (en proceso)]()
 - [Manual de  usuario (en proceso)]()
 - [Drive](https://drive.google.com/drive/folders/1l6sn93nIvd59LfBTZsqDZh8x-NLZonhK?usp=sharing)
+- [Trello](https://trello.com/b/TJGwhrLV/olimpiadas-nacionales-et24de17)
 
 
 ## Variables de uso
