@@ -1,8 +1,8 @@
 {
-  "name": "olimpiadas_nacionales_ET24_DE17",
+  "name": "Olimpiadas_Nacionales_ET24_DE17",
   "version": "0.0.1",
   "description": "",
-  "license": "MIT",
+  "license": "apache 2.0",
   "author": "",
   "scripts": {
     "clean": "rimraf dist ../target/db/",
