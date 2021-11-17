@@ -1,0 +1,8 @@
+version: '3.8'
+services:
+  olimpiadas_nacionales_et24_de17-app:
+    build: ../../..
+    container_name: olimpiadas_nacionales_et24_de17-app
+    environment:
+    ports:
+      - 8081:8081
