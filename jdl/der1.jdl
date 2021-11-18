@@ -1,0 +1,58 @@
+entity Leches{
+	analisis TextBlob required
+	calidad Integer required
+	cantidad Long required
+	fechaDeIngreso Instant required
+}
+entity Cisternas{
+	capacidad Long required
+	estado EstadoCisterna
+    reserva Long required
+}
+entity FrascosDeFermentos{
+	calidad Integer required
+	fechaAnalisis Instant required
+    estado EstadoFermentos
+    peso Long
+}
+entity TandaQuesos{
+	estado EstadoQueso
+    peso Long required
+    pesoInicial Long required
+    fechaEntradaCuracion Instant
+	fechaSalidaCuracion Instant
+}
+entity TipoDeQueso{
+	nombre String required
+    tiempoDeCurado Duration required
+}
+entity SalidasDeAlmacen{
+	peso Long required
+}
+enum EstadoCisterna{
+	Innoperative,
+	Operative,
+	InRepair
+}
+enum EstadoQuesos{
+	InProduction,
+	InSaladero,
+	InCurado,
+    InStorage,
+	Out
+}
+enum EstadoFermentos{
+	Stored,
+	InUse,
+	Depleted
+}
+relationship ManyToOne {
+	TandaQuesos{leche} to Leches
+    TandaQuesos{tipo} to TipoDeQueso
+    Leches{cisterna} to Cisternas
+    FrascosDeFermentos{tipo} to TipoDeQueso
+    SalidasDeAlmacen{tandaDeQueso} to TandaQuesos
+}
+
+dto all with mapstruct
+paginate all with pagination
