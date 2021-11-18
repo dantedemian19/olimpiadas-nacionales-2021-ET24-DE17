@@ -12,7 +12,7 @@ import {
     Req,
     UseInterceptors,
 } from '@nestjs/common';
-import { ApiBearerAuth, ApiUseTags, ApiResponse, ApiOperation } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiTags, ApiResponse, ApiOperation } from '@nestjs/swagger';
 import { CisternasDTO } from '../../service/dto/cisternas.dto';
 import { CisternasService } from '../../service/cisternas.service';
 import { PageRequest, Page } from '../../domain/base/pagination.entity';
@@ -25,7 +25,7 @@ import { LoggingInterceptor } from '../../client/interceptors/logging.intercepto
 @UseGuards(AuthGuard, RolesGuard)
 @UseInterceptors(LoggingInterceptor, ClassSerializerInterceptor)
 @ApiBearerAuth()
-@ApiUseTags('cisternas')
+@ApiTags('cisternas')
 export class CisternasController {
     logger = new Logger('CisternasController');
 

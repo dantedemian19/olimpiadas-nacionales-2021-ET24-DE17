@@ -18,14 +18,14 @@ import { UserDTO } from '../../service/dto/user.dto';
 import { HeaderUtil } from '../../client/header-util';
 import { Request } from '../../client/request';
 import { LoggingInterceptor } from '../../client/interceptors/logging.interceptor';
-import { ApiBearerAuth, ApiUseTags, ApiResponse, ApiOperation } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiTags, ApiResponse, ApiOperation } from '@nestjs/swagger';
 import { UserService } from '../../service/user.service';
 
 @Controller('api/admin/users')
 @UseGuards(AuthGuard, RolesGuard)
 @UseInterceptors(LoggingInterceptor, ClassSerializerInterceptor)
 @ApiBearerAuth()
-@ApiUseTags('user-resource')
+@ApiTags('user-resource')
 export class UserController {
     logger = new Logger('UserController');
 

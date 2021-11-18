@@ -3,11 +3,11 @@ import { Response, Request } from 'express';
 import { UserLoginDTO } from '../../service/dto/user-login.dto';
 import { AuthService } from '../../service/auth.service';
 import { LoggingInterceptor } from '../../client/interceptors/logging.interceptor';
-import { ApiUseTags, ApiResponse, ApiOperation } from '@nestjs/swagger';
+import { ApiTags, ApiResponse, ApiOperation } from '@nestjs/swagger';
 
 @Controller('api')
 @UseInterceptors(LoggingInterceptor)
-@ApiUseTags('user-jwt-controller')
+@ApiTags('user-jwt-controller')
 export class UserJWTController {
     logger = new Logger('UserJWTController');
 

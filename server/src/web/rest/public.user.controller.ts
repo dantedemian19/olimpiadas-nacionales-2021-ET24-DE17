@@ -4,12 +4,12 @@ import { PageRequest, Page } from '../../domain/base/pagination.entity';
 import { UserDTO } from '../../service/dto/user.dto';
 import { Request } from 'express';
 import { HeaderUtil } from '../../client/header-util';
-import { ApiUseTags, ApiResponse, ApiOperation } from '@nestjs/swagger';
+import { ApiTags, ApiResponse, ApiOperation } from '@nestjs/swagger';
 import { AuthService } from '../../service/auth.service';
 
 @Controller('api')
 @UseInterceptors(LoggingInterceptor, ClassSerializerInterceptor)
-@ApiUseTags('public-user-controller')
+@ApiTags('public-user-controller')
 export class PublicUserController {
     logger = new Logger('PublicUserController');
 

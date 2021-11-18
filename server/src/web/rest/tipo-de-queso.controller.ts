@@ -12,7 +12,7 @@ import {
     Req,
     UseInterceptors,
 } from '@nestjs/common';
-import { ApiBearerAuth, ApiUseTags, ApiResponse, ApiOperation } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiTags, ApiResponse, ApiOperation } from '@nestjs/swagger';
 import { TipoDeQuesoDTO } from '../../service/dto/tipo-de-queso.dto';
 import { TipoDeQuesoService } from '../../service/tipo-de-queso.service';
 import { PageRequest, Page } from '../../domain/base/pagination.entity';
@@ -25,7 +25,7 @@ import { LoggingInterceptor } from '../../client/interceptors/logging.intercepto
 @UseGuards(AuthGuard, RolesGuard)
 @UseInterceptors(LoggingInterceptor, ClassSerializerInterceptor)
 @ApiBearerAuth()
-@ApiUseTags('tipo-de-quesos')
+@ApiTags('tipo-de-quesos')
 export class TipoDeQuesoController {
     logger = new Logger('TipoDeQuesoController');
 

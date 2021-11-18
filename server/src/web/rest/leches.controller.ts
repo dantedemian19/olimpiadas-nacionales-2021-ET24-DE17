@@ -12,7 +12,7 @@ import {
     Req,
     UseInterceptors,
 } from '@nestjs/common';
-import { ApiBearerAuth, ApiUseTags, ApiResponse, ApiOperation } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiTags, ApiResponse, ApiOperation } from '@nestjs/swagger';
 import { LechesDTO } from '../../service/dto/leches.dto';
 import { LechesService } from '../../service/leches.service';
 import { PageRequest, Page } from '../../domain/base/pagination.entity';
@@ -25,7 +25,7 @@ import { LoggingInterceptor } from '../../client/interceptors/logging.intercepto
 @UseGuards(AuthGuard, RolesGuard)
 @UseInterceptors(LoggingInterceptor, ClassSerializerInterceptor)
 @ApiBearerAuth()
-@ApiUseTags('leches')
+@ApiTags('leches')
 export class LechesController {
     logger = new Logger('LechesController');
 

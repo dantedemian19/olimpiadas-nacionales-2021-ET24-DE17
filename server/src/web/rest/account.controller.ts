@@ -18,12 +18,12 @@ import { AuthGuard, Roles, RoleType, RolesGuard } from '../../security';
 import { PasswordChangeDTO } from '../../service/dto/password-change.dto';
 import { UserDTO } from '../../service/dto/user.dto';
 import { LoggingInterceptor } from '../../client/interceptors/logging.interceptor';
-import { ApiBearerAuth, ApiUseTags, ApiResponse, ApiOperation } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiTags, ApiResponse, ApiOperation } from '@nestjs/swagger';
 import { AuthService } from '../../service/auth.service';
 
 @Controller('api')
 @UseInterceptors(LoggingInterceptor, ClassSerializerInterceptor)
-@ApiUseTags('account-resource')
+@ApiTags('account-resource')
 export class AccountController {
     logger = new Logger('AccountController');
 

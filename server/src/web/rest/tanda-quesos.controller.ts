@@ -12,7 +12,7 @@ import {
     Req,
     UseInterceptors,
 } from '@nestjs/common';
-import { ApiBearerAuth, ApiUseTags, ApiResponse, ApiOperation } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiUseTag ApiResponse, ApiOperation } from '@nestjs/swagger';
 import { TandaQuesosDTO } from '../../service/dto/tanda-quesos.dto';
 import { TandaQuesosService } from '../../service/tanda-quesos.service';
 import { PageRequest, Page } from '../../domain/base/pagination.entity';
@@ -25,7 +25,7 @@ import { LoggingInterceptor } from '../../client/interceptors/logging.intercepto
 @UseGuards(AuthGuard, RolesGuard)
 @UseInterceptors(LoggingInterceptor, ClassSerializerInterceptor)
 @ApiBearerAuth()
-@ApiUseTags('tanda-quesos')
+@ApiTags('tanda-quesos')
 export class TandaQuesosController {
     logger = new Logger('TandaQuesosController');
 
@@ -88,6 +88,7 @@ export class TandaQuesosController {
         return await this.tandaQuesosService.update(tandaQuesosDTO, req.user?.login);
     }
 
+
     @Put('/:id')
     @Roles(RoleType.ADMIN)
     @ApiOperation({ title: 'Update tandaQuesos with id' })
@@ -113,3 +114,7 @@ export class TandaQuesosController {
         return await this.tandaQuesosService.deleteById(id);
     }
 }
+function ApiTags(arg0: string) {
+    throw new Error('Function not implemented.');
+}
+

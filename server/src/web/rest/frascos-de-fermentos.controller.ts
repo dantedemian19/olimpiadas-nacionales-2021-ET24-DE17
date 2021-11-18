@@ -12,7 +12,7 @@ import {
     Req,
     UseInterceptors,
 } from '@nestjs/common';
-import { ApiBearerAuth, ApiUseTags, ApiResponse, ApiOperation } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiTags, ApiResponse, ApiOperation } from '@nestjs/swagger';
 import { FrascosDeFermentosDTO } from '../../service/dto/frascos-de-fermentos.dto';
 import { FrascosDeFermentosService } from '../../service/frascos-de-fermentos.service';
 import { PageRequest, Page } from '../../domain/base/pagination.entity';
@@ -25,7 +25,7 @@ import { LoggingInterceptor } from '../../client/interceptors/logging.intercepto
 @UseGuards(AuthGuard, RolesGuard)
 @UseInterceptors(LoggingInterceptor, ClassSerializerInterceptor)
 @ApiBearerAuth()
-@ApiUseTags('frascos-de-fermentos')
+@ApiTags('frascos-de-fermentos')
 export class FrascosDeFermentosController {
     logger = new Logger('FrascosDeFermentosController');
 

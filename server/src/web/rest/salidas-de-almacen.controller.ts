@@ -12,7 +12,7 @@ import {
     Req,
     UseInterceptors,
 } from '@nestjs/common';
-import { ApiBearerAuth, ApiUseTags, ApiResponse, ApiOperation } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiTags, ApiResponse, ApiOperation } from '@nestjs/swagger';
 import { SalidasDeAlmacenDTO } from '../../service/dto/salidas-de-almacen.dto';
 import { SalidasDeAlmacenService } from '../../service/salidas-de-almacen.service';
 import { PageRequest, Page } from '../../domain/base/pagination.entity';
@@ -25,7 +25,7 @@ import { LoggingInterceptor } from '../../client/interceptors/logging.intercepto
 @UseGuards(AuthGuard, RolesGuard)
 @UseInterceptors(LoggingInterceptor, ClassSerializerInterceptor)
 @ApiBearerAuth()
-@ApiUseTags('salidas-de-almacens')
+@ApiTags('salidas-de-almacens')
 export class SalidasDeAlmacenController {
     logger = new Logger('SalidasDeAlmacenController');
 
