@@ -14,7 +14,7 @@
     },
     {
       "fieldName": "cantidad",
-      "fieldType": "Long",
+      "fieldType": "Integer",
       "fieldValidateRules": ["required"]
     },
     {

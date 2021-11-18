@@ -3,7 +3,7 @@
   "fields": [
     {
       "fieldName": "capacidad",
-      "fieldType": "Long",
+      "fieldType": "Integer",
       "fieldValidateRules": ["required"]
     },
     {
@@ -13,7 +13,7 @@
     },
     {
       "fieldName": "reserva",
-      "fieldType": "Long",
+      "fieldType": "Integer",
       "fieldValidateRules": ["required"]
     }
   ],

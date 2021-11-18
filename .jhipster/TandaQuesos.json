@@ -8,12 +8,12 @@
     },
     {
       "fieldName": "peso",
-      "fieldType": "Long",
+      "fieldType": "Integer",
       "fieldValidateRules": ["required"]
     },
     {
       "fieldName": "pesoInicial",
-      "fieldType": "Long",
+      "fieldType": "Integer",
       "fieldValidateRules": ["required"]
     },
     {

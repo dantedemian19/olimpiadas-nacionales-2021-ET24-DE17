@@ -18,7 +18,7 @@ entity FrascosDeFermentos{
 entity TandaQuesos{
 	estado EstadoQuesos
     peso BigDecimal required
-    pesoInicial Long required
+    pesoInicial BigDecimal required
     fechaEntradaCuracion Instant
 	fechaSalidaCuracion Instant
 }

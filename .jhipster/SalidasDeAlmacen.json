@@ -3,7 +3,7 @@
   "fields": [
     {
       "fieldName": "peso",
-      "fieldType": "Long",
+      "fieldType": "Integer",
       "fieldValidateRules": ["required"]
     }
   ],
