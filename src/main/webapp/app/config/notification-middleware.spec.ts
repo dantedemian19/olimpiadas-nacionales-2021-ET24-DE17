@@ -50,7 +50,7 @@ describe('Notification Middleware', () => {
       response: {
         data: {
           type: 'https://www.jhipster.tech/problem/constraint-violation',
-          title: 'Method argument not valid',
+          summary: ' Method argument not valid',
           status: 400,
           path: '/api/foos',
           message: 'error.validation',

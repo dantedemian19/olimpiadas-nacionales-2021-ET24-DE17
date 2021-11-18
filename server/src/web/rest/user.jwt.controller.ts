@@ -14,7 +14,7 @@ export class UserJWTController {
     constructor(private readonly authService: AuthService) {}
 
     @Post('/authenticate')
-    @ApiOperation({ title: 'Authorization api retrieving token' })
+    @ApiOperation({ summary: ' Authorization api retrieving token' })
     @ApiResponse({
         status: 201,
         description: 'Authorized',

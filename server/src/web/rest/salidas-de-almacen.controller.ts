@@ -62,7 +62,7 @@ export class SalidasDeAlmacenController {
 
     @PostMethod('/')
     @Roles(RoleType.ADMIN)
-    @ApiOperation({ title: 'Create salidasDeAlmacen' })
+    @ApiOperation({ summary: ' Create salidasDeAlmacen' })
     @ApiResponse({
         status: 201,
         description: 'The record has been successfully created.',
@@ -77,7 +77,7 @@ export class SalidasDeAlmacenController {
 
     @Put('/')
     @Roles(RoleType.ADMIN)
-    @ApiOperation({ title: 'Update salidasDeAlmacen' })
+    @ApiOperation({ summary: ' Update salidasDeAlmacen' })
     @ApiResponse({
         status: 200,
         description: 'The record has been successfully updated.',
@@ -90,7 +90,7 @@ export class SalidasDeAlmacenController {
 
     @Put('/:id')
     @Roles(RoleType.ADMIN)
-    @ApiOperation({ title: 'Update salidasDeAlmacen with id' })
+    @ApiOperation({ summary: ' Update salidasDeAlmacen with id' })
     @ApiResponse({
         status: 200,
         description: 'The record has been successfully updated.',
@@ -103,7 +103,7 @@ export class SalidasDeAlmacenController {
 
     @Delete('/:id')
     @Roles(RoleType.ADMIN)
-    @ApiOperation({ title: 'Delete salidasDeAlmacen' })
+    @ApiOperation({ summary: ' Delete salidasDeAlmacen' })
     @ApiResponse({
         status: 204,
         description: 'The record has been successfully deleted.',

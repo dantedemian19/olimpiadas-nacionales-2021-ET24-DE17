@@ -16,7 +16,7 @@ export class PublicUserController {
     constructor(private readonly authService: AuthService) {}
 
     @Get('/users')
-    @ApiOperation({ title: 'Get the list of users' })
+    @ApiOperation({ summary: ' Get the list of users' })
     @ApiResponse({
         status: 200,
         description: 'List all users records',
@@ -35,7 +35,7 @@ export class PublicUserController {
     }
 
     @Get('/authorities')
-    @ApiOperation({ title: 'Get the list of user roles' })
+    @ApiOperation({ summary: ' Get the list of user roles' })
     @ApiResponse({
         status: 200,
         description: 'List all user roles',

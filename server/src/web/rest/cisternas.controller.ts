@@ -62,7 +62,7 @@ export class CisternasController {
 
     @PostMethod('/')
     @Roles(RoleType.ADMIN)
-    @ApiOperation({ title: 'Create cisternas' })
+    @ApiOperation({ summary: ' Create cisternas' })
     @ApiResponse({
         status: 201,
         description: 'The record has been successfully created.',
@@ -77,7 +77,7 @@ export class CisternasController {
 
     @Put('/')
     @Roles(RoleType.ADMIN)
-    @ApiOperation({ title: 'Update cisternas' })
+    @ApiOperation({ summary: ' Update cisternas' })
     @ApiResponse({
         status: 200,
         description: 'The record has been successfully updated.',
@@ -90,7 +90,7 @@ export class CisternasController {
 
     @Put('/:id')
     @Roles(RoleType.ADMIN)
-    @ApiOperation({ title: 'Update cisternas with id' })
+    @ApiOperation({ summary: ' Update cisternas with id' })
     @ApiResponse({
         status: 200,
         description: 'The record has been successfully updated.',
@@ -103,7 +103,7 @@ export class CisternasController {
 
     @Delete('/:id')
     @Roles(RoleType.ADMIN)
-    @ApiOperation({ title: 'Delete cisternas' })
+    @ApiOperation({ summary: ' Delete cisternas' })
     @ApiResponse({
         status: 204,
         description: 'The record has been successfully deleted.',

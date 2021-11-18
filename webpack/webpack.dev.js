@@ -97,7 +97,7 @@ module.exports = options =>
       ),
       new webpack.HotModuleReplacementPlugin(),
       new WebpackNotifierPlugin({
-        title: 'Olimpiadas Nacionales ET 24 DE 17',
+        summary: ' Olimpiadas Nacionales ET 24 DE 17',
         contentImage: path.join(__dirname, 'logo-jhipster.png'),
       }),
     ].filter(Boolean),
