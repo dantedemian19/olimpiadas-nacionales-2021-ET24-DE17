@@ -1,33 +1,33 @@
 entity Leches{
 	analisis TextBlob required
 	calidad Integer required
-	cantidad Long required
+	cantidad BigDecimal required
 	fechaDeIngreso Instant required
 }
 entity Cisternas{
-	capacidad Long required
+	capacidad BigDecimal required
 	estado EstadoCisterna
-    reserva Long required
+    reserva BigDecimal required
 }
 entity FrascosDeFermentos{
 	calidad Integer required
 	fechaAnalisis Instant required
     estado EstadoFermentos
-    peso Long
+    peso BigDecimal
 }
 entity TandaQuesos{
 	estado EstadoQuesos
-    peso Long required
+    peso BigDecimal required
     pesoInicial Long required
     fechaEntradaCuracion Instant
 	fechaSalidaCuracion Instant
 }
 entity TipoDeQueso{
 	nombre String required
-    tiempoDeCurado Duration required
+    tiempoDeCurado BigDecimal required
 }
 entity SalidasDeAlmacen{
-	peso Long required
+	peso BigDecimal required
 }
 enum EstadoCisterna{
 	INNOPERATIVE,
