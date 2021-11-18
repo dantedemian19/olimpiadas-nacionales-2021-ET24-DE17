@@ -62,7 +62,7 @@ export class TandaQuesosController {
 
     @PostMethod('/')
     @Roles(RoleType.ADMIN)
-    @ApiOperation({ summary: ' 'Create tandaQuesos' })
+    @ApiOperation({ summary: ' Create tandaQuesos' })
     @ApiResponse({
         status: 201,
         description: 'The record has been successfully created.',
@@ -77,7 +77,7 @@ export class TandaQuesosController {
 
     @Put('/')
     @Roles(RoleType.ADMIN)
-    @ApiOperation({ summary: ' 'Update tandaQuesos' })
+    @ApiOperation({ summary: ' Update tandaQuesos' })
     @ApiResponse({
         status: 200,
         description: 'The record has been successfully updated.',
@@ -91,7 +91,7 @@ export class TandaQuesosController {
 
     @Put('/:id')
     @Roles(RoleType.ADMIN)
-    @ApiOperation({ summary: ' 'Update tandaQuesos with id' })
+    @ApiOperation({ summary: ' Update tandaQuesos with id' })
     @ApiResponse({
         status: 200,
         description: 'The record has been successfully updated.',
@@ -104,7 +104,7 @@ export class TandaQuesosController {
 
     @Delete('/:id')
     @Roles(RoleType.ADMIN)
-    @ApiOperation({ summary: ' 'Delete tandaQuesos' })
+    @ApiOperation({ summary: ' Delete tandaQuesos' })
     @ApiResponse({
         status: 204,
         description: 'The record has been successfully deleted.',
