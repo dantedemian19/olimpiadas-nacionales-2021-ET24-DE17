@@ -16,7 +16,7 @@ entity FrascosDeFermentos{
     peso Long
 }
 entity TandaQuesos{
-	estado EstadoQueso
+	estado EstadoQuesos
     peso Long required
     pesoInicial Long required
     fechaEntradaCuracion Instant
@@ -30,21 +30,21 @@ entity SalidasDeAlmacen{
 	peso Long required
 }
 enum EstadoCisterna{
-	Innoperative,
-	Operative,
-	InRepair
+	INNOPERATIVE,
+	OPERATIVE,
+	INREPAIR
 }
 enum EstadoQuesos{
-	InProduction,
-	InSaladero,
-	InCurado,
-    InStorage,
-	Out
+	INPRODUCTION,
+	INSALADERO,
+	INCURADO,
+    INSTOCK,
+	OUTSTOCK
 }
 enum EstadoFermentos{
-	Stored,
-	InUse,
-	Depleted
+	STORED,
+	INPRODUCTION,
+	DEPLETED
 }
 relationship ManyToOne {
 	TandaQuesos{leche} to Leches

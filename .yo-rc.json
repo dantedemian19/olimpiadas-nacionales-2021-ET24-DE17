@@ -49,6 +49,8 @@
     "buildTool": "maven",
     "enableHibernateCache": true,
     "reactive": false,
-    "languages": ["en", "fr"]
+    "languages": ["en", "fr"],
+    "entities": ["Leches", "Cisternas", "FrascosDeFermentos", "TandaQuesos", "TipoDeQueso", "SalidasDeAlmacen"],
+    "lastLiquibaseTimestamp": 1637242240000
   }
 }

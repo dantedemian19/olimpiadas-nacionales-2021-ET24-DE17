@@ -1,0 +1,42 @@
+{
+  "name": "FrascosDeFermentos",
+  "fields": [
+    {
+      "fieldName": "calidad",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "fechaAnalisis",
+      "fieldType": "Instant",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "estado",
+      "fieldType": "EstadoFermentos",
+      "fieldValues": "STORED,INPRODUCTION,DEPLETED"
+    },
+    {
+      "fieldName": "peso",
+      "fieldType": "Long"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "tipoDeQueso",
+      "otherEntityRelationshipName": "frascosDeFermentos",
+      "relationshipName": "tipo"
+    }
+  ],
+  "entityTableName": "frascos_de_fermentos",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20211118133037"
+}

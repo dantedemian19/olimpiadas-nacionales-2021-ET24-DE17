@@ -1,0 +1,52 @@
+{
+  "name": "TandaQuesos",
+  "fields": [
+    {
+      "fieldName": "estado",
+      "fieldType": "EstadoQuesos",
+      "fieldValues": "INPRODUCTION,INSALADERO,INCURADO,INSTOCK,OUTSTOCK"
+    },
+    {
+      "fieldName": "peso",
+      "fieldType": "Long",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "pesoInicial",
+      "fieldType": "Long",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "fechaEntradaCuracion",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "fechaSalidaCuracion",
+      "fieldType": "Instant"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "leches",
+      "otherEntityRelationshipName": "tandaQuesos",
+      "relationshipName": "leche"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "tipoDeQueso",
+      "otherEntityRelationshipName": "tandaQuesos",
+      "relationshipName": "tipo"
+    }
+  ],
+  "entityTableName": "tanda_quesos",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20211118133038"
+}

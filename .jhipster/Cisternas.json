@@ -1,0 +1,31 @@
+{
+  "name": "Cisternas",
+  "fields": [
+    {
+      "fieldName": "capacidad",
+      "fieldType": "Long",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "estado",
+      "fieldType": "EstadoCisterna",
+      "fieldValues": "INNOPERATIVE,OPERATIVE,INREPAIR"
+    },
+    {
+      "fieldName": "reserva",
+      "fieldType": "Long",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "relationships": [],
+  "entityTableName": "cisternas",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20211118133036"
+}

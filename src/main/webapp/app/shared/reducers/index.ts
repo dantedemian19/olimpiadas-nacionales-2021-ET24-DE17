@@ -11,6 +11,30 @@ import activate, { ActivateState } from 'app/modules/account/activate/activate.r
 import password, { PasswordState } from 'app/modules/account/password/password.reducer';
 import settings, { SettingsState } from 'app/modules/account/settings/settings.reducer';
 import passwordReset, { PasswordResetState } from 'app/modules/account/password-reset/password-reset.reducer';
+// prettier-ignore
+import leches, {
+  LechesState
+} from 'app/entities/leches/leches.reducer';
+// prettier-ignore
+import cisternas, {
+  CisternasState
+} from 'app/entities/cisternas/cisternas.reducer';
+// prettier-ignore
+import frascosDeFermentos, {
+  FrascosDeFermentosState
+} from 'app/entities/frascos-de-fermentos/frascos-de-fermentos.reducer';
+// prettier-ignore
+import tandaQuesos, {
+  TandaQuesosState
+} from 'app/entities/tanda-quesos/tanda-quesos.reducer';
+// prettier-ignore
+import tipoDeQueso, {
+  TipoDeQuesoState
+} from 'app/entities/tipo-de-queso/tipo-de-queso.reducer';
+// prettier-ignore
+import salidasDeAlmacen, {
+  SalidasDeAlmacenState
+} from 'app/entities/salidas-de-almacen/salidas-de-almacen.reducer';
 /* jhipster-needle-add-reducer-import - JHipster will add reducer here */
 
 export interface IRootState {
@@ -23,6 +47,12 @@ export interface IRootState {
   readonly passwordReset: PasswordResetState;
   readonly password: PasswordState;
   readonly settings: SettingsState;
+  readonly leches: LechesState;
+  readonly cisternas: CisternasState;
+  readonly frascosDeFermentos: FrascosDeFermentosState;
+  readonly tandaQuesos: TandaQuesosState;
+  readonly tipoDeQueso: TipoDeQuesoState;
+  readonly salidasDeAlmacen: SalidasDeAlmacenState;
   /* jhipster-needle-add-reducer-type - JHipster will add reducer type here */
   readonly loadingBar: any;
 }
@@ -37,6 +67,12 @@ const rootReducer = combineReducers<IRootState>({
   passwordReset,
   password,
   settings,
+  leches,
+  cisternas,
+  frascosDeFermentos,
+  tandaQuesos,
+  tipoDeQueso,
+  salidasDeAlmacen,
   /* jhipster-needle-add-reducer-combine - JHipster will add reducer here */
   loadingBar,
 });
