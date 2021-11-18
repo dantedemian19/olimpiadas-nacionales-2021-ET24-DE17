@@ -7,10 +7,10 @@
 
 ## Autores
 
-- [@dantedemian19](https://www.github.com/dantedemian19)
-- [@MattGimenez](https://github.com/MattGimenez)
-- [@Mati411](https://github.com/Mati411)
-- [@agusgarone](https://github.com/agusgarone)
+- [@dantedemian19](https://www.github.com/dantedemian19)    Dante Alfonso (lider, Desarrollador BackEnd)
+- [@MattGimenez](https://github.com/MattGimenez)    Matias Gimenez (Documentador, Desarrollador BackEnd) 
+- [@Mati411](https://github.com/Mati411)    Matias Garcia (Desarrollador FrontEnd)
+- [@agusgarone](https://github.com/agusgarone)  Agustin Garone (Desarrollador FrontEnd)
 
 
 
