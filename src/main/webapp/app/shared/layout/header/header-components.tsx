@@ -15,7 +15,7 @@ export const BrandIcon = props => (
 export const Brand = props => (
   <NavbarBrand tag={Link} to="/" className="brand-logo">
     <BrandIcon />
-    <span className="brand-title">Olimpiadas_nacionales_ET24_DE17</span>
+    <span className="brand-title">C-CHEESE</span>
     <span className="navbar-version">{appConfig.VERSION}</span>
   </NavbarBrand>
 );

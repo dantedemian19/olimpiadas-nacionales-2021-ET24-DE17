@@ -27,7 +27,7 @@ function ormConfig(): TypeOrmModuleOptions {
         ormconfig = {
             name: 'default',
             type: 'mysql',
-            database: 'olimpiadas_nacionales_et24_de17',
+            database: 'C-CHEESE',
             host: 'localhost',
             port: 3307,
             username: 'sa',

@@ -1,14 +1,14 @@
 version: '3.8'
 services:
-  olimpiadas_nacionales_et24_de17-mysql:
+  C-CHEESE-mysql:
     image: mysql:8.0.23
     # volumes:
-    #     - ~/volumes/jhipster/olimpiadas_nacionales_ET24_DE17/mysql/:/var/lib/mysql/
+    #     - ~/volumes/jhipster/C-CHEESE/mysql/:/var/lib/mysql/
     environment:
       - MYSQL_ALLOW_EMPTY_PASSWORD=true
       - MYSQL_USER=sa
       - MYSQL_PASSWORD=yourStrong(!)Password
-      - MYSQL_DATABASE=olimpiadas_nacionales_et24_de17
+      - MYSQL_DATABASE=C-CHEESE
     ports:
       - 3307:3306
     command: mysqld --lower_case_table_names=1 --skip-ssl --character_set_server=utf8mb4 --explicit_defaults_for_timestamp

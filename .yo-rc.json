@@ -13,7 +13,7 @@
       }
     ],
     "applicationType": "monolith",
-    "baseName": "olimpiadas_nacionales_ET24_DE17",
+    "baseName": "C-CHEESE",
     "jhipsterVersion": "7.0.1",
     "skipClient": false,
     "skipServer": false,

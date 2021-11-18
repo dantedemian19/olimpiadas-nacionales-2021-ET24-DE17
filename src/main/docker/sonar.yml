@@ -1,6 +1,6 @@
 version: '3.8'
 services:
-  olimpiadas_nacionales_et24_de17-sonar:
+  C-CHEESE-sonar:
     image: sonarqube:8.8-community
     container_name: sonar
     ports:

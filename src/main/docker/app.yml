@@ -1,8 +1,8 @@
 version: '3.8'
 services:
-  olimpiadas_nacionales_et24_de17-app:
+  C-CHEESE-app:
     build: ../../..
-    container_name: olimpiadas_nacionales_et24_de17-app
+    container_name: C-CHEESE-app
     environment:
     ports:
       - 8081:8081
