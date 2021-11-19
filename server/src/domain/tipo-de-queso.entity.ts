@@ -10,7 +10,7 @@ export class TipoDeQueso extends BaseEntity {
     @Column({ name: 'nombre' })
     nombre: string;
 
-    @Column({ type: 'bigint',name: 'tiempo_de_curado' })
+    @Column({ type: 'integer',name: 'tiempo_de_curado' })
     tiempoDeCurado: any;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove

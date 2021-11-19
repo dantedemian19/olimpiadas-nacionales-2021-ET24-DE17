@@ -9,7 +9,7 @@ import { TandaQuesos } from './tanda-quesos.entity';
  */
 @Entity('salidas_de_almacen')
 export class SalidasDeAlmacen extends BaseEntity {
-    @Column({ type: 'long', name: 'peso' })
+    @Column({ type: 'integer', name: 'peso' })
     peso: number;
 
     @ManyToOne((type) => TandaQuesos)
