@@ -20,6 +20,7 @@ import { AuthGuard, Roles, RolesGuard, RoleType } from '../../security';
 import { HeaderUtil } from '../../client/header-util';
 import { Request } from '../../client/request';
 import { LoggingInterceptor } from '../../client/interceptors/logging.interceptor';
+import { TandaQuesoChangeByIdDTO } from '../../service/dto/TandaQuesoChangeById.dto';
 
 @Controller('api/tanda-quesos')
 @UseGuards(AuthGuard, RolesGuard)
@@ -99,6 +100,27 @@ export class TandaQuesosController {
     async putId(@Req() req: Request, @Body() tandaQuesosDTO: TandaQuesosDTO): Promise<TandaQuesosDTO> {
         HeaderUtil.addEntityCreatedHeaders(req.res, 'TandaQuesos', tandaQuesosDTO.id);
         return await this.tandaQuesosService.update(tandaQuesosDTO, req.user?.login);
+    }
+    
+    @Put('/:id')
+    @Roles(RoleType.ADMIN)
+    @ApiOperation({ summary: 'Update tipoDeQueso.estado with id' })
+    @ApiResponse({
+        status: 200,
+        description: 'The record has been successfully updated.',
+        type: TandaQuesosDTO,
+    })
+    async putIdforEstado(@Req() req: Request, @Body() tandaQuesosDTO: TandaQuesoChangeByIdDTO): Promise<TandaQuesosDTO> {
+        HeaderUtil.addEntityCreatedHeaders(req.res, 'Tanda Queso ID:', tandaQuesosDTO.id);
+        let temp = await this.tandaQuesosService.findById(tandaQuesosDTO.id);
+        if(tandaQuesosDTO.estado == "INCURADO" && temp.estado == "INSALADERO"){
+            tandaQuesosDTO.fechaEntradaCuracion = new Date();
+        }
+        if(tandaQuesosDTO.estado == "INSTOCK" && (temp.estado == "INCURADO" || temp.estado == "INSALADERO")){
+            tandaQuesosDTO.fechaEntradaCuracion = new Date();
+        }
+        temp.estado = tandaQuesosDTO.estado;
+        return await this.tandaQuesosService.update(temp, req.user?.login);
     }
 
     @Delete('/:id')

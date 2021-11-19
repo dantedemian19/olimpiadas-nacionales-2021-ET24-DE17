@@ -99,7 +99,7 @@ export class TipoDeQuesoController {
     async putId(@Req() req: Request, @Body() tipoDeQuesoDTO: TipoDeQuesoDTO): Promise<TipoDeQuesoDTO> {
         HeaderUtil.addEntityCreatedHeaders(req.res, 'TipoDeQueso', tipoDeQuesoDTO.id);
         return await this.tipoDeQuesoService.update(tipoDeQuesoDTO, req.user?.login);
-    }
+    }   
 
     @Delete('/:id')
     @Roles(RoleType.ADMIN)
