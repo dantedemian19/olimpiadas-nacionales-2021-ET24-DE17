@@ -9,13 +9,13 @@ import { EstadoCisterna } from './enumeration/estado-cisterna';
  */
 @Entity('cisternas')
 export class Cisternas extends BaseEntity {
-    @Column({ type: 'bigint', name: 'capacidad' })
+    @Column({ type: 'integer', name: 'capacidad' })
     capacidad: number;
 
     @Column({ type: 'simple-enum', name: 'estado', enum: EstadoCisterna })
     estado: EstadoCisterna;
 
-    @Column({ type: 'bigint', name: 'reserva' })
+    @Column({ type: 'integer', name: 'reserva' })
     reserva: number;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove

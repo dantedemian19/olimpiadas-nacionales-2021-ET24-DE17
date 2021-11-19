@@ -47,8 +47,8 @@ export default class TipoDeQuesoUpdatePage {
     await this.setNombreInput('nombre');
     expect(await this.getNombreInput()).to.match(/nombre/);
     await waitUntilDisplayed(this.saveButton);
-    await this.setTiempoDeCuradoInput('PT12S');
-    expect(await this.getTiempoDeCuradoInput()).to.contain('PT12S');
+    await this.setTiempoDeCuradoInput('5');
+    expect(await this.getTiempoDeCuradoInput()).to.eq('5');
     await this.save();
     await waitUntilHidden(this.saveButton);
     expect(await isVisible(this.saveButton)).to.be.false;

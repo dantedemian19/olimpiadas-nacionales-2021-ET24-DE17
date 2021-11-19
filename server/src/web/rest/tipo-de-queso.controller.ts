@@ -62,7 +62,7 @@ export class TipoDeQuesoController {
 
     @PostMethod('/')
     @Roles(RoleType.ADMIN)
-    @ApiOperation({ summary: ' Create tipoDeQueso' })
+    @ApiOperation({ summary: 'Create tipoDeQueso' })
     @ApiResponse({
         status: 201,
         description: 'The record has been successfully created.',
@@ -77,7 +77,7 @@ export class TipoDeQuesoController {
 
     @Put('/')
     @Roles(RoleType.ADMIN)
-    @ApiOperation({ summary: ' Update tipoDeQueso' })
+    @ApiOperation({ summary: 'Update tipoDeQueso' })
     @ApiResponse({
         status: 200,
         description: 'The record has been successfully updated.',
@@ -90,7 +90,7 @@ export class TipoDeQuesoController {
 
     @Put('/:id')
     @Roles(RoleType.ADMIN)
-    @ApiOperation({ summary: ' Update tipoDeQueso with id' })
+    @ApiOperation({ summary: 'Update tipoDeQueso with id' })
     @ApiResponse({
         status: 200,
         description: 'The record has been successfully updated.',
@@ -103,7 +103,7 @@ export class TipoDeQuesoController {
 
     @Delete('/:id')
     @Roles(RoleType.ADMIN)
-    @ApiOperation({ summary: ' Delete tipoDeQueso' })
+    @ApiOperation({ summary: 'Delete tipoDeQueso' })
     @ApiResponse({
         status: 204,
         description: 'The record has been successfully deleted.',

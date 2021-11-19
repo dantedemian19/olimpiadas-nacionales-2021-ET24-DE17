@@ -15,7 +15,7 @@ export class Leches extends BaseEntity {
     @Column({ type: 'integer', name: 'calidad' })
     calidad: number;
 
-    @Column({ type: 'bigint', name: 'cantidad' })
+    @Column({ type: 'integer', name: 'cantidad' })
     cantidad: number;
 
     @Column({ type: 'datetime', name: 'fecha_de_ingreso' })

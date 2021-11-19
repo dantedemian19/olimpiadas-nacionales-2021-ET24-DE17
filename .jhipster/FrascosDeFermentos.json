@@ -18,7 +18,7 @@
     },
     {
       "fieldName": "peso",
-      "fieldType": "Long"
+      "fieldType": "Integer"
     }
   ],
   "relationships": [

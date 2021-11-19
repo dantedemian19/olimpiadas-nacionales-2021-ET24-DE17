@@ -62,7 +62,7 @@ export class FrascosDeFermentosController {
 
     @PostMethod('/')
     @Roles(RoleType.ADMIN)
-    @ApiOperation({ summary: ' Create frascosDeFermentos' })
+    @ApiOperation({ summary: 'Create frascosDeFermentos' })
     @ApiResponse({
         status: 201,
         description: 'The record has been successfully created.',
@@ -80,7 +80,7 @@ export class FrascosDeFermentosController {
 
     @Put('/')
     @Roles(RoleType.ADMIN)
-    @ApiOperation({ summary: ' Update frascosDeFermentos' })
+    @ApiOperation({ summary: 'Update frascosDeFermentos' })
     @ApiResponse({
         status: 200,
         description: 'The record has been successfully updated.',
@@ -96,7 +96,7 @@ export class FrascosDeFermentosController {
 
     @Put('/:id')
     @Roles(RoleType.ADMIN)
-    @ApiOperation({ summary: ' Update frascosDeFermentos with id' })
+    @ApiOperation({ summary: 'Update frascosDeFermentos with id' })
     @ApiResponse({
         status: 200,
         description: 'The record has been successfully updated.',
@@ -112,7 +112,7 @@ export class FrascosDeFermentosController {
 
     @Delete('/:id')
     @Roles(RoleType.ADMIN)
-    @ApiOperation({ summary: ' Delete frascosDeFermentos' })
+    @ApiOperation({ summary: 'Delete frascosDeFermentos' })
     @ApiResponse({
         status: 204,
         description: 'The record has been successfully deleted.',

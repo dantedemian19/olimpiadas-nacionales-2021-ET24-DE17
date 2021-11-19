@@ -14,10 +14,10 @@ export class TandaQuesos extends BaseEntity {
     @Column({ type: 'simple-enum', name: 'estado', enum: EstadoQuesos })
     estado: EstadoQuesos;
 
-    @Column({ type: 'bigint', name: 'peso' })
+    @Column({ type: 'integer', name: 'peso' })
     peso: number;
 
-    @Column({ type: 'bigint', name: 'peso_inicial' })
+    @Column({ type: 'integer', name: 'peso_inicial' })
     pesoInicial: number;
 
     @Column({ type: 'datetime', name: 'fecha_entrada_curacion', nullable: true })

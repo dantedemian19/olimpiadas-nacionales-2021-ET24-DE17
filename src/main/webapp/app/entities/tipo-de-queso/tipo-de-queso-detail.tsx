@@ -8,7 +8,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IRootState } from 'app/shared/reducers';
 import { getEntity } from './tipo-de-queso.reducer';
 import { APP_DATE_FORMAT, APP_LOCAL_DATE_FORMAT } from 'app/config/constants';
-import { DurationFormat } from 'app/shared/DurationFormat';
 
 export interface ITipoDeQuesoDetailProps extends StateProps, DispatchProps, RouteComponentProps<{ id: string }> {}
 
@@ -34,10 +33,7 @@ export const TipoDeQuesoDetail = (props: ITipoDeQuesoDetailProps) => {
           <dt>
             <span id="tiempoDeCurado">Tiempo De Curado</span>
           </dt>
-          <dd>
-            {tipoDeQuesoEntity.tiempoDeCurado ? <DurationFormat value={tipoDeQuesoEntity.tiempoDeCurado} /> : null} (
-            {tipoDeQuesoEntity.tiempoDeCurado})
-          </dd>
+          <dd>{tipoDeQuesoEntity.tiempoDeCurado}</dd>
         </dl>
         <Button tag={Link} to="/tipo-de-queso" replace color="info" data-cy="entityDetailsBackButton">
           <FontAwesomeIcon icon="arrow-left" /> <span className="d-none d-md-inline">Back</span>
