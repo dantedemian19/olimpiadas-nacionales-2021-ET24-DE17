@@ -13,6 +13,8 @@ import { APP_DATE_FORMAT, APP_LOCAL_DATE_FORMAT } from 'app/config/constants';
 import { ITEMS_PER_PAGE } from 'app/shared/util/pagination.constants';
 import { overridePaginationStateWithQueryParams } from 'app/shared/util/entity-utils';
 
+import './cisternas.scss';
+
 export interface ICisternasProps extends StateProps, DispatchProps, RouteComponentProps<{ url: string }> {}
 
 export const Cisternas = (props: ICisternasProps) => {
@@ -70,8 +72,9 @@ export const Cisternas = (props: ICisternasProps) => {
   };
 
   const { cisternasList, match, loading, totalItems } = props;
+
   return (
-    <div>
+    <div className="container-entities">
       <h2 id="cisternas-heading" data-cy="CisternasHeading">
         Cisternas
         <div className="d-flex justify-content-end">

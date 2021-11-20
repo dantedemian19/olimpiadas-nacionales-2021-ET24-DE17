@@ -71,7 +71,7 @@ export const SalidasDeAlmacen = (props: ISalidasDeAlmacenProps) => {
 
   const { salidasDeAlmacenList, match, loading, totalItems } = props;
   return (
-    <div>
+    <div className="container-entities">
       <h2 id="salidas-de-almacen-heading" data-cy="SalidasDeAlmacenHeading">
         Salidas De Almacens
         <div className="d-flex justify-content-end">

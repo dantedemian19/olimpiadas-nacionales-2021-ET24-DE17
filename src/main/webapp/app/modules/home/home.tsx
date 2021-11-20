@@ -12,7 +12,7 @@ export const Home = (props: IHomeProp) => {
   const { account } = props;
 
   return (
-    <Row>
+    <Row style={{ marginTop: '-15px' }}>
       <section>
         <div className="banner">
           <div className="card-home">
