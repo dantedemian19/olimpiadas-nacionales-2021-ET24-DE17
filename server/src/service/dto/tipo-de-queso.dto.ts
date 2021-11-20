@@ -13,7 +13,7 @@ export class TipoDeQuesoDTO extends BaseDTO {
 
     @IsNotEmpty()
     @ApiProperty({ description: 'tiempoDeCurado field' })
-    tiempoDeCurado: number;
+    tiempoDeCurado: any;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
 }

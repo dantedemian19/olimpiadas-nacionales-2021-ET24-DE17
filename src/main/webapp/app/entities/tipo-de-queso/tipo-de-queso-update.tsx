@@ -94,12 +94,10 @@ export const TipoDeQuesoUpdate = (props: ITipoDeQuesoUpdateProps) => {
                 <AvField
                   id="tipo-de-queso-tiempoDeCurado"
                   data-cy="tiempoDeCurado"
-                  type="string"
-                  className="form-control"
+                  type="text"
                   name="tiempoDeCurado"
                   validate={{
                     required: { value: true, errorMessage: 'This field is required.' },
-                    number: { value: true, errorMessage: 'This field should be a number.' },
                   }}
                 />
               </AvGroup>

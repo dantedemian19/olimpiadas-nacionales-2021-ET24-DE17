@@ -62,7 +62,7 @@ export class LechesController {
 
     @PostMethod('/')
     @Roles(RoleType.ADMIN)
-    @ApiOperation({ summary: 'Create leches' })
+    @ApiOperation({ summary: ' Create leches' })
     @ApiResponse({
         status: 201,
         description: 'The record has been successfully created.',
@@ -77,7 +77,7 @@ export class LechesController {
 
     @Put('/')
     @Roles(RoleType.ADMIN)
-    @ApiOperation({ summary: 'Update leches' })
+    @ApiOperation({ summary: ' Update leches' })
     @ApiResponse({
         status: 200,
         description: 'The record has been successfully updated.',
@@ -90,7 +90,7 @@ export class LechesController {
 
     @Put('/:id')
     @Roles(RoleType.ADMIN)
-    @ApiOperation({ summary: 'Update leches with id' })
+    @ApiOperation({ summary: ' Update leches with id' })
     @ApiResponse({
         status: 200,
         description: 'The record has been successfully updated.',
@@ -103,7 +103,7 @@ export class LechesController {
 
     @Delete('/:id')
     @Roles(RoleType.ADMIN)
-    @ApiOperation({ summary: 'Delete leches' })
+    @ApiOperation({ summary: ' Delete leches' })
     @ApiResponse({
         status: 204,
         description: 'The record has been successfully deleted.',

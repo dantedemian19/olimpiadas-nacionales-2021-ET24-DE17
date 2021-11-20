@@ -19,7 +19,7 @@ export class FrascosDeFermentos extends BaseEntity {
     @Column({ type: 'simple-enum', name: 'estado', enum: EstadoFermentos })
     estado: EstadoFermentos;
 
-    @Column({ type: 'integer', name: 'peso', nullable: true })
+    @Column({ type: 'bigint', name: 'peso', nullable: true })
     peso: number;
 
     @ManyToOne((type) => TipoDeQueso)
