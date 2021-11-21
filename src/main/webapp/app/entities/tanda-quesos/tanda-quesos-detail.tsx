@@ -56,6 +56,8 @@ export const TandaQuesosDetail = (props: ITandaQuesosDetailProps) => {
           </dd>
           <dt>Leche</dt>
           <dd>{tandaQuesosEntity.leche ? tandaQuesosEntity.leche.id : ''}</dd>
+          <dt>Fermento</dt>
+          <dd>{tandaQuesosEntity.fermento ? tandaQuesosEntity.fermento.id : ''}</dd>
           <dt>Tipo</dt>
           <dd>{tandaQuesosEntity.tipo ? tandaQuesosEntity.tipo.id : ''}</dd>
         </dl>

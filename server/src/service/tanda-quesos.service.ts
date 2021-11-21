@@ -7,6 +7,7 @@ import { TandaQuesosRepository } from '../repository/tanda-quesos.repository';
 
 const relationshipNames = [];
 relationshipNames.push('leche');
+relationshipNames.push('fermento');
 relationshipNames.push('tipo');
 
 @Injectable()

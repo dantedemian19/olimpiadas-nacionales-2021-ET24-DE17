@@ -12,7 +12,7 @@ import {
     Req,
     UseInterceptors,
 } from '@nestjs/common';
-import { ApiBearerAuth, ApiUseTags, ApiResponse, ApiOperation } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiTags, ApiResponse, ApiOperation } from '@nestjs/swagger';
 import { MovimientosAlmacenDTO } from '../../service/dto/movimientos-almacen.dto';
 import { MovimientosAlmacenService } from '../../service/movimientos-almacen.service';
 import { PageRequest, Page } from '../../domain/base/pagination.entity';
@@ -25,7 +25,7 @@ import { LoggingInterceptor } from '../../client/interceptors/logging.intercepto
 @UseGuards(AuthGuard, RolesGuard)
 @UseInterceptors(LoggingInterceptor, ClassSerializerInterceptor)
 @ApiBearerAuth()
-@ApiUseTags('movimientos-almacens')
+@ApiTags('movimientos-almacens')
 export class MovimientosAlmacenController {
     logger = new Logger('MovimientosAlmacenController');
 
@@ -62,7 +62,7 @@ export class MovimientosAlmacenController {
 
     @PostMethod('/')
     @Roles(RoleType.ADMIN)
-    @ApiOperation({ title: 'Create movimientosAlmacen' })
+    @ApiOperation({ summary: 'Create movimientosAlmacen' })
     @ApiResponse({
         status: 201,
         description: 'The record has been successfully created.',
@@ -80,7 +80,7 @@ export class MovimientosAlmacenController {
 
     @Put('/')
     @Roles(RoleType.ADMIN)
-    @ApiOperation({ title: 'Update movimientosAlmacen' })
+    @ApiOperation({ summary: 'Update movimientosAlmacen' })
     @ApiResponse({
         status: 200,
         description: 'The record has been successfully updated.',
@@ -96,7 +96,7 @@ export class MovimientosAlmacenController {
 
     @Put('/:id')
     @Roles(RoleType.ADMIN)
-    @ApiOperation({ title: 'Update movimientosAlmacen with id' })
+    @ApiOperation({ summary: 'Update movimientosAlmacen with id' })
     @ApiResponse({
         status: 200,
         description: 'The record has been successfully updated.',
@@ -112,7 +112,7 @@ export class MovimientosAlmacenController {
 
     @Delete('/:id')
     @Roles(RoleType.ADMIN)
-    @ApiOperation({ title: 'Delete movimientosAlmacen' })
+    @ApiOperation({ summary: 'Delete movimientosAlmacen' })
     @ApiResponse({
         status: 204,
         description: 'The record has been successfully deleted.',

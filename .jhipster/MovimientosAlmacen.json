@@ -25,15 +25,6 @@
       "otherEntityName": "tandaQuesos",
       "otherEntityRelationshipName": "movimientosAlmacen",
       "relationshipName": "queso"
-    },
-    {
-      "relationshipName": "user",
-      "otherEntityName": "user",
-      "relationshipType": "many-to-one",
-      "relationshipValidateRules": ["required"],
-      "otherEntityField": "login",
-      "ownerSide": true,
-      "otherEntityRelationshipName": "movimientosAlmacen"
     }
   ],
   "entityTableName": "movimientos_almacen",

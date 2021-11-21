@@ -71,7 +71,7 @@ export const TandaQuesos = (props: ITandaQuesosProps) => {
 
   const { tandaQuesosList, match, loading, totalItems } = props;
   return (
-    <div className="container-entities">
+    <div>
       <h2 id="tanda-quesos-heading" data-cy="TandaQuesosHeading">
         Tanda Quesos
         <div className="d-flex justify-content-end">
@@ -111,6 +111,9 @@ export const TandaQuesos = (props: ITandaQuesosProps) => {
                   Leche <FontAwesomeIcon icon="sort" />
                 </th>
                 <th>
+                  Fermento <FontAwesomeIcon icon="sort" />
+                </th>
+                <th>
                   Tipo <FontAwesomeIcon icon="sort" />
                 </th>
                 <th />
@@ -138,6 +141,13 @@ export const TandaQuesos = (props: ITandaQuesosProps) => {
                     ) : null}
                   </td>
                   <td>{tandaQuesos.leche ? <Link to={`leches/${tandaQuesos.leche.id}`}>{tandaQuesos.leche.id}</Link> : ''}</td>
+                  <td>
+                    {tandaQuesos.fermento ? (
+                      <Link to={`frascos-de-fermentos/${tandaQuesos.fermento.id}`}>{tandaQuesos.fermento.id}</Link>
+                    ) : (
+                      ''
+                    )}
+                  </td>
                   <td>{tandaQuesos.tipo ? <Link to={`tipo-de-queso/${tandaQuesos.tipo.id}`}>{tandaQuesos.tipo.id}</Link> : ''}</td>
                   <td className="text-right">
                     <div className="btn-group flex-btn-group-container">

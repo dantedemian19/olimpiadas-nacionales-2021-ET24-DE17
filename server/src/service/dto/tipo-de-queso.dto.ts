@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { ApiModelProperty } from '@nestjs/swagger';
+import { ApiProperty } from '@nestjs/swagger';
 import { IsNotEmpty, MinLength, MaxLength, Length, Min, Max, Matches } from 'class-validator';
 import { BaseDTO } from './base.dto';
 
@@ -8,11 +8,11 @@ import { BaseDTO } from './base.dto';
  */
 export class TipoDeQuesoDTO extends BaseDTO {
     @IsNotEmpty()
-    @ApiModelProperty({ description: 'nombre field' })
+    @ApiProperty({ description: 'nombre field' })
     nombre: string;
 
     @IsNotEmpty()
-    @ApiModelProperty({ description: 'tiempoDeCurado field' })
+    @ApiProperty({ description: 'tiempoDeCurado field' })
     tiempoDeCurado: number;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove

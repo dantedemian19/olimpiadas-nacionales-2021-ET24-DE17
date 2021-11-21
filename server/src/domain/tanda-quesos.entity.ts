@@ -3,6 +3,7 @@ import { Entity, Column, JoinColumn, OneToOne, ManyToOne, OneToMany, ManyToMany,
 import { BaseEntity } from './base/base.entity';
 
 import { Leches } from './leches.entity';
+import { FrascosDeFermentos } from './frascos-de-fermentos.entity';
 import { TipoDeQueso } from './tipo-de-queso.entity';
 import { EstadoQuesos } from './enumeration/estado-quesos';
 
@@ -28,6 +29,9 @@ export class TandaQuesos extends BaseEntity {
 
     @ManyToOne((type) => Leches)
     leche: Leches;
+
+    @ManyToOne((type) => FrascosDeFermentos)
+    fermento: FrascosDeFermentos;
 
     @ManyToOne((type) => TipoDeQueso)
     tipo: TipoDeQueso;

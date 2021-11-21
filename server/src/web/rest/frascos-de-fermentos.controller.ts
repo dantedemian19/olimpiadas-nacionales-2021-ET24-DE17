@@ -12,7 +12,7 @@ import {
     Req,
     UseInterceptors,
 } from '@nestjs/common';
-import { ApiBearerAuth, ApiUseTags, ApiResponse, ApiOperation } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiTags, ApiResponse, ApiOperation } from '@nestjs/swagger';
 import { FrascosDeFermentosDTO } from '../../service/dto/frascos-de-fermentos.dto';
 import { FrascosDeFermentosService } from '../../service/frascos-de-fermentos.service';
 import { PageRequest, Page } from '../../domain/base/pagination.entity';
@@ -25,7 +25,7 @@ import { LoggingInterceptor } from '../../client/interceptors/logging.intercepto
 @UseGuards(AuthGuard, RolesGuard)
 @UseInterceptors(LoggingInterceptor, ClassSerializerInterceptor)
 @ApiBearerAuth()
-@ApiUseTags('frascos-de-fermentos')
+@ApiTags('frascos-de-fermentos')
 export class FrascosDeFermentosController {
     logger = new Logger('FrascosDeFermentosController');
 
@@ -62,7 +62,7 @@ export class FrascosDeFermentosController {
 
     @PostMethod('/')
     @Roles(RoleType.ADMIN)
-    @ApiOperation({ title: 'Create frascosDeFermentos' })
+    @ApiOperation({ summary: 'Create frascosDeFermentos' })
     @ApiResponse({
         status: 201,
         description: 'The record has been successfully created.',
@@ -80,7 +80,7 @@ export class FrascosDeFermentosController {
 
     @Put('/')
     @Roles(RoleType.ADMIN)
-    @ApiOperation({ title: 'Update frascosDeFermentos' })
+    @ApiOperation({ summary: 'Update frascosDeFermentos' })
     @ApiResponse({
         status: 200,
         description: 'The record has been successfully updated.',
@@ -96,7 +96,7 @@ export class FrascosDeFermentosController {
 
     @Put('/:id')
     @Roles(RoleType.ADMIN)
-    @ApiOperation({ title: 'Update frascosDeFermentos with id' })
+    @ApiOperation({ summary: 'Update frascosDeFermentos with id' })
     @ApiResponse({
         status: 200,
         description: 'The record has been successfully updated.',
@@ -112,7 +112,7 @@ export class FrascosDeFermentosController {
 
     @Delete('/:id')
     @Roles(RoleType.ADMIN)
-    @ApiOperation({ title: 'Delete frascosDeFermentos' })
+    @ApiOperation({ summary: 'Delete frascosDeFermentos' })
     @ApiResponse({
         status: 204,
         description: 'The record has been successfully deleted.',

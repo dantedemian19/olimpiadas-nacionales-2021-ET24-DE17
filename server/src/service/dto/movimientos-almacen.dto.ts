@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { ApiModelProperty } from '@nestjs/swagger';
+import { ApiProperty } from '@nestjs/swagger';
 import { IsNotEmpty, MinLength, MaxLength, Length, Min, Max, Matches } from 'class-validator';
 import { BaseDTO } from './base.dto';
 
@@ -13,21 +13,21 @@ import { UserDTO } from './user.dto';
  */
 export class MovimientosAlmacenDTO extends BaseDTO {
     @IsNotEmpty()
-    @ApiModelProperty({ enum: EstadoQuesos, description: 'desde enum field' })
+    @ApiProperty({ enum: EstadoQuesos, description: 'desde enum field' })
     desde: EstadoQuesos;
 
     @IsNotEmpty()
-    @ApiModelProperty({ enum: EstadoQuesos, description: 'hacia enum field' })
+    @ApiProperty({ enum: EstadoQuesos, description: 'hacia enum field' })
     hacia: EstadoQuesos;
 
     @IsNotEmpty()
-    @ApiModelProperty({ description: 'peso field' })
+    @ApiProperty({ description: 'peso field' })
     peso: number;
 
-    @ApiModelProperty({ type: TandaQuesosDTO, description: 'queso relationship' })
+    @ApiProperty({ type: TandaQuesosDTO, description: 'queso relationship' })
     queso: TandaQuesosDTO;
 
-    @ApiModelProperty({ type: UserDTO, description: 'user relationship' })
+    @ApiProperty({ type: UserDTO, description: 'user relationship' })
     user: UserDTO;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove

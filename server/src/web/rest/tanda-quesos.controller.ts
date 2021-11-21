@@ -12,7 +12,7 @@ import {
     Req,
     UseInterceptors,
 } from '@nestjs/common';
-import { ApiBearerAuth, ApiUseTags, ApiResponse, ApiOperation } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiTags, ApiResponse, ApiOperation } from '@nestjs/swagger';
 import { TandaQuesosDTO } from '../../service/dto/tanda-quesos.dto';
 import { TandaQuesosService } from '../../service/tanda-quesos.service';
 import { PageRequest, Page } from '../../domain/base/pagination.entity';
@@ -25,7 +25,7 @@ import { LoggingInterceptor } from '../../client/interceptors/logging.intercepto
 @UseGuards(AuthGuard, RolesGuard)
 @UseInterceptors(LoggingInterceptor, ClassSerializerInterceptor)
 @ApiBearerAuth()
-@ApiUseTags('tanda-quesos')
+@ApiTags('tanda-quesos')
 export class TandaQuesosController {
     logger = new Logger('TandaQuesosController');
 
@@ -62,7 +62,7 @@ export class TandaQuesosController {
 
     @PostMethod('/')
     @Roles(RoleType.ADMIN)
-    @ApiOperation({ title: 'Create tandaQuesos' })
+    @ApiOperation({ summary: 'Create tandaQuesos' })
     @ApiResponse({
         status: 201,
         description: 'The record has been successfully created.',
@@ -77,7 +77,7 @@ export class TandaQuesosController {
 
     @Put('/')
     @Roles(RoleType.ADMIN)
-    @ApiOperation({ title: 'Update tandaQuesos' })
+    @ApiOperation({ summary: 'Update tandaQuesos' })
     @ApiResponse({
         status: 200,
         description: 'The record has been successfully updated.',
@@ -90,7 +90,7 @@ export class TandaQuesosController {
 
     @Put('/:id')
     @Roles(RoleType.ADMIN)
-    @ApiOperation({ title: 'Update tandaQuesos with id' })
+    @ApiOperation({ summary: 'Update tandaQuesos with id' })
     @ApiResponse({
         status: 200,
         description: 'The record has been successfully updated.',
@@ -103,7 +103,7 @@ export class TandaQuesosController {
 
     @Delete('/:id')
     @Roles(RoleType.ADMIN)
-    @ApiOperation({ title: 'Delete tandaQuesos' })
+    @ApiOperation({ summary: 'Delete tandaQuesos' })
     @ApiResponse({
         status: 204,
         description: 'The record has been successfully deleted.',

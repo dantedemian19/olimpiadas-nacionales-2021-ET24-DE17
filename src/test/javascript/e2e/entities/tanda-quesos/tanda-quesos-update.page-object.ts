@@ -13,6 +13,7 @@ export default class TandaQuesosUpdatePage {
   fechaEntradaCuracionInput: ElementFinder = element(by.css('input#tanda-quesos-fechaEntradaCuracion'));
   fechaSalidaCuracionInput: ElementFinder = element(by.css('input#tanda-quesos-fechaSalidaCuracion'));
   lecheSelect: ElementFinder = element(by.css('select#tanda-quesos-leche'));
+  fermentoSelect: ElementFinder = element(by.css('select#tanda-quesos-fermento'));
   tipoSelect: ElementFinder = element(by.css('select#tanda-quesos-tipo'));
 
   getPageTitle() {
@@ -78,6 +79,22 @@ export default class TandaQuesosUpdatePage {
     return this.lecheSelect.element(by.css('option:checked')).getText();
   }
 
+  async fermentoSelectLastOption() {
+    await this.fermentoSelect.all(by.tagName('option')).last().click();
+  }
+
+  async fermentoSelectOption(option) {
+    await this.fermentoSelect.sendKeys(option);
+  }
+
+  getFermentoSelect() {
+    return this.fermentoSelect;
+  }
+
+  async getFermentoSelectedOption() {
+    return this.fermentoSelect.element(by.css('option:checked')).getText();
+  }
+
   async tipoSelectLastOption() {
     await this.tipoSelect.all(by.tagName('option')).last().click();
   }
@@ -122,6 +139,7 @@ export default class TandaQuesosUpdatePage {
     await this.setFechaSalidaCuracionInput('01/01/2001' + protractor.Key.TAB + '02:30AM');
     expect(await this.getFechaSalidaCuracionInput()).to.contain('2001-01-01T02:30');
     await this.lecheSelectLastOption();
+    await this.fermentoSelectLastOption();
     await this.tipoSelectLastOption();
     await this.save();
     await waitUntilHidden(this.saveButton);

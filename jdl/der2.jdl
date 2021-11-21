@@ -54,6 +54,7 @@
   }
   relationship ManyToOne {
       TandaQuesos{leche} to Leches
+      TandaQuesos{fermento} to FrascosDeFermentos
       TandaQuesos{tipo} to TipoDeQueso
       Leches{cisterna} to Cisternas
       FrascosDeFermentos{tipo} to TipoDeQueso

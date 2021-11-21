@@ -34,6 +34,12 @@
     },
     {
       "relationshipType": "many-to-one",
+      "otherEntityName": "frascosDeFermentos",
+      "otherEntityRelationshipName": "tandaQuesos",
+      "relationshipName": "fermento"
+    },
+    {
+      "relationshipType": "many-to-one",
       "otherEntityName": "tipoDeQueso",
       "otherEntityRelationshipName": "tandaQuesos",
       "relationshipName": "tipo"

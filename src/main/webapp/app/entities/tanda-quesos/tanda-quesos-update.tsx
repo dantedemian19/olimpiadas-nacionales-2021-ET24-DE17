@@ -9,6 +9,8 @@ import { IRootState } from 'app/shared/reducers';
 
 import { ILeches } from 'app/shared/model/leches.model';
 import { getEntities as getLeches } from 'app/entities/leches/leches.reducer';
+import { IFrascosDeFermentos } from 'app/shared/model/frascos-de-fermentos.model';
+import { getEntities as getFrascosDeFermentos } from 'app/entities/frascos-de-fermentos/frascos-de-fermentos.reducer';
 import { ITipoDeQueso } from 'app/shared/model/tipo-de-queso.model';
 import { getEntities as getTipoDeQuesos } from 'app/entities/tipo-de-queso/tipo-de-queso.reducer';
 import { getEntity, updateEntity, createEntity, reset } from './tanda-quesos.reducer';
@@ -21,7 +23,7 @@ export interface ITandaQuesosUpdateProps extends StateProps, DispatchProps, Rout
 export const TandaQuesosUpdate = (props: ITandaQuesosUpdateProps) => {
   const [isNew] = useState(!props.match.params || !props.match.params.id);
 
-  const { tandaQuesosEntity, leches, tipoDeQuesos, loading, updating } = props;
+  const { tandaQuesosEntity, leches, frascosDeFermentos, tipoDeQuesos, loading, updating } = props;
 
   const handleClose = () => {
     props.history.push('/tanda-quesos' + props.location.search);
@@ -35,6 +37,7 @@ export const TandaQuesosUpdate = (props: ITandaQuesosUpdateProps) => {
     }
 
     props.getLeches();
+    props.getFrascosDeFermentos();
     props.getTipoDeQuesos();
   }, []);
 
@@ -53,6 +56,7 @@ export const TandaQuesosUpdate = (props: ITandaQuesosUpdateProps) => {
         ...tandaQuesosEntity,
         ...values,
         leche: leches.find(it => it.id.toString() === values.lecheId.toString()),
+        fermento: frascosDeFermentos.find(it => it.id.toString() === values.fermentoId.toString()),
         tipo: tipoDeQuesos.find(it => it.id.toString() === values.tipoId.toString()),
       };
 
@@ -178,6 +182,19 @@ export const TandaQuesosUpdate = (props: ITandaQuesosUpdateProps) => {
                 </AvInput>
               </AvGroup>
               <AvGroup>
+                <Label for="tanda-quesos-fermento">Fermento</Label>
+                <AvInput id="tanda-quesos-fermento" data-cy="fermento" type="select" className="form-control" name="fermentoId">
+                  <option value="" key="0" />
+                  {frascosDeFermentos
+                    ? frascosDeFermentos.map(otherEntity => (
+                        <option value={otherEntity.id} key={otherEntity.id}>
+                          {otherEntity.id}
+                        </option>
+                      ))
+                    : null}
+                </AvInput>
+              </AvGroup>
+              <AvGroup>
                 <Label for="tanda-quesos-tipo">Tipo</Label>
                 <AvInput id="tanda-quesos-tipo" data-cy="tipo" type="select" className="form-control" name="tipoId">
                   <option value="" key="0" />
@@ -210,6 +227,7 @@ export const TandaQuesosUpdate = (props: ITandaQuesosUpdateProps) => {
 
 const mapStateToProps = (storeState: IRootState) => ({
   leches: storeState.leches.entities,
+  frascosDeFermentos: storeState.frascosDeFermentos.entities,
   tipoDeQuesos: storeState.tipoDeQueso.entities,
   tandaQuesosEntity: storeState.tandaQuesos.entity,
   loading: storeState.tandaQuesos.loading,
@@ -219,6 +237,7 @@ const mapStateToProps = (storeState: IRootState) => ({
 
 const mapDispatchToProps = {
   getLeches,
+  getFrascosDeFermentos,
   getTipoDeQuesos,
   getEntity,
   updateEntity,
