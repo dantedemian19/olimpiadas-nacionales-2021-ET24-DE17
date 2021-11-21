@@ -20,6 +20,9 @@ import { AuthGuard, Roles, RolesGuard, RoleType } from '../../security';
 import { HeaderUtil } from '../../client/header-util';
 import { Request } from '../../client/request';
 import { LoggingInterceptor } from '../../client/interceptors/logging.interceptor';
+import { TandaQuesoChangeByIdDTO } from 'src/service/dto/TandaQuesoChangeById.dto';
+import { MovimientosAlmacenDTO } from 'src/service/dto/movimientos-almacen.dto';
+import { MovimientosAlmacenService } from 'src/service/movimientos-almacen.service';
 
 @Controller('api/tanda-quesos')
 @UseGuards(AuthGuard, RolesGuard)
@@ -99,6 +102,36 @@ export class TandaQuesosController {
     async putId(@Req() req: Request, @Body() tandaQuesosDTO: TandaQuesosDTO): Promise<TandaQuesosDTO> {
         HeaderUtil.addEntityCreatedHeaders(req.res, 'TandaQuesos', tandaQuesosDTO.id);
         return await this.tandaQuesosService.update(tandaQuesosDTO, req.user?.login);
+    } 
+    
+    @Put('/:changeTandaQuesoEstado')
+    @Roles(RoleType.ADMIN)
+    @ApiOperation({ summary: 'Update tipoDeQueso.estado with id' })
+    @ApiResponse({
+        status: 200,
+        description: 'The record has been successfully updated.',
+        type: TandaQuesosDTO,
+    })
+
+    async putIdforEstado(@Req() req: Request, @Body() tandaQuesosDTO: TandaQuesoChangeByIdDTO): Promise<TandaQuesosDTO> {
+        HeaderUtil.addEntityCreatedHeaders(req.res, 'Tanda Queso ID:', tandaQuesosDTO.id);
+        let oldTandaQuesos = await this.tandaQuesosService.findById(tandaQuesosDTO.id);
+        if(tandaQuesosDTO.estado == "ENCURADO" && oldTandaQuesos.estado == "ENSALADO"){
+            tandaQuesosDTO.fechaEntradaCuracion = new Date();
+        }
+        if(tandaQuesosDTO.estado == "ENSTOCK" && (oldTandaQuesos.estado == "ENCURADO" || oldTandaQuesos.estado == "ENSALADO")){
+            tandaQuesosDTO.fechaEntradaCuracion = new Date();
+        }
+        let registry = new MovimientosAlmacenDTO();
+        registry.desde = oldTandaQuesos.estado;
+        registry.hacia = tandaQuesosDTO.estado;
+        registry.queso = oldTandaQuesos;
+        registry.user = req.user;
+        registry.peso = tandaQuesosDTO.peso;
+        //MovimientosAlmacenService.save(registry, req.user?.login);
+        HeaderUtil.addEntityCreatedHeaders(req.res, 'MovimientosAlmacen', registry.id);
+        oldTandaQuesos.estado = tandaQuesosDTO.estado;
+        return await this.tandaQuesosService.update(oldTandaQuesos, req.user?.login);
     }
 
     @Delete('/:id')
