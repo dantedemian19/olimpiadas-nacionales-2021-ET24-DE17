@@ -51,6 +51,9 @@
     "reactive": false,
     "languages": ["en", "fr"],
     "entities": ["Leches", "Cisternas", "FrascosDeFermentos", "TandaQuesos", "TipoDeQueso", "MovimientosAlmacen"],
-    "lastLiquibaseTimestamp": 1637491609000
+    "lastLiquibaseTimestamp": 1637491609000,
+    "herokuAppName": "c-cheese",
+    "herokuDeployType": "git",
+    "herokuJavaVersion": "11"
   }
 }
