@@ -143,5 +143,6 @@ Desktop.ini
 # ESLint
 ######################
 .eslintcache
-.env
-src/server/.env
+*.env
+srcserver/.env
+*/erver/.env
