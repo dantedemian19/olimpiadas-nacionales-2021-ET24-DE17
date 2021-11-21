@@ -71,7 +71,7 @@ export const TandaQuesos = (props: ITandaQuesosProps) => {
 
   const { tandaQuesosList, match, loading, totalItems } = props;
   return (
-    <div>
+    <div className="container-entities">
       <h2 id="tanda-quesos-heading" data-cy="TandaQuesosHeading">
         Tanda Quesos
         <div className="d-flex justify-content-end">

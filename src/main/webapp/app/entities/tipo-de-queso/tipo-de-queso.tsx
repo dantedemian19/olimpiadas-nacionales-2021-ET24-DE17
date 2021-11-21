@@ -71,7 +71,7 @@ export const TipoDeQueso = (props: ITipoDeQuesoProps) => {
 
   const { tipoDeQuesoList, match, loading, totalItems } = props;
   return (
-    <div>
+    <div className="container-entities">
       <h2 id="tipo-de-queso-heading" data-cy="TipoDeQuesoHeading">
         Tipo De Quesos
         <div className="d-flex justify-content-end">

@@ -71,7 +71,7 @@ export const Leches = (props: ILechesProps) => {
 
   const { lechesList, match, loading, totalItems } = props;
   return (
-    <div>
+    <div className="container-entities">
       <h2 id="leches-heading" data-cy="LechesHeading">
         Leches
         <div className="d-flex justify-content-end">
