@@ -99,11 +99,11 @@ export const CisternasUpdate = (props: ICisternasUpdateProps) => {
                   type="select"
                   className="form-control"
                   name="estado"
-                  value={(!isNew && cisternasEntity.estado) || 'INNOPERATIVE'}
+                  value={(!isNew && cisternasEntity.estado) || 'INNOPERATIVO'}
                 >
-                  <option value="INNOPERATIVE">INNOPERATIVE</option>
-                  <option value="OPERATIVE">OPERATIVE</option>
-                  <option value="INREPAIR">INREPAIR</option>
+                  <option value="INNOPERATIVO">INNOPERATIVO</option>
+                  <option value="OPERATIVO">OPERATIVO</option>
+                  <option value="INREPARACION">INREPARACION</option>
                 </AvInput>
               </AvGroup>
               <AvGroup>

@@ -2,7 +2,7 @@
  * The EstadoFermentos enumeration.
  */
 export enum EstadoFermentos {
-    STORED = 'STORED',
-    INPRODUCTION = 'INPRODUCTION',
-    DEPLETED = 'DEPLETED',
+    ALMACENADO = 'ALMACENADO',
+    ENPRODUCCION = 'ENPRODUCCION',
+    AGOTADO = 'AGOTADO',
 }

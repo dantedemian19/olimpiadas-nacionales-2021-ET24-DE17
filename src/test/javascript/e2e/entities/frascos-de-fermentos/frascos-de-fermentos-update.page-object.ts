@@ -10,6 +10,7 @@ export default class FrascosDeFermentosUpdatePage {
   calidadInput: ElementFinder = element(by.css('input#frascos-de-fermentos-calidad'));
   fechaAnalisisInput: ElementFinder = element(by.css('input#frascos-de-fermentos-fechaAnalisis'));
   estadoSelect: ElementFinder = element(by.css('select#frascos-de-fermentos-estado'));
+  detallesInput: ElementFinder = element(by.css('textarea#frascos-de-fermentos-detalles'));
   pesoInput: ElementFinder = element(by.css('input#frascos-de-fermentos-peso'));
   tipoSelect: ElementFinder = element(by.css('select#frascos-de-fermentos-tipo'));
 
@@ -44,6 +45,14 @@ export default class FrascosDeFermentosUpdatePage {
   async estadoSelectLastOption() {
     await this.estadoSelect.all(by.tagName('option')).last().click();
   }
+  async setDetallesInput(detalles) {
+    await this.detallesInput.sendKeys(detalles);
+  }
+
+  async getDetallesInput() {
+    return this.detallesInput.getAttribute('value');
+  }
+
   async setPesoInput(peso) {
     await this.pesoInput.sendKeys(peso);
   }
@@ -89,6 +98,9 @@ export default class FrascosDeFermentosUpdatePage {
     expect(await this.getFechaAnalisisInput()).to.contain('2001-01-01T02:30');
     await waitUntilDisplayed(this.saveButton);
     await this.estadoSelectLastOption();
+    await waitUntilDisplayed(this.saveButton);
+    await this.setDetallesInput('detalles');
+    expect(await this.getDetallesInput()).to.match(/detalles/);
     await waitUntilDisplayed(this.saveButton);
     await this.setPesoInput('5');
     expect(await this.getPesoInput()).to.eq('5');

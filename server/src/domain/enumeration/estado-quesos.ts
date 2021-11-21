@@ -2,9 +2,9 @@
  * The EstadoQuesos enumeration.
  */
 export enum EstadoQuesos {
-    INPRODUCTION = 'INPRODUCTION',
-    INSALADERO = 'INSALADERO',
-    INCURADO = 'INCURADO',
-    INSTOCK = 'INSTOCK',
+    ENPRODUCCION = 'ENPRODUCCION',
+    ENSALADO = 'ENSALADO',
+    ENCURADO = 'ENCURADO',
+    ENSTOCK = 'ENSTOCK',
     OUTSTOCK = 'OUTSTOCK',
 }

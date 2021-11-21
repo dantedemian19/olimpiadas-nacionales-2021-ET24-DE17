@@ -13,34 +13,34 @@ import {
     UseInterceptors,
 } from '@nestjs/common';
 import { ApiBearerAuth, ApiUseTags, ApiResponse, ApiOperation } from '@nestjs/swagger';
-import { FrascosDeFermentosDTO } from '../../service/dto/frascos-de-fermentos.dto';
-import { FrascosDeFermentosService } from '../../service/frascos-de-fermentos.service';
+import { MovimientosAlmacenDTO } from '../../service/dto/movimientos-almacen.dto';
+import { MovimientosAlmacenService } from '../../service/movimientos-almacen.service';
 import { PageRequest, Page } from '../../domain/base/pagination.entity';
 import { AuthGuard, Roles, RolesGuard, RoleType } from '../../security';
 import { HeaderUtil } from '../../client/header-util';
 import { Request } from '../../client/request';
 import { LoggingInterceptor } from '../../client/interceptors/logging.interceptor';
 
-@Controller('api/frascos-de-fermentos')
+@Controller('api/movimientos-almacens')
 @UseGuards(AuthGuard, RolesGuard)
 @UseInterceptors(LoggingInterceptor, ClassSerializerInterceptor)
 @ApiBearerAuth()
-@ApiUseTags('frascos-de-fermentos')
-export class FrascosDeFermentosController {
-    logger = new Logger('FrascosDeFermentosController');
+@ApiUseTags('movimientos-almacens')
+export class MovimientosAlmacenController {
+    logger = new Logger('MovimientosAlmacenController');
 
-    constructor(private readonly frascosDeFermentosService: FrascosDeFermentosService) {}
+    constructor(private readonly movimientosAlmacenService: MovimientosAlmacenService) {}
 
     @Get('/')
     @Roles(RoleType.USER)
     @ApiResponse({
         status: 200,
         description: 'List all records',
-        type: FrascosDeFermentosDTO,
+        type: MovimientosAlmacenDTO,
     })
-    async getAll(@Req() req: Request): Promise<FrascosDeFermentosDTO[]> {
+    async getAll(@Req() req: Request): Promise<MovimientosAlmacenDTO[]> {
         const pageRequest: PageRequest = new PageRequest(req.query.page, req.query.size, req.query.sort);
-        const [results, count] = await this.frascosDeFermentosService.findAndCount({
+        const [results, count] = await this.movimientosAlmacenService.findAndCount({
             skip: +pageRequest.page * pageRequest.size,
             take: +pageRequest.size,
             order: pageRequest.sort.asOrder(),
@@ -54,71 +54,71 @@ export class FrascosDeFermentosController {
     @ApiResponse({
         status: 200,
         description: 'The found record',
-        type: FrascosDeFermentosDTO,
+        type: MovimientosAlmacenDTO,
     })
-    async getOne(@Param('id') id: number): Promise<FrascosDeFermentosDTO> {
-        return await this.frascosDeFermentosService.findById(id);
+    async getOne(@Param('id') id: number): Promise<MovimientosAlmacenDTO> {
+        return await this.movimientosAlmacenService.findById(id);
     }
 
     @PostMethod('/')
     @Roles(RoleType.ADMIN)
-    @ApiOperation({ title: 'Create frascosDeFermentos' })
+    @ApiOperation({ title: 'Create movimientosAlmacen' })
     @ApiResponse({
         status: 201,
         description: 'The record has been successfully created.',
-        type: FrascosDeFermentosDTO,
+        type: MovimientosAlmacenDTO,
     })
     @ApiResponse({ status: 403, description: 'Forbidden.' })
     async post(
         @Req() req: Request,
-        @Body() frascosDeFermentosDTO: FrascosDeFermentosDTO,
-    ): Promise<FrascosDeFermentosDTO> {
-        const created = await this.frascosDeFermentosService.save(frascosDeFermentosDTO, req.user?.login);
-        HeaderUtil.addEntityCreatedHeaders(req.res, 'FrascosDeFermentos', created.id);
+        @Body() movimientosAlmacenDTO: MovimientosAlmacenDTO,
+    ): Promise<MovimientosAlmacenDTO> {
+        const created = await this.movimientosAlmacenService.save(movimientosAlmacenDTO, req.user?.login);
+        HeaderUtil.addEntityCreatedHeaders(req.res, 'MovimientosAlmacen', created.id);
         return created;
     }
 
     @Put('/')
     @Roles(RoleType.ADMIN)
-    @ApiOperation({ title: 'Update frascosDeFermentos' })
+    @ApiOperation({ title: 'Update movimientosAlmacen' })
     @ApiResponse({
         status: 200,
         description: 'The record has been successfully updated.',
-        type: FrascosDeFermentosDTO,
+        type: MovimientosAlmacenDTO,
     })
     async put(
         @Req() req: Request,
-        @Body() frascosDeFermentosDTO: FrascosDeFermentosDTO,
-    ): Promise<FrascosDeFermentosDTO> {
-        HeaderUtil.addEntityCreatedHeaders(req.res, 'FrascosDeFermentos', frascosDeFermentosDTO.id);
-        return await this.frascosDeFermentosService.update(frascosDeFermentosDTO, req.user?.login);
+        @Body() movimientosAlmacenDTO: MovimientosAlmacenDTO,
+    ): Promise<MovimientosAlmacenDTO> {
+        HeaderUtil.addEntityCreatedHeaders(req.res, 'MovimientosAlmacen', movimientosAlmacenDTO.id);
+        return await this.movimientosAlmacenService.update(movimientosAlmacenDTO, req.user?.login);
     }
 
     @Put('/:id')
     @Roles(RoleType.ADMIN)
-    @ApiOperation({ title: 'Update frascosDeFermentos with id' })
+    @ApiOperation({ title: 'Update movimientosAlmacen with id' })
     @ApiResponse({
         status: 200,
         description: 'The record has been successfully updated.',
-        type: FrascosDeFermentosDTO,
+        type: MovimientosAlmacenDTO,
     })
     async putId(
         @Req() req: Request,
-        @Body() frascosDeFermentosDTO: FrascosDeFermentosDTO,
-    ): Promise<FrascosDeFermentosDTO> {
-        HeaderUtil.addEntityCreatedHeaders(req.res, 'FrascosDeFermentos', frascosDeFermentosDTO.id);
-        return await this.frascosDeFermentosService.update(frascosDeFermentosDTO, req.user?.login);
+        @Body() movimientosAlmacenDTO: MovimientosAlmacenDTO,
+    ): Promise<MovimientosAlmacenDTO> {
+        HeaderUtil.addEntityCreatedHeaders(req.res, 'MovimientosAlmacen', movimientosAlmacenDTO.id);
+        return await this.movimientosAlmacenService.update(movimientosAlmacenDTO, req.user?.login);
     }
 
     @Delete('/:id')
     @Roles(RoleType.ADMIN)
-    @ApiOperation({ title: 'Delete frascosDeFermentos' })
+    @ApiOperation({ title: 'Delete movimientosAlmacen' })
     @ApiResponse({
         status: 204,
         description: 'The record has been successfully deleted.',
     })
     async deleteById(@Req() req: Request, @Param('id') id: number): Promise<void> {
-        HeaderUtil.addEntityDeletedHeaders(req.res, 'FrascosDeFermentos', id);
-        return await this.frascosDeFermentosService.deleteById(id);
+        HeaderUtil.addEntityDeletedHeaders(req.res, 'MovimientosAlmacen', id);
+        return await this.movimientosAlmacenService.deleteById(id);
     }
 }

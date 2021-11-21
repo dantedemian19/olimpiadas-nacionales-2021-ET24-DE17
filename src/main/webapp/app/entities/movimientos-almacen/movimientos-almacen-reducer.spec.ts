@@ -14,9 +14,9 @@ import reducer, {
   updateEntity,
   partialUpdate,
   reset,
-} from './salidas-de-almacen.reducer';
+} from './movimientos-almacen.reducer';
 import { REQUEST, SUCCESS, FAILURE } from 'app/shared/reducers/action-type.util';
-import { ISalidasDeAlmacen, defaultValue } from 'app/shared/model/salidas-de-almacen.model';
+import { IMovimientosAlmacen, defaultValue } from 'app/shared/model/movimientos-almacen.model';
 
 describe('Entities reducer tests', () => {
   function isEmpty(element): boolean {
@@ -30,7 +30,7 @@ describe('Entities reducer tests', () => {
   const initialState = {
     loading: false,
     errorMessage: null,
-    entities: [] as ReadonlyArray<ISalidasDeAlmacen>,
+    entities: [] as ReadonlyArray<IMovimientosAlmacen>,
     entity: defaultValue,
     totalItems: 0,
     updating: false,
@@ -62,22 +62,26 @@ describe('Entities reducer tests', () => {
 
   describe('Requests', () => {
     it('should set state to loading', () => {
-      testMultipleTypes([REQUEST(ACTION_TYPES.FETCH_SALIDASDEALMACEN_LIST), REQUEST(ACTION_TYPES.FETCH_SALIDASDEALMACEN)], {}, state => {
-        expect(state).toMatchObject({
-          errorMessage: null,
-          updateSuccess: false,
-          loading: true,
-        });
-      });
+      testMultipleTypes(
+        [REQUEST(ACTION_TYPES.FETCH_MOVIMIENTOSALMACEN_LIST), REQUEST(ACTION_TYPES.FETCH_MOVIMIENTOSALMACEN)],
+        {},
+        state => {
+          expect(state).toMatchObject({
+            errorMessage: null,
+            updateSuccess: false,
+            loading: true,
+          });
+        }
+      );
     });
 
     it('should set state to updating', () => {
       testMultipleTypes(
         [
-          REQUEST(ACTION_TYPES.CREATE_SALIDASDEALMACEN),
-          REQUEST(ACTION_TYPES.UPDATE_SALIDASDEALMACEN),
-          REQUEST(ACTION_TYPES.PARTIAL_UPDATE_SALIDASDEALMACEN),
-          REQUEST(ACTION_TYPES.DELETE_SALIDASDEALMACEN),
+          REQUEST(ACTION_TYPES.CREATE_MOVIMIENTOSALMACEN),
+          REQUEST(ACTION_TYPES.UPDATE_MOVIMIENTOSALMACEN),
+          REQUEST(ACTION_TYPES.PARTIAL_UPDATE_MOVIMIENTOSALMACEN),
+          REQUEST(ACTION_TYPES.DELETE_MOVIMIENTOSALMACEN),
         ],
         {},
         state => {
@@ -108,12 +112,12 @@ describe('Entities reducer tests', () => {
     it('should set a message in errorMessage', () => {
       testMultipleTypes(
         [
-          FAILURE(ACTION_TYPES.FETCH_SALIDASDEALMACEN_LIST),
-          FAILURE(ACTION_TYPES.FETCH_SALIDASDEALMACEN),
-          FAILURE(ACTION_TYPES.CREATE_SALIDASDEALMACEN),
-          FAILURE(ACTION_TYPES.UPDATE_SALIDASDEALMACEN),
-          FAILURE(ACTION_TYPES.PARTIAL_UPDATE_SALIDASDEALMACEN),
-          FAILURE(ACTION_TYPES.DELETE_SALIDASDEALMACEN),
+          FAILURE(ACTION_TYPES.FETCH_MOVIMIENTOSALMACEN_LIST),
+          FAILURE(ACTION_TYPES.FETCH_MOVIMIENTOSALMACEN),
+          FAILURE(ACTION_TYPES.CREATE_MOVIMIENTOSALMACEN),
+          FAILURE(ACTION_TYPES.UPDATE_MOVIMIENTOSALMACEN),
+          FAILURE(ACTION_TYPES.PARTIAL_UPDATE_MOVIMIENTOSALMACEN),
+          FAILURE(ACTION_TYPES.DELETE_MOVIMIENTOSALMACEN),
         ],
         'error message',
         state => {
@@ -132,7 +136,7 @@ describe('Entities reducer tests', () => {
       const payload = { data: [{ 1: 'fake1' }, { 2: 'fake2' }], headers: { 'x-total-count': 123 } };
       expect(
         reducer(undefined, {
-          type: SUCCESS(ACTION_TYPES.FETCH_SALIDASDEALMACEN_LIST),
+          type: SUCCESS(ACTION_TYPES.FETCH_MOVIMIENTOSALMACEN_LIST),
           payload,
         })
       ).toEqual({
@@ -147,7 +151,7 @@ describe('Entities reducer tests', () => {
       const payload = { data: { 1: 'fake1' } };
       expect(
         reducer(undefined, {
-          type: SUCCESS(ACTION_TYPES.FETCH_SALIDASDEALMACEN),
+          type: SUCCESS(ACTION_TYPES.FETCH_MOVIMIENTOSALMACEN),
           payload,
         })
       ).toEqual({
@@ -161,7 +165,7 @@ describe('Entities reducer tests', () => {
       const payload = { data: 'fake payload' };
       expect(
         reducer(undefined, {
-          type: SUCCESS(ACTION_TYPES.CREATE_SALIDASDEALMACEN),
+          type: SUCCESS(ACTION_TYPES.CREATE_MOVIMIENTOSALMACEN),
           payload,
         })
       ).toEqual({
@@ -175,7 +179,7 @@ describe('Entities reducer tests', () => {
     it('should delete entity', () => {
       const payload = 'fake payload';
       const toTest = reducer(undefined, {
-        type: SUCCESS(ACTION_TYPES.DELETE_SALIDASDEALMACEN),
+        type: SUCCESS(ACTION_TYPES.DELETE_MOVIMIENTOSALMACEN),
         payload,
       });
       expect(toTest).toMatchObject({
@@ -199,92 +203,92 @@ describe('Entities reducer tests', () => {
       axios.delete = sinon.stub().returns(Promise.resolve(resolvedObject));
     });
 
-    it('dispatches ACTION_TYPES.FETCH_SALIDASDEALMACEN_LIST actions', async () => {
+    it('dispatches ACTION_TYPES.FETCH_MOVIMIENTOSALMACEN_LIST actions', async () => {
       const expectedActions = [
         {
-          type: REQUEST(ACTION_TYPES.FETCH_SALIDASDEALMACEN_LIST),
+          type: REQUEST(ACTION_TYPES.FETCH_MOVIMIENTOSALMACEN_LIST),
         },
         {
-          type: SUCCESS(ACTION_TYPES.FETCH_SALIDASDEALMACEN_LIST),
+          type: SUCCESS(ACTION_TYPES.FETCH_MOVIMIENTOSALMACEN_LIST),
           payload: resolvedObject,
         },
       ];
       await store.dispatch(getEntities()).then(() => expect(store.getActions()).toEqual(expectedActions));
     });
 
-    it('dispatches ACTION_TYPES.FETCH_SALIDASDEALMACEN actions', async () => {
+    it('dispatches ACTION_TYPES.FETCH_MOVIMIENTOSALMACEN actions', async () => {
       const expectedActions = [
         {
-          type: REQUEST(ACTION_TYPES.FETCH_SALIDASDEALMACEN),
+          type: REQUEST(ACTION_TYPES.FETCH_MOVIMIENTOSALMACEN),
         },
         {
-          type: SUCCESS(ACTION_TYPES.FETCH_SALIDASDEALMACEN),
+          type: SUCCESS(ACTION_TYPES.FETCH_MOVIMIENTOSALMACEN),
           payload: resolvedObject,
         },
       ];
       await store.dispatch(getEntity(42666)).then(() => expect(store.getActions()).toEqual(expectedActions));
     });
 
-    it('dispatches ACTION_TYPES.CREATE_SALIDASDEALMACEN actions', async () => {
+    it('dispatches ACTION_TYPES.CREATE_MOVIMIENTOSALMACEN actions', async () => {
       const expectedActions = [
         {
-          type: REQUEST(ACTION_TYPES.CREATE_SALIDASDEALMACEN),
+          type: REQUEST(ACTION_TYPES.CREATE_MOVIMIENTOSALMACEN),
         },
         {
-          type: SUCCESS(ACTION_TYPES.CREATE_SALIDASDEALMACEN),
+          type: SUCCESS(ACTION_TYPES.CREATE_MOVIMIENTOSALMACEN),
           payload: resolvedObject,
         },
         {
-          type: REQUEST(ACTION_TYPES.FETCH_SALIDASDEALMACEN_LIST),
+          type: REQUEST(ACTION_TYPES.FETCH_MOVIMIENTOSALMACEN_LIST),
         },
         {
-          type: SUCCESS(ACTION_TYPES.FETCH_SALIDASDEALMACEN_LIST),
+          type: SUCCESS(ACTION_TYPES.FETCH_MOVIMIENTOSALMACEN_LIST),
           payload: resolvedObject,
         },
       ];
       await store.dispatch(createEntity({ id: 456 })).then(() => expect(store.getActions()).toEqual(expectedActions));
     });
 
-    it('dispatches ACTION_TYPES.UPDATE_SALIDASDEALMACEN actions', async () => {
+    it('dispatches ACTION_TYPES.UPDATE_MOVIMIENTOSALMACEN actions', async () => {
       const expectedActions = [
         {
-          type: REQUEST(ACTION_TYPES.UPDATE_SALIDASDEALMACEN),
+          type: REQUEST(ACTION_TYPES.UPDATE_MOVIMIENTOSALMACEN),
         },
         {
-          type: SUCCESS(ACTION_TYPES.UPDATE_SALIDASDEALMACEN),
+          type: SUCCESS(ACTION_TYPES.UPDATE_MOVIMIENTOSALMACEN),
           payload: resolvedObject,
         },
       ];
       await store.dispatch(updateEntity({ id: 456 })).then(() => expect(store.getActions()).toEqual(expectedActions));
     });
 
-    it('dispatches ACTION_TYPES.PARTIAL_UPDATE_SALIDASDEALMACEN actions', async () => {
+    it('dispatches ACTION_TYPES.PARTIAL_UPDATE_MOVIMIENTOSALMACEN actions', async () => {
       const expectedActions = [
         {
-          type: REQUEST(ACTION_TYPES.PARTIAL_UPDATE_SALIDASDEALMACEN),
+          type: REQUEST(ACTION_TYPES.PARTIAL_UPDATE_MOVIMIENTOSALMACEN),
         },
         {
-          type: SUCCESS(ACTION_TYPES.PARTIAL_UPDATE_SALIDASDEALMACEN),
+          type: SUCCESS(ACTION_TYPES.PARTIAL_UPDATE_MOVIMIENTOSALMACEN),
           payload: resolvedObject,
         },
       ];
       await store.dispatch(partialUpdate({ id: 1 })).then(() => expect(store.getActions()).toEqual(expectedActions));
     });
 
-    it('dispatches ACTION_TYPES.DELETE_SALIDASDEALMACEN actions', async () => {
+    it('dispatches ACTION_TYPES.DELETE_MOVIMIENTOSALMACEN actions', async () => {
       const expectedActions = [
         {
-          type: REQUEST(ACTION_TYPES.DELETE_SALIDASDEALMACEN),
+          type: REQUEST(ACTION_TYPES.DELETE_MOVIMIENTOSALMACEN),
         },
         {
-          type: SUCCESS(ACTION_TYPES.DELETE_SALIDASDEALMACEN),
+          type: SUCCESS(ACTION_TYPES.DELETE_MOVIMIENTOSALMACEN),
           payload: resolvedObject,
         },
         {
-          type: REQUEST(ACTION_TYPES.FETCH_SALIDASDEALMACEN_LIST),
+          type: REQUEST(ACTION_TYPES.FETCH_MOVIMIENTOSALMACEN_LIST),
         },
         {
-          type: SUCCESS(ACTION_TYPES.FETCH_SALIDASDEALMACEN_LIST),
+          type: SUCCESS(ACTION_TYPES.FETCH_MOVIMIENTOSALMACEN_LIST),
           payload: resolvedObject,
         },
       ];

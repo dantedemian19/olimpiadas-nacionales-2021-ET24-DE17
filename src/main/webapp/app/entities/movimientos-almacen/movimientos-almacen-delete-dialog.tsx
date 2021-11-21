@@ -6,17 +6,17 @@ import { Modal, ModalHeader, ModalBody, ModalFooter, Button } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { IRootState } from 'app/shared/reducers';
-import { getEntity, deleteEntity } from './salidas-de-almacen.reducer';
+import { getEntity, deleteEntity } from './movimientos-almacen.reducer';
 
-export interface ISalidasDeAlmacenDeleteDialogProps extends StateProps, DispatchProps, RouteComponentProps<{ id: string }> {}
+export interface IMovimientosAlmacenDeleteDialogProps extends StateProps, DispatchProps, RouteComponentProps<{ id: string }> {}
 
-export const SalidasDeAlmacenDeleteDialog = (props: ISalidasDeAlmacenDeleteDialogProps) => {
+export const MovimientosAlmacenDeleteDialog = (props: IMovimientosAlmacenDeleteDialogProps) => {
   useEffect(() => {
     props.getEntity(props.match.params.id);
   }, []);
 
   const handleClose = () => {
-    props.history.push('/salidas-de-almacen' + props.location.search);
+    props.history.push('/movimientos-almacen' + props.location.search);
   };
 
   useEffect(() => {
@@ -26,22 +26,22 @@ export const SalidasDeAlmacenDeleteDialog = (props: ISalidasDeAlmacenDeleteDialo
   }, [props.updateSuccess]);
 
   const confirmDelete = () => {
-    props.deleteEntity(props.salidasDeAlmacenEntity.id);
+    props.deleteEntity(props.movimientosAlmacenEntity.id);
   };
 
-  const { salidasDeAlmacenEntity } = props;
+  const { movimientosAlmacenEntity } = props;
   return (
     <Modal isOpen toggle={handleClose}>
-      <ModalHeader toggle={handleClose} data-cy="salidasDeAlmacenDeleteDialogHeading">
+      <ModalHeader toggle={handleClose} data-cy="movimientosAlmacenDeleteDialogHeading">
         Confirm delete operation
       </ModalHeader>
-      <ModalBody id="cCheeseApp.salidasDeAlmacen.delete.question">Are you sure you want to delete this SalidasDeAlmacen?</ModalBody>
+      <ModalBody id="cCheeseApp.movimientosAlmacen.delete.question">Are you sure you want to delete this MovimientosAlmacen?</ModalBody>
       <ModalFooter>
         <Button color="secondary" onClick={handleClose}>
           <FontAwesomeIcon icon="ban" />
           &nbsp; Cancel
         </Button>
-        <Button id="jhi-confirm-delete-salidasDeAlmacen" data-cy="entityConfirmDeleteButton" color="danger" onClick={confirmDelete}>
+        <Button id="jhi-confirm-delete-movimientosAlmacen" data-cy="entityConfirmDeleteButton" color="danger" onClick={confirmDelete}>
           <FontAwesomeIcon icon="trash" />
           &nbsp; Delete
         </Button>
@@ -50,9 +50,9 @@ export const SalidasDeAlmacenDeleteDialog = (props: ISalidasDeAlmacenDeleteDialo
   );
 };
 
-const mapStateToProps = ({ salidasDeAlmacen }: IRootState) => ({
-  salidasDeAlmacenEntity: salidasDeAlmacen.entity,
-  updateSuccess: salidasDeAlmacen.updateSuccess,
+const mapStateToProps = ({ movimientosAlmacen }: IRootState) => ({
+  movimientosAlmacenEntity: movimientosAlmacen.entity,
+  updateSuccess: movimientosAlmacen.updateSuccess,
 });
 
 const mapDispatchToProps = { getEntity, deleteEntity };
@@ -60,4 +60,4 @@ const mapDispatchToProps = { getEntity, deleteEntity };
 type StateProps = ReturnType<typeof mapStateToProps>;
 type DispatchProps = typeof mapDispatchToProps;
 
-export default connect(mapStateToProps, mapDispatchToProps)(SalidasDeAlmacenDeleteDialog);
+export default connect(mapStateToProps, mapDispatchToProps)(MovimientosAlmacenDeleteDialog);

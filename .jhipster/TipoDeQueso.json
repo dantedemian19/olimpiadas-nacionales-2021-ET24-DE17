@@ -8,7 +8,7 @@
     },
     {
       "fieldName": "tiempoDeCurado",
-      "fieldType": "Duration",
+      "fieldType": "Integer",
       "fieldValidateRules": ["required"]
     }
   ],

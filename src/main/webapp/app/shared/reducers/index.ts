@@ -32,9 +32,9 @@ import tipoDeQueso, {
   TipoDeQuesoState
 } from 'app/entities/tipo-de-queso/tipo-de-queso.reducer';
 // prettier-ignore
-import salidasDeAlmacen, {
-  SalidasDeAlmacenState
-} from 'app/entities/salidas-de-almacen/salidas-de-almacen.reducer';
+import movimientosAlmacen, {
+  MovimientosAlmacenState
+} from 'app/entities/movimientos-almacen/movimientos-almacen.reducer';
 /* jhipster-needle-add-reducer-import - JHipster will add reducer here */
 
 export interface IRootState {
@@ -52,7 +52,7 @@ export interface IRootState {
   readonly frascosDeFermentos: FrascosDeFermentosState;
   readonly tandaQuesos: TandaQuesosState;
   readonly tipoDeQueso: TipoDeQuesoState;
-  readonly salidasDeAlmacen: SalidasDeAlmacenState;
+  readonly movimientosAlmacen: MovimientosAlmacenState;
   /* jhipster-needle-add-reducer-type - JHipster will add reducer type here */
   readonly loadingBar: any;
 }
@@ -72,7 +72,7 @@ const rootReducer = combineReducers<IRootState>({
   frascosDeFermentos,
   tandaQuesos,
   tipoDeQueso,
-  salidasDeAlmacen,
+  movimientosAlmacen,
   /* jhipster-needle-add-reducer-combine - JHipster will add reducer here */
   loadingBar,
 });

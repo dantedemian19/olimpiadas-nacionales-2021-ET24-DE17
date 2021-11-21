@@ -95,12 +95,12 @@ export const TandaQuesosUpdate = (props: ITandaQuesosUpdateProps) => {
                   type="select"
                   className="form-control"
                   name="estado"
-                  value={(!isNew && tandaQuesosEntity.estado) || 'INPRODUCTION'}
+                  value={(!isNew && tandaQuesosEntity.estado) || 'ENPRODUCCION'}
                 >
-                  <option value="INPRODUCTION">INPRODUCTION</option>
-                  <option value="INSALADERO">INSALADERO</option>
-                  <option value="INCURADO">INCURADO</option>
-                  <option value="INSTOCK">INSTOCK</option>
+                  <option value="ENPRODUCCION">ENPRODUCCION</option>
+                  <option value="ENSALADO">ENSALADO</option>
+                  <option value="ENCURADO">ENCURADO</option>
+                  <option value="ENSTOCK">ENSTOCK</option>
                   <option value="OUTSTOCK">OUTSTOCK</option>
                 </AvInput>
               </AvGroup>

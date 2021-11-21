@@ -31,8 +31,8 @@
       tiempoDeCurado Integer required
   }
   entity MovimientosAlmacen{
-  	  desde EstadoQueso required
-  	  hacia EstadoQueso required
+  	  desde EstadoQuesos required
+  	  hacia EstadoQuesos required
       peso Integer required
   }
   enum EstadoCisterna{
@@ -57,9 +57,7 @@
       TandaQuesos{tipo} to TipoDeQueso
       Leches{cisterna} to Cisternas
       FrascosDeFermentos{tipo} to TipoDeQueso
-      MovimientosAlmacen{queso} to TandaQuesos
-      MovimientosAlmacen{user} to User
-      
+      MovimientosAlmacen{queso} to TandaQuesos      
   }
 
   dto all with mapstruct

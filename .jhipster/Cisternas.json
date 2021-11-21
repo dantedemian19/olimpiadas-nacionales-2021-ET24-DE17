@@ -9,7 +9,7 @@
     {
       "fieldName": "estado",
       "fieldType": "EstadoCisterna",
-      "fieldValues": "INNOPERATIVE,OPERATIVE,INREPAIR"
+      "fieldValues": "INNOPERATIVO,OPERATIVO,INREPARACION"
     },
     {
       "fieldName": "reserva",

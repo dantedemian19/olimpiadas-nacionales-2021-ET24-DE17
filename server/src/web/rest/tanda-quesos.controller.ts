@@ -12,7 +12,7 @@ import {
     Req,
     UseInterceptors,
 } from '@nestjs/common';
-import { ApiBearerAuth, ApiTags,ApiResponse, ApiOperation } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiUseTags, ApiResponse, ApiOperation } from '@nestjs/swagger';
 import { TandaQuesosDTO } from '../../service/dto/tanda-quesos.dto';
 import { TandaQuesosService } from '../../service/tanda-quesos.service';
 import { PageRequest, Page } from '../../domain/base/pagination.entity';
@@ -25,7 +25,7 @@ import { LoggingInterceptor } from '../../client/interceptors/logging.intercepto
 @UseGuards(AuthGuard, RolesGuard)
 @UseInterceptors(LoggingInterceptor, ClassSerializerInterceptor)
 @ApiBearerAuth()
-@ApiTags('tanda-quesos')
+@ApiUseTags('tanda-quesos')
 export class TandaQuesosController {
     logger = new Logger('TandaQuesosController');
 
@@ -62,7 +62,7 @@ export class TandaQuesosController {
 
     @PostMethod('/')
     @Roles(RoleType.ADMIN)
-    @ApiOperation({ summary: ' Create tandaQuesos' })
+    @ApiOperation({ title: 'Create tandaQuesos' })
     @ApiResponse({
         status: 201,
         description: 'The record has been successfully created.',
@@ -77,7 +77,7 @@ export class TandaQuesosController {
 
     @Put('/')
     @Roles(RoleType.ADMIN)
-    @ApiOperation({ summary: ' Update tandaQuesos' })
+    @ApiOperation({ title: 'Update tandaQuesos' })
     @ApiResponse({
         status: 200,
         description: 'The record has been successfully updated.',
@@ -88,10 +88,9 @@ export class TandaQuesosController {
         return await this.tandaQuesosService.update(tandaQuesosDTO, req.user?.login);
     }
 
-
     @Put('/:id')
     @Roles(RoleType.ADMIN)
-    @ApiOperation({ summary: ' Update tandaQuesos with id' })
+    @ApiOperation({ title: 'Update tandaQuesos with id' })
     @ApiResponse({
         status: 200,
         description: 'The record has been successfully updated.',
@@ -104,7 +103,7 @@ export class TandaQuesosController {
 
     @Delete('/:id')
     @Roles(RoleType.ADMIN)
-    @ApiOperation({ summary: ' Delete tandaQuesos' })
+    @ApiOperation({ title: 'Delete tandaQuesos' })
     @ApiResponse({
         status: 204,
         description: 'The record has been successfully deleted.',
@@ -114,4 +113,3 @@ export class TandaQuesosController {
         return await this.tandaQuesosService.deleteById(id);
     }
 }
-

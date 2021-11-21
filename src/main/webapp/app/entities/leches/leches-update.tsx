@@ -154,6 +154,38 @@ export const LechesUpdate = (props: ILechesUpdateProps) => {
                 />
               </AvGroup>
               <AvGroup>
+                <Label id="tamboLabel" for="leches-tambo">
+                  Tambo
+                </Label>
+                <AvField
+                  id="leches-tambo"
+                  data-cy="tambo"
+                  type="string"
+                  className="form-control"
+                  name="tambo"
+                  validate={{
+                    required: { value: true, errorMessage: 'This field is required.' },
+                    number: { value: true, errorMessage: 'This field should be a number.' },
+                  }}
+                />
+              </AvGroup>
+              <AvGroup>
+                <Label id="temperaturaLabel" for="leches-temperatura">
+                  Temperatura
+                </Label>
+                <AvField
+                  id="leches-temperatura"
+                  data-cy="temperatura"
+                  type="string"
+                  className="form-control"
+                  name="temperatura"
+                  validate={{
+                    required: { value: true, errorMessage: 'This field is required.' },
+                    number: { value: true, errorMessage: 'This field should be a number.' },
+                  }}
+                />
+              </AvGroup>
+              <AvGroup>
                 <Label for="leches-cisterna">Cisterna</Label>
                 <AvInput id="leches-cisterna" data-cy="cisterna" type="select" className="form-control" name="cisternaId">
                   <option value="" key="0" />

@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { ApiProperty } from '@nestjs/swagger';
+import { ApiModelProperty } from '@nestjs/swagger';
 import { IsNotEmpty, MinLength, MaxLength, Length, Min, Max, Matches } from 'class-validator';
 import { BaseDTO } from './base.dto';
 
@@ -11,20 +11,23 @@ import { EstadoFermentos } from '../../domain/enumeration/estado-fermentos';
  */
 export class FrascosDeFermentosDTO extends BaseDTO {
     @IsNotEmpty()
-    @ApiProperty({ description: 'calidad field' })
+    @ApiModelProperty({ description: 'calidad field' })
     calidad: number;
 
     @IsNotEmpty()
-    @ApiProperty({ description: 'fechaAnalisis field' })
+    @ApiModelProperty({ description: 'fechaAnalisis field' })
     fechaAnalisis: any;
 
-    @ApiProperty({ enum: EstadoFermentos, description: 'estado enum field', required: false })
+    @ApiModelProperty({ enum: EstadoFermentos, description: 'estado enum field', required: false })
     estado: EstadoFermentos;
 
-    @ApiProperty({ description: 'peso field', required: false })
+    @ApiModelProperty({ description: 'detalles field', required: false })
+    detalles: any;
+
+    @ApiModelProperty({ description: 'peso field', required: false })
     peso: number;
 
-    @ApiProperty({ type: TipoDeQuesoDTO, description: 'tipo relationship' })
+    @ApiModelProperty({ type: TipoDeQuesoDTO, description: 'tipo relationship' })
     tipo: TipoDeQuesoDTO;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove

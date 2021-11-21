@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Link, RouteComponentProps } from 'react-router-dom';
 import { Button, Row, Col } from 'reactstrap';
-import { TextFormat } from 'react-jhipster';
+import { byteSize, TextFormat } from 'react-jhipster';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { IRootState } from 'app/shared/reducers';
@@ -42,6 +42,10 @@ export const FrascosDeFermentosDetail = (props: IFrascosDeFermentosDetailProps) 
             <span id="estado">Estado</span>
           </dt>
           <dd>{frascosDeFermentosEntity.estado}</dd>
+          <dt>
+            <span id="detalles">Detalles</span>
+          </dt>
+          <dd>{frascosDeFermentosEntity.detalles}</dd>
           <dt>
             <span id="peso">Peso</span>
           </dt>

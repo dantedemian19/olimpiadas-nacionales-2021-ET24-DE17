@@ -44,6 +44,14 @@ export const LechesDetail = (props: ILechesDetailProps) => {
           <dd>
             {lechesEntity.fechaDeIngreso ? <TextFormat value={lechesEntity.fechaDeIngreso} type="date" format={APP_DATE_FORMAT} /> : null}
           </dd>
+          <dt>
+            <span id="tambo">Tambo</span>
+          </dt>
+          <dd>{lechesEntity.tambo}</dd>
+          <dt>
+            <span id="temperatura">Temperatura</span>
+          </dt>
+          <dd>{lechesEntity.temperatura}</dd>
           <dt>Cisterna</dt>
           <dd>{lechesEntity.cisterna ? lechesEntity.cisterna.id : ''}</dd>
         </dl>

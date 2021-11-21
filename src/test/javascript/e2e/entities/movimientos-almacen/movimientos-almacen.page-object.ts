@@ -4,13 +4,13 @@ import { waitUntilAnyDisplayed, waitUntilDisplayed, click, waitUntilHidden, isVi
 
 import NavBarPage from './../../page-objects/navbar-page';
 
-import SalidasDeAlmacenUpdatePage from './salidas-de-almacen-update.page-object';
+import MovimientosAlmacenUpdatePage from './movimientos-almacen-update.page-object';
 
 const expect = chai.expect;
-export class SalidasDeAlmacenDeleteDialog {
+export class MovimientosAlmacenDeleteDialog {
   deleteModal = element(by.className('modal'));
-  private dialogTitle: ElementFinder = element(by.id('cCheeseApp.salidasDeAlmacen.delete.question'));
-  private confirmButton = element(by.id('jhi-confirm-delete-salidasDeAlmacen'));
+  private dialogTitle: ElementFinder = element(by.id('cCheeseApp.movimientosAlmacen.delete.question'));
+  private confirmButton = element(by.id('jhi-confirm-delete-movimientosAlmacen'));
 
   getDialogTitle() {
     return this.dialogTitle;
@@ -21,10 +21,10 @@ export class SalidasDeAlmacenDeleteDialog {
   }
 }
 
-export default class SalidasDeAlmacenComponentsPage {
+export default class MovimientosAlmacenComponentsPage {
   createButton: ElementFinder = element(by.id('jh-create-entity'));
   deleteButtons = element.all(by.css('div table .btn-danger'));
-  title: ElementFinder = element(by.id('salidas-de-almacen-heading'));
+  title: ElementFinder = element(by.id('movimientos-almacen-heading'));
   noRecords: ElementFinder = element(by.css('#app-view-container .table-responsive div.alert.alert-warning'));
   table: ElementFinder = element(by.css('#app-view-container div.table-responsive > table'));
 
@@ -43,27 +43,29 @@ export default class SalidasDeAlmacenComponentsPage {
   }
 
   async goToPage(navBarPage: NavBarPage) {
-    await navBarPage.getEntityPage('salidas-de-almacen');
+    await navBarPage.getEntityPage('movimientos-almacen');
     await waitUntilAnyDisplayed([this.noRecords, this.table]);
     return this;
   }
 
-  async goToCreateSalidasDeAlmacen() {
+  async goToCreateMovimientosAlmacen() {
     await this.createButton.click();
-    return new SalidasDeAlmacenUpdatePage();
+    return new MovimientosAlmacenUpdatePage();
   }
 
-  async deleteSalidasDeAlmacen() {
+  async deleteMovimientosAlmacen() {
     const deleteButton = this.getDeleteButton(this.records.last());
     await click(deleteButton);
 
-    const salidasDeAlmacenDeleteDialog = new SalidasDeAlmacenDeleteDialog();
-    await waitUntilDisplayed(salidasDeAlmacenDeleteDialog.deleteModal);
-    expect(await salidasDeAlmacenDeleteDialog.getDialogTitle().getAttribute('id')).to.match(/cCheeseApp.salidasDeAlmacen.delete.question/);
-    await salidasDeAlmacenDeleteDialog.clickOnConfirmButton();
+    const movimientosAlmacenDeleteDialog = new MovimientosAlmacenDeleteDialog();
+    await waitUntilDisplayed(movimientosAlmacenDeleteDialog.deleteModal);
+    expect(await movimientosAlmacenDeleteDialog.getDialogTitle().getAttribute('id')).to.match(
+      /cCheeseApp.movimientosAlmacen.delete.question/
+    );
+    await movimientosAlmacenDeleteDialog.clickOnConfirmButton();
 
-    await waitUntilHidden(salidasDeAlmacenDeleteDialog.deleteModal);
+    await waitUntilHidden(movimientosAlmacenDeleteDialog.deleteModal);
 
-    expect(await isVisible(salidasDeAlmacenDeleteDialog.deleteModal)).to.be.false;
+    expect(await isVisible(movimientosAlmacenDeleteDialog.deleteModal)).to.be.false;
   }
 }

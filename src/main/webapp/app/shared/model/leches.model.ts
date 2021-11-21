@@ -7,6 +7,8 @@ export interface ILeches {
   calidad?: number;
   cantidad?: number;
   fechaDeIngreso?: string;
+  tambo?: number;
+  temperatura?: number;
   cisterna?: ICisternas | null;
 }
 

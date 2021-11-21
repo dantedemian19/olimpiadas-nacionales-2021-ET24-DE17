@@ -104,6 +104,12 @@ export const Leches = (props: ILechesProps) => {
                 <th className="hand" onClick={sort('fechaDeIngreso')}>
                   Fecha De Ingreso <FontAwesomeIcon icon="sort" />
                 </th>
+                <th className="hand" onClick={sort('tambo')}>
+                  Tambo <FontAwesomeIcon icon="sort" />
+                </th>
+                <th className="hand" onClick={sort('temperatura')}>
+                  Temperatura <FontAwesomeIcon icon="sort" />
+                </th>
                 <th>
                   Cisterna <FontAwesomeIcon icon="sort" />
                 </th>
@@ -124,6 +130,8 @@ export const Leches = (props: ILechesProps) => {
                   <td>
                     {leches.fechaDeIngreso ? <TextFormat type="date" value={leches.fechaDeIngreso} format={APP_DATE_FORMAT} /> : null}
                   </td>
+                  <td>{leches.tambo}</td>
+                  <td>{leches.temperatura}</td>
                   <td>{leches.cisterna ? <Link to={`cisternas/${leches.cisterna.id}`}>{leches.cisterna.id}</Link> : ''}</td>
                   <td className="text-right">
                     <div className="btn-group flex-btn-group-container">

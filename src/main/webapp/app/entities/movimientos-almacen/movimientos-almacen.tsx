@@ -7,15 +7,15 @@ import { Translate, getSortState, IPaginationBaseState, JhiPagination, JhiItemCo
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { IRootState } from 'app/shared/reducers';
-import { getEntities } from './salidas-de-almacen.reducer';
-import { ISalidasDeAlmacen } from 'app/shared/model/salidas-de-almacen.model';
+import { getEntities } from './movimientos-almacen.reducer';
+import { IMovimientosAlmacen } from 'app/shared/model/movimientos-almacen.model';
 import { APP_DATE_FORMAT, APP_LOCAL_DATE_FORMAT } from 'app/config/constants';
 import { ITEMS_PER_PAGE } from 'app/shared/util/pagination.constants';
 import { overridePaginationStateWithQueryParams } from 'app/shared/util/entity-utils';
 
-export interface ISalidasDeAlmacenProps extends StateProps, DispatchProps, RouteComponentProps<{ url: string }> {}
+export interface IMovimientosAlmacenProps extends StateProps, DispatchProps, RouteComponentProps<{ url: string }> {}
 
-export const SalidasDeAlmacen = (props: ISalidasDeAlmacenProps) => {
+export const MovimientosAlmacen = (props: IMovimientosAlmacenProps) => {
   const [paginationState, setPaginationState] = useState(
     overridePaginationStateWithQueryParams(getSortState(props.location, ITEMS_PER_PAGE, 'id'), props.location.search)
   );
@@ -69,62 +69,74 @@ export const SalidasDeAlmacen = (props: ISalidasDeAlmacenProps) => {
     sortEntities();
   };
 
-  const { salidasDeAlmacenList, match, loading, totalItems } = props;
+  const { movimientosAlmacenList, match, loading, totalItems } = props;
   return (
     <div>
-      <h2 id="salidas-de-almacen-heading" data-cy="SalidasDeAlmacenHeading">
-        Salidas De Almacens
+      <h2 id="movimientos-almacen-heading" data-cy="MovimientosAlmacenHeading">
+        Movimientos Almacens
         <div className="d-flex justify-content-end">
           <Button className="mr-2" color="info" onClick={handleSyncList} disabled={loading}>
             <FontAwesomeIcon icon="sync" spin={loading} /> Refresh List
           </Button>
           <Link to={`${match.url}/new`} className="btn btn-primary jh-create-entity" id="jh-create-entity" data-cy="entityCreateButton">
             <FontAwesomeIcon icon="plus" />
-            &nbsp; Create new Salidas De Almacen
+            &nbsp; Create new Movimientos Almacen
           </Link>
         </div>
       </h2>
       <div className="table-responsive">
-        {salidasDeAlmacenList && salidasDeAlmacenList.length > 0 ? (
+        {movimientosAlmacenList && movimientosAlmacenList.length > 0 ? (
           <Table responsive>
             <thead>
               <tr>
                 <th className="hand" onClick={sort('id')}>
                   ID <FontAwesomeIcon icon="sort" />
                 </th>
+                <th className="hand" onClick={sort('desde')}>
+                  Desde <FontAwesomeIcon icon="sort" />
+                </th>
+                <th className="hand" onClick={sort('hacia')}>
+                  Hacia <FontAwesomeIcon icon="sort" />
+                </th>
                 <th className="hand" onClick={sort('peso')}>
                   Peso <FontAwesomeIcon icon="sort" />
                 </th>
                 <th>
-                  Tanda De Queso <FontAwesomeIcon icon="sort" />
+                  Queso <FontAwesomeIcon icon="sort" />
+                </th>
+                <th>
+                  User <FontAwesomeIcon icon="sort" />
                 </th>
                 <th />
               </tr>
             </thead>
             <tbody>
-              {salidasDeAlmacenList.map((salidasDeAlmacen, i) => (
+              {movimientosAlmacenList.map((movimientosAlmacen, i) => (
                 <tr key={`entity-${i}`} data-cy="entityTable">
                   <td>
-                    <Button tag={Link} to={`${match.url}/${salidasDeAlmacen.id}`} color="link" size="sm">
-                      {salidasDeAlmacen.id}
+                    <Button tag={Link} to={`${match.url}/${movimientosAlmacen.id}`} color="link" size="sm">
+                      {movimientosAlmacen.id}
                     </Button>
                   </td>
-                  <td>{salidasDeAlmacen.peso}</td>
+                  <td>{movimientosAlmacen.desde}</td>
+                  <td>{movimientosAlmacen.hacia}</td>
+                  <td>{movimientosAlmacen.peso}</td>
                   <td>
-                    {salidasDeAlmacen.tandaDeQueso ? (
-                      <Link to={`tanda-quesos/${salidasDeAlmacen.tandaDeQueso.id}`}>{salidasDeAlmacen.tandaDeQueso.id}</Link>
+                    {movimientosAlmacen.queso ? (
+                      <Link to={`tanda-quesos/${movimientosAlmacen.queso.id}`}>{movimientosAlmacen.queso.id}</Link>
                     ) : (
                       ''
                     )}
                   </td>
+                  <td>{movimientosAlmacen.user ? movimientosAlmacen.user.login : ''}</td>
                   <td className="text-right">
                     <div className="btn-group flex-btn-group-container">
-                      <Button tag={Link} to={`${match.url}/${salidasDeAlmacen.id}`} color="info" size="sm" data-cy="entityDetailsButton">
+                      <Button tag={Link} to={`${match.url}/${movimientosAlmacen.id}`} color="info" size="sm" data-cy="entityDetailsButton">
                         <FontAwesomeIcon icon="eye" /> <span className="d-none d-md-inline">View</span>
                       </Button>
                       <Button
                         tag={Link}
-                        to={`${match.url}/${salidasDeAlmacen.id}/edit?page=${paginationState.activePage}&sort=${paginationState.sort},${paginationState.order}`}
+                        to={`${match.url}/${movimientosAlmacen.id}/edit?page=${paginationState.activePage}&sort=${paginationState.sort},${paginationState.order}`}
                         color="primary"
                         size="sm"
                         data-cy="entityEditButton"
@@ -133,7 +145,7 @@ export const SalidasDeAlmacen = (props: ISalidasDeAlmacenProps) => {
                       </Button>
                       <Button
                         tag={Link}
-                        to={`${match.url}/${salidasDeAlmacen.id}/delete?page=${paginationState.activePage}&sort=${paginationState.sort},${paginationState.order}`}
+                        to={`${match.url}/${movimientosAlmacen.id}/delete?page=${paginationState.activePage}&sort=${paginationState.sort},${paginationState.order}`}
                         color="danger"
                         size="sm"
                         data-cy="entityDeleteButton"
@@ -147,11 +159,11 @@ export const SalidasDeAlmacen = (props: ISalidasDeAlmacenProps) => {
             </tbody>
           </Table>
         ) : (
-          !loading && <div className="alert alert-warning">No Salidas De Almacens found</div>
+          !loading && <div className="alert alert-warning">No Movimientos Almacens found</div>
         )}
       </div>
       {props.totalItems ? (
-        <div className={salidasDeAlmacenList && salidasDeAlmacenList.length > 0 ? '' : 'd-none'}>
+        <div className={movimientosAlmacenList && movimientosAlmacenList.length > 0 ? '' : 'd-none'}>
           <Row className="justify-content-center">
             <JhiItemCount page={paginationState.activePage} total={totalItems} itemsPerPage={paginationState.itemsPerPage} />
           </Row>
@@ -172,10 +184,10 @@ export const SalidasDeAlmacen = (props: ISalidasDeAlmacenProps) => {
   );
 };
 
-const mapStateToProps = ({ salidasDeAlmacen }: IRootState) => ({
-  salidasDeAlmacenList: salidasDeAlmacen.entities,
-  loading: salidasDeAlmacen.loading,
-  totalItems: salidasDeAlmacen.totalItems,
+const mapStateToProps = ({ movimientosAlmacen }: IRootState) => ({
+  movimientosAlmacenList: movimientosAlmacen.entities,
+  loading: movimientosAlmacen.loading,
+  totalItems: movimientosAlmacen.totalItems,
 });
 
 const mapDispatchToProps = {
@@ -185,4 +197,4 @@ const mapDispatchToProps = {
 type StateProps = ReturnType<typeof mapStateToProps>;
 type DispatchProps = typeof mapDispatchToProps;
 
-export default connect(mapStateToProps, mapDispatchToProps)(SalidasDeAlmacen);
+export default connect(mapStateToProps, mapDispatchToProps)(MovimientosAlmacen);

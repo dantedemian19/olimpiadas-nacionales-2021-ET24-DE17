@@ -12,7 +12,7 @@ import {
     Req,
     UseInterceptors,
 } from '@nestjs/common';
-import { ApiBearerAuth, ApiTags, ApiResponse, ApiOperation } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiUseTags, ApiResponse, ApiOperation } from '@nestjs/swagger';
 import { LechesDTO } from '../../service/dto/leches.dto';
 import { LechesService } from '../../service/leches.service';
 import { PageRequest, Page } from '../../domain/base/pagination.entity';
@@ -25,7 +25,7 @@ import { LoggingInterceptor } from '../../client/interceptors/logging.intercepto
 @UseGuards(AuthGuard, RolesGuard)
 @UseInterceptors(LoggingInterceptor, ClassSerializerInterceptor)
 @ApiBearerAuth()
-@ApiTags('leches')
+@ApiUseTags('leches')
 export class LechesController {
     logger = new Logger('LechesController');
 
@@ -62,7 +62,7 @@ export class LechesController {
 
     @PostMethod('/')
     @Roles(RoleType.ADMIN)
-    @ApiOperation({ summary: ' Create leches' })
+    @ApiOperation({ title: 'Create leches' })
     @ApiResponse({
         status: 201,
         description: 'The record has been successfully created.',
@@ -77,7 +77,7 @@ export class LechesController {
 
     @Put('/')
     @Roles(RoleType.ADMIN)
-    @ApiOperation({ summary: ' Update leches' })
+    @ApiOperation({ title: 'Update leches' })
     @ApiResponse({
         status: 200,
         description: 'The record has been successfully updated.',
@@ -90,7 +90,7 @@ export class LechesController {
 
     @Put('/:id')
     @Roles(RoleType.ADMIN)
-    @ApiOperation({ summary: ' Update leches with id' })
+    @ApiOperation({ title: 'Update leches with id' })
     @ApiResponse({
         status: 200,
         description: 'The record has been successfully updated.',
@@ -103,7 +103,7 @@ export class LechesController {
 
     @Delete('/:id')
     @Roles(RoleType.ADMIN)
-    @ApiOperation({ summary: ' Delete leches' })
+    @ApiOperation({ title: 'Delete leches' })
     @ApiResponse({
         status: 204,
         description: 'The record has been successfully deleted.',

@@ -50,7 +50,7 @@
     "enableHibernateCache": true,
     "reactive": false,
     "languages": ["en", "fr"],
-    "entities": ["Leches", "Cisternas", "FrascosDeFermentos", "TandaQuesos", "TipoDeQueso", "SalidasDeAlmacen"],
-    "lastLiquibaseTimestamp": 1637242240000
+    "entities": ["Leches", "Cisternas", "FrascosDeFermentos", "TandaQuesos", "TipoDeQueso", "MovimientosAlmacen"],
+    "lastLiquibaseTimestamp": 1637491609000
   }
 }

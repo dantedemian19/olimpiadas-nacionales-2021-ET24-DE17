@@ -12,7 +12,7 @@ import {
     Req,
     UseInterceptors,
 } from '@nestjs/common';
-import { ApiBearerAuth, ApiTags, ApiResponse, ApiOperation } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiUseTags, ApiResponse, ApiOperation } from '@nestjs/swagger';
 import { CisternasDTO } from '../../service/dto/cisternas.dto';
 import { CisternasService } from '../../service/cisternas.service';
 import { PageRequest, Page } from '../../domain/base/pagination.entity';
@@ -25,7 +25,7 @@ import { LoggingInterceptor } from '../../client/interceptors/logging.intercepto
 @UseGuards(AuthGuard, RolesGuard)
 @UseInterceptors(LoggingInterceptor, ClassSerializerInterceptor)
 @ApiBearerAuth()
-@ApiTags('cisternas')
+@ApiUseTags('cisternas')
 export class CisternasController {
     logger = new Logger('CisternasController');
 
@@ -62,7 +62,7 @@ export class CisternasController {
 
     @PostMethod('/')
     @Roles(RoleType.ADMIN)
-    @ApiOperation({ summary: ' Create cisternas' })
+    @ApiOperation({ title: 'Create cisternas' })
     @ApiResponse({
         status: 201,
         description: 'The record has been successfully created.',
@@ -77,7 +77,7 @@ export class CisternasController {
 
     @Put('/')
     @Roles(RoleType.ADMIN)
-    @ApiOperation({ summary: ' Update cisternas' })
+    @ApiOperation({ title: 'Update cisternas' })
     @ApiResponse({
         status: 200,
         description: 'The record has been successfully updated.',
@@ -90,7 +90,7 @@ export class CisternasController {
 
     @Put('/:id')
     @Roles(RoleType.ADMIN)
-    @ApiOperation({ summary: ' Update cisternas with id' })
+    @ApiOperation({ title: 'Update cisternas with id' })
     @ApiResponse({
         status: 200,
         description: 'The record has been successfully updated.',
@@ -103,7 +103,7 @@ export class CisternasController {
 
     @Delete('/:id')
     @Roles(RoleType.ADMIN)
-    @ApiOperation({ summary: ' Delete cisternas' })
+    @ApiOperation({ title: 'Delete cisternas' })
     @ApiResponse({
         status: 204,
         description: 'The record has been successfully deleted.',

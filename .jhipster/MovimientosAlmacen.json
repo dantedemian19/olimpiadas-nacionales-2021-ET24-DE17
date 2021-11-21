@@ -1,0 +1,49 @@
+{
+  "name": "MovimientosAlmacen",
+  "fields": [
+    {
+      "fieldName": "desde",
+      "fieldType": "EstadoQuesos",
+      "fieldValues": "ENPRODUCCION,ENSALADO,ENCURADO,ENSTOCK,OUTSTOCK",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "hacia",
+      "fieldType": "EstadoQuesos",
+      "fieldValues": "ENPRODUCCION,ENSALADO,ENCURADO,ENSTOCK,OUTSTOCK",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "peso",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "tandaQuesos",
+      "otherEntityRelationshipName": "movimientosAlmacen",
+      "relationshipName": "queso"
+    },
+    {
+      "relationshipName": "user",
+      "otherEntityName": "user",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": ["required"],
+      "otherEntityField": "login",
+      "ownerSide": true,
+      "otherEntityRelationshipName": "movimientosAlmacen"
+    }
+  ],
+  "entityTableName": "movimientos_almacen",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20211121104649"
+}

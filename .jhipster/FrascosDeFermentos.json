@@ -14,11 +14,16 @@
     {
       "fieldName": "estado",
       "fieldType": "EstadoFermentos",
-      "fieldValues": "STORED,INPRODUCTION,DEPLETED"
+      "fieldValues": "ALMACENADO,ENPRODUCCION,AGOTADO"
+    },
+    {
+      "fieldName": "detalles",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text"
     },
     {
       "fieldName": "peso",
-      "fieldType": "Long"
+      "fieldType": "Integer"
     }
   ],
   "relationships": [

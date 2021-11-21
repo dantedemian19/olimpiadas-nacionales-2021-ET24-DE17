@@ -7,6 +7,7 @@ export interface IFrascosDeFermentos {
   calidad?: number;
   fechaAnalisis?: string;
   estado?: EstadoFermentos | null;
+  detalles?: string | null;
   peso?: number | null;
   tipo?: ITipoDeQueso | null;
 }

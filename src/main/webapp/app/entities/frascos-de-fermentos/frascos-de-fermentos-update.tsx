@@ -3,13 +3,13 @@ import { connect } from 'react-redux';
 import { Link, RouteComponentProps } from 'react-router-dom';
 import { Button, Row, Col, Label } from 'reactstrap';
 import { AvFeedback, AvForm, AvGroup, AvInput, AvField } from 'availity-reactstrap-validation';
-import { translate } from 'react-jhipster';
+import { setFileData, byteSize, translate } from 'react-jhipster';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IRootState } from 'app/shared/reducers';
 
 import { ITipoDeQueso } from 'app/shared/model/tipo-de-queso.model';
 import { getEntities as getTipoDeQuesos } from 'app/entities/tipo-de-queso/tipo-de-queso.reducer';
-import { getEntity, updateEntity, createEntity, reset } from './frascos-de-fermentos.reducer';
+import { getEntity, updateEntity, createEntity, setBlob, reset } from './frascos-de-fermentos.reducer';
 import { IFrascosDeFermentos } from 'app/shared/model/frascos-de-fermentos.model';
 import { convertDateTimeFromServer, convertDateTimeToServer, displayDefaultDateTime } from 'app/shared/util/date-utils';
 import { mapIdList } from 'app/shared/util/entity-utils';
@@ -20,6 +20,8 @@ export const FrascosDeFermentosUpdate = (props: IFrascosDeFermentosUpdateProps) 
   const [isNew] = useState(!props.match.params || !props.match.params.id);
 
   const { frascosDeFermentosEntity, tipoDeQuesos, loading, updating } = props;
+
+  const { detalles } = frascosDeFermentosEntity;
 
   const handleClose = () => {
     props.history.push('/frascos-de-fermentos' + props.location.search);
@@ -34,6 +36,14 @@ export const FrascosDeFermentosUpdate = (props: IFrascosDeFermentosUpdateProps) 
 
     props.getTipoDeQuesos();
   }, []);
+
+  const onBlobChange = (isAnImage, name) => event => {
+    setFileData(event, (contentType, data) => props.setBlob(name, data, contentType), isAnImage);
+  };
+
+  const clearBlob = name => () => {
+    props.setBlob(name, undefined, undefined);
+  };
 
   useEffect(() => {
     if (props.updateSuccess) {
@@ -123,12 +133,18 @@ export const FrascosDeFermentosUpdate = (props: IFrascosDeFermentosUpdateProps) 
                   type="select"
                   className="form-control"
                   name="estado"
-                  value={(!isNew && frascosDeFermentosEntity.estado) || 'STORED'}
+                  value={(!isNew && frascosDeFermentosEntity.estado) || 'ALMACENADO'}
                 >
-                  <option value="STORED">STORED</option>
-                  <option value="INPRODUCTION">INPRODUCTION</option>
-                  <option value="DEPLETED">DEPLETED</option>
+                  <option value="ALMACENADO">ALMACENADO</option>
+                  <option value="ENPRODUCCION">ENPRODUCCION</option>
+                  <option value="AGOTADO">AGOTADO</option>
                 </AvInput>
+              </AvGroup>
+              <AvGroup>
+                <Label id="detallesLabel" for="frascos-de-fermentos-detalles">
+                  Detalles
+                </Label>
+                <AvInput id="frascos-de-fermentos-detalles" data-cy="detalles" type="textarea" name="detalles" />
               </AvGroup>
               <AvGroup>
                 <Label id="pesoLabel" for="frascos-de-fermentos-peso">
@@ -179,6 +195,7 @@ const mapDispatchToProps = {
   getTipoDeQuesos,
   getEntity,
   updateEntity,
+  setBlob,
   createEntity,
   reset,
 };

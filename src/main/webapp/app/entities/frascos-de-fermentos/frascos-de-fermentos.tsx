@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Link, RouteComponentProps } from 'react-router-dom';
 import { Button, Col, Row, Table } from 'reactstrap';
-import { Translate, TextFormat, getSortState, IPaginationBaseState, JhiPagination, JhiItemCount } from 'react-jhipster';
+import { byteSize, Translate, TextFormat, getSortState, IPaginationBaseState, JhiPagination, JhiItemCount } from 'react-jhipster';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { IRootState } from 'app/shared/reducers';
@@ -101,6 +101,9 @@ export const FrascosDeFermentos = (props: IFrascosDeFermentosProps) => {
                 <th className="hand" onClick={sort('estado')}>
                   Estado <FontAwesomeIcon icon="sort" />
                 </th>
+                <th className="hand" onClick={sort('detalles')}>
+                  Detalles <FontAwesomeIcon icon="sort" />
+                </th>
                 <th className="hand" onClick={sort('peso')}>
                   Peso <FontAwesomeIcon icon="sort" />
                 </th>
@@ -125,6 +128,7 @@ export const FrascosDeFermentos = (props: IFrascosDeFermentosProps) => {
                     ) : null}
                   </td>
                   <td>{frascosDeFermentos.estado}</td>
+                  <td>{frascosDeFermentos.detalles}</td>
                   <td>{frascosDeFermentos.peso}</td>
                   <td>
                     {frascosDeFermentos.tipo ? (

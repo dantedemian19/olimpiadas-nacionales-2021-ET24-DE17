@@ -9,7 +9,7 @@ import Cisternas from './cisternas';
 import FrascosDeFermentos from './frascos-de-fermentos';
 import TandaQuesos from './tanda-quesos';
 import TipoDeQueso from './tipo-de-queso';
-import SalidasDeAlmacen from './salidas-de-almacen';
+import MovimientosAlmacen from './movimientos-almacen';
 /* jhipster-needle-add-route-import - JHipster will add routes here */
 
 const Routes = ({ match }) => (
@@ -21,7 +21,7 @@ const Routes = ({ match }) => (
       <ErrorBoundaryRoute path={`${match.url}frascos-de-fermentos`} component={FrascosDeFermentos} />
       <ErrorBoundaryRoute path={`${match.url}tanda-quesos`} component={TandaQuesos} />
       <ErrorBoundaryRoute path={`${match.url}tipo-de-queso`} component={TipoDeQueso} />
-      <ErrorBoundaryRoute path={`${match.url}salidas-de-almacen`} component={SalidasDeAlmacen} />
+      <ErrorBoundaryRoute path={`${match.url}movimientos-almacen`} component={MovimientosAlmacen} />
       {/* jhipster-needle-add-route-path - JHipster will add routes here */}
     </Switch>
   </div>

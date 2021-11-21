@@ -4,7 +4,7 @@
     {
       "fieldName": "estado",
       "fieldType": "EstadoQuesos",
-      "fieldValues": "INPRODUCTION,INSALADERO,INCURADO,INSTOCK,OUTSTOCK"
+      "fieldValues": "ENPRODUCCION,ENSALADO,ENCURADO,ENSTOCK,OUTSTOCK"
     },
     {
       "fieldName": "peso",

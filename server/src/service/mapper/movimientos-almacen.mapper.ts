@@ -1,15 +1,15 @@
-import { SalidasDeAlmacen } from '../../domain/salidas-de-almacen.entity';
-import { SalidasDeAlmacenDTO } from '../dto/salidas-de-almacen.dto';
+import { MovimientosAlmacen } from '../../domain/movimientos-almacen.entity';
+import { MovimientosAlmacenDTO } from '../dto/movimientos-almacen.dto';
 
 /**
- * A SalidasDeAlmacen mapper object.
+ * A MovimientosAlmacen mapper object.
  */
-export class SalidasDeAlmacenMapper {
-    static fromDTOtoEntity(entityDTO: SalidasDeAlmacenDTO): SalidasDeAlmacen {
+export class MovimientosAlmacenMapper {
+    static fromDTOtoEntity(entityDTO: MovimientosAlmacenDTO): MovimientosAlmacen {
         if (!entityDTO) {
             return;
         }
-        let entity = new SalidasDeAlmacen();
+        let entity = new MovimientosAlmacen();
         const fields = Object.getOwnPropertyNames(entityDTO);
         fields.forEach((field) => {
             entity[field] = entityDTO[field];
@@ -17,11 +17,11 @@ export class SalidasDeAlmacenMapper {
         return entity;
     }
 
-    static fromEntityToDTO(entity: SalidasDeAlmacen): SalidasDeAlmacenDTO {
+    static fromEntityToDTO(entity: MovimientosAlmacen): MovimientosAlmacenDTO {
         if (!entity) {
             return;
         }
-        let entityDTO = new SalidasDeAlmacenDTO();
+        let entityDTO = new MovimientosAlmacenDTO();
 
         const fields = Object.getOwnPropertyNames(entity);
 

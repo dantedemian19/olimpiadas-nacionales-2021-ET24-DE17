@@ -6,8 +6,6 @@ import { Button, Col, Row, Table } from 'reactstrap';
 import { Translate, getSortState, IPaginationBaseState, JhiPagination, JhiItemCount } from 'react-jhipster';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import { DurationFormat } from 'app/shared/DurationFormat';
-
 import { IRootState } from 'app/shared/reducers';
 import { getEntities } from './tipo-de-queso.reducer';
 import { ITipoDeQueso } from 'app/shared/model/tipo-de-queso.model';
@@ -112,7 +110,7 @@ export const TipoDeQueso = (props: ITipoDeQuesoProps) => {
                     </Button>
                   </td>
                   <td>{tipoDeQueso.nombre}</td>
-                  <td>{tipoDeQueso.tiempoDeCurado ? <DurationFormat value={tipoDeQueso.tiempoDeCurado} /> : null}</td>
+                  <td>{tipoDeQueso.tiempoDeCurado}</td>
                   <td className="text-right">
                     <div className="btn-group flex-btn-group-container">
                       <Button tag={Link} to={`${match.url}/${tipoDeQueso.id}`} color="info" size="sm" data-cy="entityDetailsButton">

@@ -15,11 +15,17 @@ export class Leches extends BaseEntity {
     @Column({ type: 'integer', name: 'calidad' })
     calidad: number;
 
-    @Column({ type: 'bigint', name: 'cantidad' })
+    @Column({ type: 'integer', name: 'cantidad' })
     cantidad: number;
 
     @Column({ type: 'datetime', name: 'fecha_de_ingreso' })
     fechaDeIngreso: any;
+
+    @Column({ type: 'integer', name: 'tambo' })
+    tambo: number;
+
+    @Column({ type: 'integer', name: 'temperatura' })
+    temperatura: number;
 
     @ManyToOne((type) => Cisternas)
     cisterna: Cisternas;

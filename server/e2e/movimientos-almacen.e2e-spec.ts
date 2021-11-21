@@ -4,10 +4,10 @@ import { AppModule } from '../src/app.module';
 import { INestApplication } from '@nestjs/common';
 import { AuthGuard } from '../src/security/guards/auth.guard';
 import { RolesGuard } from '../src/security/guards/roles.guard';
-import { SalidasDeAlmacenDTO } from '../src/service/dto/salidas-de-almacen.dto';
-import { SalidasDeAlmacenService } from '../src/service/salidas-de-almacen.service';
+import { MovimientosAlmacenDTO } from '../src/service/dto/movimientos-almacen.dto';
+import { MovimientosAlmacenService } from '../src/service/movimientos-almacen.service';
 
-describe('SalidasDeAlmacen Controller', () => {
+describe('MovimientosAlmacen Controller', () => {
     let app: INestApplication;
 
     const authGuardMock = { canActivate: (): any => true };
@@ -32,7 +32,7 @@ describe('SalidasDeAlmacen Controller', () => {
             .useValue(authGuardMock)
             .overrideGuard(RolesGuard)
             .useValue(rolesGuardMock)
-            .overrideProvider(SalidasDeAlmacenService)
+            .overrideProvider(MovimientosAlmacenService)
             .useValue(serviceMock)
             .compile();
 
@@ -40,44 +40,44 @@ describe('SalidasDeAlmacen Controller', () => {
         await app.init();
     });
 
-    it('/GET all salidas-de-almacens ', async () => {
-        const getEntities: SalidasDeAlmacenDTO[] = (
-            await request(app.getHttpServer()).get('/api/salidas-de-almacens').expect(200)
+    it('/GET all movimientos-almacens ', async () => {
+        const getEntities: MovimientosAlmacenDTO[] = (
+            await request(app.getHttpServer()).get('/api/movimientos-almacens').expect(200)
         ).body;
 
         expect(getEntities).toEqual(entityMock);
     });
 
-    it('/GET salidas-de-almacens by id', async () => {
-        const getEntity: SalidasDeAlmacenDTO = (
+    it('/GET movimientos-almacens by id', async () => {
+        const getEntity: MovimientosAlmacenDTO = (
             await request(app.getHttpServer())
-                .get('/api/salidas-de-almacens/' + entityMock.id)
+                .get('/api/movimientos-almacens/' + entityMock.id)
                 .expect(200)
         ).body;
 
         expect(getEntity).toEqual(entityMock);
     });
 
-    it('/POST create salidas-de-almacens', async () => {
-        const createdEntity: SalidasDeAlmacenDTO = (
-            await request(app.getHttpServer()).post('/api/salidas-de-almacens').send(entityMock).expect(201)
+    it('/POST create movimientos-almacens', async () => {
+        const createdEntity: MovimientosAlmacenDTO = (
+            await request(app.getHttpServer()).post('/api/movimientos-almacens').send(entityMock).expect(201)
         ).body;
 
         expect(createdEntity).toEqual(entityMock);
     });
 
-    it('/PUT update salidas-de-almacens', async () => {
-        const updatedEntity: SalidasDeAlmacenDTO = (
-            await request(app.getHttpServer()).put('/api/salidas-de-almacens').send(entityMock).expect(201)
+    it('/PUT update movimientos-almacens', async () => {
+        const updatedEntity: MovimientosAlmacenDTO = (
+            await request(app.getHttpServer()).put('/api/movimientos-almacens').send(entityMock).expect(201)
         ).body;
 
         expect(updatedEntity).toEqual(entityMock);
     });
 
-    it('/PUT update salidas-de-almacens from id', async () => {
-        const updatedEntity: SalidasDeAlmacenDTO = (
+    it('/PUT update movimientos-almacens from id', async () => {
+        const updatedEntity: MovimientosAlmacenDTO = (
             await request(app.getHttpServer())
-                .put('/api/salidas-de-almacens/' + entityMock.id)
+                .put('/api/movimientos-almacens/' + entityMock.id)
                 .send(entityMock)
                 .expect(201)
         ).body;
@@ -85,10 +85,10 @@ describe('SalidasDeAlmacen Controller', () => {
         expect(updatedEntity).toEqual(entityMock);
     });
 
-    it('/DELETE salidas-de-almacens', async () => {
-        const deletedEntity: SalidasDeAlmacenDTO = (
+    it('/DELETE movimientos-almacens', async () => {
+        const deletedEntity: MovimientosAlmacenDTO = (
             await request(app.getHttpServer())
-                .delete('/api/salidas-de-almacens/' + entityMock.id)
+                .delete('/api/movimientos-almacens/' + entityMock.id)
                 .expect(204)
         ).body;
 

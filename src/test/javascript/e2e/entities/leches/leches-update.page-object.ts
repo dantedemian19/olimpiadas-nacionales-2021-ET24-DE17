@@ -11,6 +11,8 @@ export default class LechesUpdatePage {
   calidadInput: ElementFinder = element(by.css('input#leches-calidad'));
   cantidadInput: ElementFinder = element(by.css('input#leches-cantidad'));
   fechaDeIngresoInput: ElementFinder = element(by.css('input#leches-fechaDeIngreso'));
+  tamboInput: ElementFinder = element(by.css('input#leches-tambo'));
+  temperaturaInput: ElementFinder = element(by.css('input#leches-temperatura'));
   cisternaSelect: ElementFinder = element(by.css('select#leches-cisterna'));
 
   getPageTitle() {
@@ -47,6 +49,22 @@ export default class LechesUpdatePage {
 
   async getFechaDeIngresoInput() {
     return this.fechaDeIngresoInput.getAttribute('value');
+  }
+
+  async setTamboInput(tambo) {
+    await this.tamboInput.sendKeys(tambo);
+  }
+
+  async getTamboInput() {
+    return this.tamboInput.getAttribute('value');
+  }
+
+  async setTemperaturaInput(temperatura) {
+    await this.temperaturaInput.sendKeys(temperatura);
+  }
+
+  async getTemperaturaInput() {
+    return this.temperaturaInput.getAttribute('value');
   }
 
   async cisternaSelectLastOption() {
@@ -90,6 +108,12 @@ export default class LechesUpdatePage {
     await waitUntilDisplayed(this.saveButton);
     await this.setFechaDeIngresoInput('01/01/2001' + protractor.Key.TAB + '02:30AM');
     expect(await this.getFechaDeIngresoInput()).to.contain('2001-01-01T02:30');
+    await waitUntilDisplayed(this.saveButton);
+    await this.setTamboInput('5');
+    expect(await this.getTamboInput()).to.eq('5');
+    await waitUntilDisplayed(this.saveButton);
+    await this.setTemperaturaInput('5');
+    expect(await this.getTemperaturaInput()).to.eq('5');
     await this.cisternaSelectLastOption();
     await this.save();
     await waitUntilHidden(this.saveButton);
