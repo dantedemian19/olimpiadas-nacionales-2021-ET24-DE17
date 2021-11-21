@@ -72,6 +72,9 @@ export class SeedUsersRoles1570200490072 implements MigrationInterface {
 
         const adminRole = await authorityRepository.save(this.role1);
         const userRole = await authorityRepository.save(this.role2);
+        await authorityRepository.save(this.role3);
+        await authorityRepository.save(this.role4);
+        await authorityRepository.save(this.role5);
 
         const userRepository = getRepository('nhi_user');
 
