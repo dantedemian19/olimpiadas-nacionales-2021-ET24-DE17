@@ -23,15 +23,23 @@ function ormConfig(): TypeOrmModuleOptions {
         migrationsRun: commonConf.MIGRATIONS_RUN,
     };
 
-    if (process.env.BACKEND_ENV === 'prod') {
+    if (
+        process.env.BACKEND_ENV     === 'prod' &&
+        typeof process.env.HOST     !== 'undefined' &&
+        typeof process.env.DATABASE !== 'undefined' &&
+        typeof process.env.DB_PORT     !== 'undefined' &&
+        typeof process.env.DB_USERNAME !== 'undefined' &&
+        typeof process.env.DB_PASSWORD !== 'undefined'
+    ) {
+        console.log(process.env)
         ormconfig = {
             name: 'default',
             type: 'mysql',
-            database: 'C-CHEESE',
-            host: 'localhost',
-            port: 3307,
-            username: 'sa',
-            password: 'yourStrong(!)Password',
+            database: process.env.DATABASE,
+            host: process.env.HOST,
+            port: parseInt(process.env.DB_PORT),
+            username: process.env.DB_USERNAME,
+            password: process.env.DB_PASSWORD,
             logging: false,
             synchronize: commonConf.SYNCRONIZE,
             entities: commonConf.ENTITIES,
