@@ -20,7 +20,7 @@
     "e2e:update-webdriver": "webdriver-manager update --gecko false",
     "jest": "jest --coverage --logHeapUsage --maxWorkers=2 --config jest.conf.js",
     "jest:update": "npm run jest -- --updateSnapshot",
-    "start": "npm run webapp:dev",
+    "start": "npm run webapp:prod",
     "start:app": "npm run build && cd server && npm run start",
     "start-tls": "npm run webapp:dev -- --env.tls",
     "build": "npm run webapp:prod",
@@ -80,7 +80,9 @@
     "redux-promise-middleware": "6.1.2",
     "redux-thunk": "2.3.0",
     "tslib": "2.1.0",
-    "uuid": "8.3.2"
+    "uuid": "8.3.2",
+    "webpack": "^5.64.2",
+    "webpack-cli": "^4.9.1"
   },
   "devDependencies": {
     "@testing-library/react": "11.2.6",
@@ -158,7 +160,7 @@
     "webpack": "^5.64.2",
     "webpack-cli": "^4.9.1",
     "webpack-dev-server": "^3.11.3",
-    "webpack-merge": "5.7.3",
+    "webpack-merge": "^5.7.3",
     "webpack-notifier": "1.13.0",
     "workbox-webpack-plugin": "6.2.4"
   },

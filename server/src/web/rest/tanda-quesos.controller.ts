@@ -20,8 +20,7 @@ import { AuthGuard, Roles, RolesGuard, RoleType } from '../../security';
 import { HeaderUtil } from '../../client/header-util';
 import { Request } from '../../client/request';
 import { LoggingInterceptor } from '../../client/interceptors/logging.interceptor';
-
-import { TandaQuesoChangeByIdDTO } from "../../service/dto/TandaQuesoChangeById.dto";
+import { TandaQuesoChangeByIdDTO } from '../../service/dto/TandaQuesoChangeById.dto';
 import { MovimientosAlmacenDTO } from '../../service/dto/movimientos-almacen.dto';
 import { MovimientosAlmacenService } from '../../service/movimientos-almacen.service';
 
