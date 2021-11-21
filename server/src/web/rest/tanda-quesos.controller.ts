@@ -20,9 +20,10 @@ import { AuthGuard, Roles, RolesGuard, RoleType } from '../../security';
 import { HeaderUtil } from '../../client/header-util';
 import { Request } from '../../client/request';
 import { LoggingInterceptor } from '../../client/interceptors/logging.interceptor';
-import { TandaQuesoChangeByIdDTO } from 'src/service/dto/TandaQuesoChangeById.dto';
-import { MovimientosAlmacenDTO } from 'src/service/dto/movimientos-almacen.dto';
-import { MovimientosAlmacenService } from 'src/service/movimientos-almacen.service';
+
+import { TandaQuesoChangeByIdDTO } from "../../service/dto/TandaQuesoChangeById.dto";
+import { MovimientosAlmacenDTO } from '../../service/dto/movimientos-almacen.dto';
+import { MovimientosAlmacenService } from '../../service/movimientos-almacen.service';
 
 @Controller('api/tanda-quesos')
 @UseGuards(AuthGuard, RolesGuard)
@@ -32,7 +33,10 @@ import { MovimientosAlmacenService } from 'src/service/movimientos-almacen.servi
 export class TandaQuesosController {
     logger = new Logger('TandaQuesosController');
 
-    constructor(private readonly tandaQuesosService: TandaQuesosService) {}
+    constructor(
+        private readonly tandaQuesosService: TandaQuesosService,
+        private readonly movimientosAlmacenService: MovimientosAlmacenService
+    ) {}
 
     @Get('/')
     @Roles(RoleType.USER)
@@ -128,7 +132,7 @@ export class TandaQuesosController {
         registry.queso = oldTandaQuesos;
         registry.user = req.user;
         registry.peso = tandaQuesosDTO.peso;
-        //MovimientosAlmacenService.save(registry, req.user?.login);
+        this.movimientosAlmacenService.save(registry, req.user?.login);
         HeaderUtil.addEntityCreatedHeaders(req.res, 'MovimientosAlmacen', registry.id);
         oldTandaQuesos.estado = tandaQuesosDTO.estado;
         return await this.tandaQuesosService.update(oldTandaQuesos, req.user?.login);
