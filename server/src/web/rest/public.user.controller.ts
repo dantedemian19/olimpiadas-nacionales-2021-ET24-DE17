@@ -42,7 +42,21 @@ export class PublicUserController {
         type: 'string',
         isArray: true,
     })
-    getAuthorities(@Req() req: any): any {
+    
+    async getAuthorities(@Req() req: any): Promise<String[]> {
+        let autoritiesDTO = await this.authService.getAllAuthorities()
+
+        console.log(autoritiesDTO)
+
+        let autoritiesNames = [];
+
+        autoritiesDTO.forEach(element => autoritiesNames.push(element.name));
+
+        console.log(autoritiesNames)
+
+        return autoritiesNames;
+
+
         const user: any = req.user;
         if (!user) {
             return [];

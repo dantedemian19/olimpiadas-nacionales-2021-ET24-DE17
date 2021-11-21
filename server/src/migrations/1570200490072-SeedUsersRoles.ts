@@ -8,6 +8,12 @@ export class SeedUsersRoles1570200490072 implements MigrationInterface {
 
     role2: Authority = { name: 'ROLE_USER' };
 
+    role3: Authority = { name: 'ROLE_RECEPTIONIST' };
+
+    role4: Authority = { name: 'ROLE_PRODUCTION' };
+
+    role5: Authority = { name: 'ROLE_LABORATORY' };
+
     user1: User = {
         login: 'system',
         password: 'system',

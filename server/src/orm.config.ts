@@ -31,7 +31,7 @@ function ormConfig(): TypeOrmModuleOptions {
         typeof process.env.DB_USERNAME !== 'undefined' &&
         typeof process.env.DB_PASSWORD !== 'undefined'
     ) {
-        console.log(process.env)
+        console.log("Connected to DB!!!")
         ormconfig = {
             name: 'default',
             type: 'mysql',
@@ -47,6 +47,8 @@ function ormConfig(): TypeOrmModuleOptions {
             cli: commonConf.CLI,
             migrationsRun: commonConf.MIGRATIONS_RUN,
         };
+    } else {
+        console.log("Not connected to DB!!!")
     }
 
     if (process.env.BACKEND_ENV === 'test') {

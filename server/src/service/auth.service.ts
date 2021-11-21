@@ -7,6 +7,8 @@ import * as bcrypt from 'bcrypt';
 import { AuthorityRepository } from '../repository/authority.repository';
 import { UserService } from '../service/user.service';
 import { UserDTO } from './dto/user.dto';
+import { AuthorityDTO } from './dto/authority.dto';
+import { AuthorityMapper } from '../service/mapper/authorities.mapper';
 import { FindManyOptions } from 'typeorm';
 
 @Injectable()
@@ -108,5 +110,15 @@ export class AuthService {
 
     async getAllUsers(options: FindManyOptions<UserDTO>): Promise<[UserDTO[], number]> {
         return await this.userService.findAndCount(options);
+    }
+
+    async getAllAuthorities(): Promise<AuthorityDTO[]> {
+        let resultList = await this.authorityRepository.find();
+        const authorityDTO: AuthorityDTO[] = [];
+        if (resultList && resultList[0]) {
+            resultList.forEach((authorities) => authorityDTO.push(AuthorityMapper.fromEntityToDTO(authorities)));
+            resultList = authorityDTO;
+        }
+        return resultList;
     }
 }
