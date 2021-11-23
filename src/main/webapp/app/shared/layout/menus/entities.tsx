@@ -20,9 +20,6 @@ export const EntitiesMenu = props => (
     <MenuItem icon="asterisk" to="/tipo-de-queso">
       Tipo De Queso
     </MenuItem>
-    <MenuItem icon="asterisk" to="/salidas-de-almacen">
-      Salidas De Almacen
-    </MenuItem>
     <MenuItem icon="asterisk" to="/movimientos-almacen">
       Movimientos Almacen
     </MenuItem>
