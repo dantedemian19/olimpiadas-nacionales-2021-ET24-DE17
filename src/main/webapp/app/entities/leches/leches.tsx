@@ -13,6 +13,9 @@ import { APP_DATE_FORMAT, APP_LOCAL_DATE_FORMAT } from 'app/config/constants';
 import { ITEMS_PER_PAGE } from 'app/shared/util/pagination.constants';
 import { overridePaginationStateWithQueryParams } from 'app/shared/util/entity-utils';
 
+import { Bar, Doughnut } from 'react-chartjs-2';
+import { CategoryScale, Chart, registerables } from 'chart.js';
+
 export interface ILechesProps extends StateProps, DispatchProps, RouteComponentProps<{ url: string }> {}
 
 export const Leches = (props: ILechesProps) => {
@@ -69,6 +72,8 @@ export const Leches = (props: ILechesProps) => {
     sortEntities();
   };
 
+  Chart.register(CategoryScale, ...registerables);
+
   const { lechesList, match, loading, totalItems } = props;
   return (
     <div className="container-entities">
@@ -93,7 +98,7 @@ export const Leches = (props: ILechesProps) => {
                   ID <FontAwesomeIcon icon="sort" />
                 </th>
                 <th className="hand" onClick={sort('analisis')}>
-                  Analisis <FontAwesomeIcon icon="sort" />
+                  Nombre <FontAwesomeIcon icon="sort" />
                 </th>
                 <th className="hand" onClick={sort('calidad')}>
                   Calidad <FontAwesomeIcon icon="sort" />
@@ -184,6 +189,64 @@ export const Leches = (props: ILechesProps) => {
       ) : (
         ''
       )}
+      <Bar
+        data={{
+          labels: lechesList.map(leches => leches.analisis),
+          datasets: [
+            {
+              label: 'Cantidad',
+              data: lechesList.map(leches => leches.cantidad),
+              backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)',
+              ],
+              borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)',
+              ],
+              borderWidth: 1,
+            },
+            {
+              label: 'Temperatura',
+              data: lechesList.map(leches => leches.temperatura),
+              backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)',
+              ],
+              borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)',
+              ],
+              borderWidth: 1,
+            },
+          ],
+        }}
+        height={65}
+        // width={600}
+        options={{
+          scales: {
+            y: {
+              beginAtZero: true,
+            },
+          },
+        }}
+      />
     </div>
   );
 };

@@ -14,6 +14,8 @@ import { ILeches } from 'app/shared/model/leches.model';
 import { convertDateTimeFromServer, convertDateTimeToServer, displayDefaultDateTime } from 'app/shared/util/date-utils';
 import { mapIdList } from 'app/shared/util/entity-utils';
 
+import './leches.scss';
+
 export interface ILechesUpdateProps extends StateProps, DispatchProps, RouteComponentProps<{ id: string }> {}
 
 export const LechesUpdate = (props: ILechesUpdateProps) => {
@@ -74,7 +76,7 @@ export const LechesUpdate = (props: ILechesUpdateProps) => {
       <Row className="justify-content-center">
         <Col md="8">
           <h2 id="cCheeseApp.leches.home.createOrEditLabel" data-cy="LechesCreateUpdateHeading">
-            Create or edit a Leches
+            Crear o editar leches
           </h2>
         </Col>
       </Row>
@@ -92,7 +94,7 @@ export const LechesUpdate = (props: ILechesUpdateProps) => {
               ) : null}
               <AvGroup>
                 <Label id="analisisLabel" for="leches-analisis">
-                  Analisis
+                  Nombre
                 </Label>
                 <AvInput
                   id="leches-analisis"
@@ -104,7 +106,7 @@ export const LechesUpdate = (props: ILechesUpdateProps) => {
                   }}
                 />
               </AvGroup>
-              <AvGroup>
+              <AvGroup className="left-side">
                 <Label id="calidadLabel" for="leches-calidad">
                   Calidad
                 </Label>
@@ -112,7 +114,7 @@ export const LechesUpdate = (props: ILechesUpdateProps) => {
                   id="leches-calidad"
                   data-cy="calidad"
                   type="string"
-                  className="form-control"
+                  className="form-control "
                   name="calidad"
                   validate={{
                     required: { value: true, errorMessage: 'This field is required.' },
@@ -120,7 +122,7 @@ export const LechesUpdate = (props: ILechesUpdateProps) => {
                   }}
                 />
               </AvGroup>
-              <AvGroup>
+              <AvGroup className="left-side">
                 <Label id="cantidadLabel" for="leches-cantidad">
                   Cantidad
                 </Label>
@@ -136,7 +138,7 @@ export const LechesUpdate = (props: ILechesUpdateProps) => {
                   }}
                 />
               </AvGroup>
-              <AvGroup>
+              <AvGroup className="left-side">
                 <Label id="fechaDeIngresoLabel" for="leches-fechaDeIngreso">
                   Fecha De Ingreso
                 </Label>
@@ -153,7 +155,7 @@ export const LechesUpdate = (props: ILechesUpdateProps) => {
                   }}
                 />
               </AvGroup>
-              <AvGroup>
+              <AvGroup className="right-side">
                 <Label id="tamboLabel" for="leches-tambo">
                   Tambo
                 </Label>
@@ -169,7 +171,7 @@ export const LechesUpdate = (props: ILechesUpdateProps) => {
                   }}
                 />
               </AvGroup>
-              <AvGroup>
+              <AvGroup className="right-side">
                 <Label id="temperaturaLabel" for="leches-temperatura">
                   Temperatura
                 </Label>
@@ -185,7 +187,7 @@ export const LechesUpdate = (props: ILechesUpdateProps) => {
                   }}
                 />
               </AvGroup>
-              <AvGroup>
+              <AvGroup className="right-side">
                 <Label for="leches-cisterna">Cisterna</Label>
                 <AvInput id="leches-cisterna" data-cy="cisterna" type="select" className="form-control" name="cisternaId">
                   <option value="" key="0" />
@@ -198,13 +200,20 @@ export const LechesUpdate = (props: ILechesUpdateProps) => {
                     : null}
                 </AvInput>
               </AvGroup>
-              <Button tag={Link} id="cancel-save" to="/leches" replace color="info">
+              <Button tag={Link} id="cancel-save" to="/leches" replace color="info" style={{ marginTop: '-475px' }}>
                 <FontAwesomeIcon icon="arrow-left" />
                 &nbsp;
                 <span className="d-none d-md-inline">Back</span>
               </Button>
               &nbsp;
-              <Button color="primary" id="save-entity" data-cy="entityCreateSaveButton" type="submit" disabled={updating}>
+              <Button
+                color="primary"
+                id="save-entity"
+                data-cy="entityCreateSaveButton"
+                type="submit"
+                disabled={updating}
+                style={{ marginTop: '-475px' }}
+              >
                 <FontAwesomeIcon icon="save" />
                 &nbsp; Save
               </Button>
