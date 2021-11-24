@@ -56,7 +56,7 @@ export const TipoDeQuesoUpdate = (props: ITipoDeQuesoUpdateProps) => {
     <div>
       <Row className="justify-content-center">
         <Col md="8">
-          <h2 id="cCheeseApp.tipoDeQueso.home.createOrEditLabel" data-cy="TipoDeQuesoCreateUpdateHeading">
+          <h2 id="cCheeseApp.tipoDeQueso.home.createOrEditarLabel" data-cy="TipoDeQuesoCreateUpdateHeading">
             Create or edit a TipoDeQueso
           </h2>
         </Col>

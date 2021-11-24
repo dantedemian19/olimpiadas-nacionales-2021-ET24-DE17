@@ -65,7 +65,7 @@ export const MovimientosAlmacenUpdate = (props: IMovimientosAlmacenUpdateProps) 
     <div>
       <Row className="justify-content-center">
         <Col md="8">
-          <h2 id="cCheeseApp.movimientosAlmacen.home.createOrEditLabel" data-cy="MovimientosAlmacenCreateUpdateHeading">
+          <h2 id="cCheeseApp.movimientosAlmacen.home.createOrEditarLabel" data-cy="MovimientosAlmacenCreateUpdateHeading">
             Create or edit a MovimientosAlmacen
           </h2>
         </Col>

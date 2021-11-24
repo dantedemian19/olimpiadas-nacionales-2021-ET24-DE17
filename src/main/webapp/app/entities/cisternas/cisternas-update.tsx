@@ -56,7 +56,7 @@ export const CisternasUpdate = (props: ICisternasUpdateProps) => {
     <div>
       <Row className="justify-content-center">
         <Col md="8">
-          <h2 id="cCheeseApp.cisternas.home.createOrEditLabel" data-cy="CisternasCreateUpdateHeading">
+          <h2 id="cCheeseApp.cisternas.home.createOrEditarLabel" data-cy="CisternasCreateUpdateHeading">
             Create or edit a Cisternas
           </h2>
         </Col>

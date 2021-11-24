@@ -141,25 +141,25 @@ export const Leches = (props: ILechesProps) => {
                   <td className="text-right">
                     <div className="btn-group flex-btn-group-container">
                       <Button tag={Link} to={`${match.url}/${leches.id}`} color="info" size="sm" data-cy="entityDetailsButton">
-                        <FontAwesomeIcon icon="eye" /> <span className="d-none d-md-inline">View</span>
+                        <FontAwesomeIcon icon="eye" /> <span className="d-none d-md-inline">Detalles</span>
                       </Button>
                       <Button
                         tag={Link}
                         to={`${match.url}/${leches.id}/edit?page=${paginationState.activePage}&sort=${paginationState.sort},${paginationState.order}`}
                         color="primary"
                         size="sm"
-                        data-cy="entityEditButton"
+                        data-cy="entityEditarButton"
                       >
-                        <FontAwesomeIcon icon="pencil-alt" /> <span className="d-none d-md-inline">Edit</span>
+                        <FontAwesomeIcon icon="pencil-alt" /> <span className="d-none d-md-inline">Editar</span>
                       </Button>
                       <Button
                         tag={Link}
                         to={`${match.url}/${leches.id}/delete?page=${paginationState.activePage}&sort=${paginationState.sort},${paginationState.order}`}
                         color="danger"
                         size="sm"
-                        data-cy="entityDeleteButton"
+                        data-cy="entityEliminarButton"
                       >
-                        <FontAwesomeIcon icon="trash" /> <span className="d-none d-md-inline">Delete</span>
+                        <FontAwesomeIcon icon="trash" /> <span className="d-none d-md-inline">Eliminar</span>
                       </Button>
                     </div>
                   </td>
@@ -189,64 +189,68 @@ export const Leches = (props: ILechesProps) => {
       ) : (
         ''
       )}
-      <Bar
-        data={{
-          labels: lechesList.map(leches => leches.analisis),
-          datasets: [
-            {
-              label: 'Cantidad',
-              data: lechesList.map(leches => leches.cantidad),
-              backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)',
-              ],
-              borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)',
-              ],
-              borderWidth: 1,
+      <div style={{ width: '45%', display: 'flex', flexDirection: 'row' }}>
+        <Bar
+          style={{ marginTop: 45, marginLeft: '15%' }}
+          data={{
+            labels: lechesList.map(leches => leches.analisis),
+            datasets: [
+              {
+                label: 'Cantidad',
+                data: lechesList.map(leches => leches.cantidad),
+                backgroundColor: ['rgba(54, 162, 235, 0.2)'],
+                borderColor: ['rgba(54, 162, 235, 1)'],
+                borderWidth: 1,
+              },
+              {
+                label: 'Temperatura',
+
+                data: lechesList.map(leches => leches.temperatura),
+                backgroundColor: ['rgba(255, 99, 132, 0.2)'],
+                borderColor: ['rgba(255, 99, 132, 1)'],
+                borderWidth: 1,
+              },
+            ],
+          }}
+          options={{
+            scales: {
+              y: {
+                beginAtZero: true,
+              },
             },
-            {
-              label: 'Temperatura',
-              data: lechesList.map(leches => leches.temperatura),
-              backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)',
+          }}
+        />
+        <div style={{ marginLeft: '25%' }}>
+          <h5 style={{ textAlign: 'center', fontSize: 16, color: '#222' }}>Tambos</h5>
+          <Doughnut
+            data={{
+              labels: lechesList.map(leches => leches.tambo),
+              datasets: [
+                {
+                  data: lechesList.map(leches => leches.tambo),
+                  backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)',
+                  ],
+                  borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)',
+                  ],
+                  borderWidth: 1,
+                },
               ],
-              borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)',
-              ],
-              borderWidth: 1,
-            },
-          ],
-        }}
-        height={65}
-        // width={600}
-        options={{
-          scales: {
-            y: {
-              beginAtZero: true,
-            },
-          },
-        }}
-      />
+            }}
+          />
+        </div>
+      </div>
     </div>
   );
 };

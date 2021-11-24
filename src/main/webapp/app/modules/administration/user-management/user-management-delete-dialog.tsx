@@ -8,9 +8,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { getUser, deleteUser } from './user-management.reducer';
 import { IRootState } from 'app/shared/reducers';
 
-export interface IUserManagementDeleteDialogProps extends StateProps, DispatchProps, RouteComponentProps<{ login: string }> {}
+export interface IUserManagementEliminarDialogProps extends StateProps, DispatchProps, RouteComponentProps<{ login: string }> {}
 
-export const UserManagementDeleteDialog = (props: IUserManagementDeleteDialogProps) => {
+export const UserManagementEliminarDialog = (props: IUserManagementEliminarDialogProps) => {
   useEffect(() => {
     props.getUser(props.match.params.login);
   }, []);
@@ -20,7 +20,7 @@ export const UserManagementDeleteDialog = (props: IUserManagementDeleteDialogPro
     props.history.push('/admin/user-management');
   };
 
-  const confirmDelete = event => {
+  const confirmEliminar = event => {
     props.deleteUser(props.user.login);
     handleClose(event);
   };
@@ -36,9 +36,9 @@ export const UserManagementDeleteDialog = (props: IUserManagementDeleteDialogPro
           <FontAwesomeIcon icon="ban" />
           &nbsp; Cancel
         </Button>
-        <Button color="danger" onClick={confirmDelete}>
+        <Button color="danger" onClick={confirmEliminar}>
           <FontAwesomeIcon icon="trash" />
-          &nbsp; Delete
+          &nbsp; Eliminar
         </Button>
       </ModalFooter>
     </Modal>
@@ -54,4 +54,4 @@ const mapDispatchToProps = { getUser, deleteUser };
 type StateProps = ReturnType<typeof mapStateToProps>;
 type DispatchProps = typeof mapDispatchToProps;
 
-export default connect(mapStateToProps, mapDispatchToProps)(UserManagementDeleteDialog);
+export default connect(mapStateToProps, mapDispatchToProps)(UserManagementEliminarDialog);

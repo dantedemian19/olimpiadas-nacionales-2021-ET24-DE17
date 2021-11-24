@@ -13,6 +13,9 @@ import { APP_DATE_FORMAT, APP_LOCAL_DATE_FORMAT } from 'app/config/constants';
 import { ITEMS_PER_PAGE } from 'app/shared/util/pagination.constants';
 import { overridePaginationStateWithQueryParams } from 'app/shared/util/entity-utils';
 
+import { Bar } from 'react-chartjs-2';
+import { CategoryScale, Chart, registerables } from 'chart.js';
+
 export interface IFrascosDeFermentosProps extends StateProps, DispatchProps, RouteComponentProps<{ url: string }> {}
 
 export const FrascosDeFermentos = (props: IFrascosDeFermentosProps) => {
@@ -68,6 +71,8 @@ export const FrascosDeFermentos = (props: IFrascosDeFermentosProps) => {
   const handleSyncList = () => {
     sortEntities();
   };
+
+  Chart.register(CategoryScale, ...registerables);
 
   const { frascosDeFermentosList, match, loading, totalItems } = props;
   return (
@@ -140,25 +145,25 @@ export const FrascosDeFermentos = (props: IFrascosDeFermentosProps) => {
                   <td className="text-right">
                     <div className="btn-group flex-btn-group-container">
                       <Button tag={Link} to={`${match.url}/${frascosDeFermentos.id}`} color="info" size="sm" data-cy="entityDetailsButton">
-                        <FontAwesomeIcon icon="eye" /> <span className="d-none d-md-inline">View</span>
+                        <FontAwesomeIcon icon="eye" /> <span className="d-none d-md-inline">Detalles</span>
                       </Button>
                       <Button
                         tag={Link}
                         to={`${match.url}/${frascosDeFermentos.id}/edit?page=${paginationState.activePage}&sort=${paginationState.sort},${paginationState.order}`}
                         color="primary"
                         size="sm"
-                        data-cy="entityEditButton"
+                        data-cy="entityEditarButton"
                       >
-                        <FontAwesomeIcon icon="pencil-alt" /> <span className="d-none d-md-inline">Edit</span>
+                        <FontAwesomeIcon icon="pencil-alt" /> <span className="d-none d-md-inline">Editar</span>
                       </Button>
                       <Button
                         tag={Link}
                         to={`${match.url}/${frascosDeFermentos.id}/delete?page=${paginationState.activePage}&sort=${paginationState.sort},${paginationState.order}`}
                         color="danger"
                         size="sm"
-                        data-cy="entityDeleteButton"
+                        data-cy="entityEliminarButton"
                       >
-                        <FontAwesomeIcon icon="trash" /> <span className="d-none d-md-inline">Delete</span>
+                        <FontAwesomeIcon icon="trash" /> <span className="d-none d-md-inline">Eliminar</span>
                       </Button>
                     </div>
                   </td>
@@ -188,6 +193,37 @@ export const FrascosDeFermentos = (props: IFrascosDeFermentosProps) => {
       ) : (
         ''
       )}
+      <div style={{ width: '50%', margin: '0 20%' }}>
+        <Bar
+          style={{ marginTop: 45, marginLeft: '15%' }}
+          data={{
+            labels: frascosDeFermentosList.map(frascosDeFermentos => frascosDeFermentos.id),
+            datasets: [
+              {
+                label: 'Peso',
+                data: frascosDeFermentosList.map(frascosDeFermentos => frascosDeFermentos.peso),
+                backgroundColor: ['rgba(54, 162, 235, 0.2)'],
+                borderColor: ['rgba(54, 162, 235, 1)'],
+                borderWidth: 1,
+              },
+              {
+                label: 'Calidad',
+                data: frascosDeFermentosList.map(frascosDeFermentos => frascosDeFermentos.calidad),
+                backgroundColor: ['rgba(255, 99, 132, 0.2)'],
+                borderColor: ['rgba(255, 99, 132, 1)'],
+                borderWidth: 1,
+              },
+            ],
+          }}
+          options={{
+            scales: {
+              y: {
+                beginAtZero: true,
+              },
+            },
+          }}
+        />
+      </div>
     </div>
   );
 };

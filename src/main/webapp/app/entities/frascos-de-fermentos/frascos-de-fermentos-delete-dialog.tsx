@@ -8,9 +8,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IRootState } from 'app/shared/reducers';
 import { getEntity, deleteEntity } from './frascos-de-fermentos.reducer';
 
-export interface IFrascosDeFermentosDeleteDialogProps extends StateProps, DispatchProps, RouteComponentProps<{ id: string }> {}
+export interface IFrascosDeFermentosEliminarDialogProps extends StateProps, DispatchProps, RouteComponentProps<{ id: string }> {}
 
-export const FrascosDeFermentosDeleteDialog = (props: IFrascosDeFermentosDeleteDialogProps) => {
+export const FrascosDeFermentosEliminarDialog = (props: IFrascosDeFermentosEliminarDialogProps) => {
   useEffect(() => {
     props.getEntity(props.match.params.id);
   }, []);
@@ -25,14 +25,14 @@ export const FrascosDeFermentosDeleteDialog = (props: IFrascosDeFermentosDeleteD
     }
   }, [props.updateSuccess]);
 
-  const confirmDelete = () => {
+  const confirmEliminar = () => {
     props.deleteEntity(props.frascosDeFermentosEntity.id);
   };
 
   const { frascosDeFermentosEntity } = props;
   return (
     <Modal isOpen toggle={handleClose}>
-      <ModalHeader toggle={handleClose} data-cy="frascosDeFermentosDeleteDialogHeading">
+      <ModalHeader toggle={handleClose} data-cy="frascosDeFermentosEliminarDialogHeading">
         Confirm delete operation
       </ModalHeader>
       <ModalBody id="cCheeseApp.frascosDeFermentos.delete.question">Are you sure you want to delete this FrascosDeFermentos?</ModalBody>
@@ -41,9 +41,9 @@ export const FrascosDeFermentosDeleteDialog = (props: IFrascosDeFermentosDeleteD
           <FontAwesomeIcon icon="ban" />
           &nbsp; Cancel
         </Button>
-        <Button id="jhi-confirm-delete-frascosDeFermentos" data-cy="entityConfirmDeleteButton" color="danger" onClick={confirmDelete}>
+        <Button id="jhi-confirm-delete-frascosDeFermentos" data-cy="entityConfirmEliminarButton" color="danger" onClick={confirmEliminar}>
           <FontAwesomeIcon icon="trash" />
-          &nbsp; Delete
+          &nbsp; Eliminar
         </Button>
       </ModalFooter>
     </Modal>
@@ -60,4 +60,4 @@ const mapDispatchToProps = { getEntity, deleteEntity };
 type StateProps = ReturnType<typeof mapStateToProps>;
 type DispatchProps = typeof mapDispatchToProps;
 
-export default connect(mapStateToProps, mapDispatchToProps)(FrascosDeFermentosDeleteDialog);
+export default connect(mapStateToProps, mapDispatchToProps)(FrascosDeFermentosEliminarDialog);

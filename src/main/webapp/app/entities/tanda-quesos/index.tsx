@@ -6,7 +6,7 @@ import ErrorBoundaryRoute from 'app/shared/error/error-boundary-route';
 import TandaQuesos from './tanda-quesos';
 import TandaQuesosDetail from './tanda-quesos-detail';
 import TandaQuesosUpdate from './tanda-quesos-update';
-import TandaQuesosDeleteDialog from './tanda-quesos-delete-dialog';
+import TandaQuesosEliminarDialog from './tanda-quesos-delete-dialog';
 
 const Routes = ({ match }) => (
   <>
@@ -16,7 +16,7 @@ const Routes = ({ match }) => (
       <ErrorBoundaryRoute exact path={`${match.url}/:id`} component={TandaQuesosDetail} />
       <ErrorBoundaryRoute path={match.url} component={TandaQuesos} />
     </Switch>
-    <ErrorBoundaryRoute exact path={`${match.url}/:id/delete`} component={TandaQuesosDeleteDialog} />
+    <ErrorBoundaryRoute exact path={`${match.url}/:id/delete`} component={TandaQuesosEliminarDialog} />
   </>
 );
 

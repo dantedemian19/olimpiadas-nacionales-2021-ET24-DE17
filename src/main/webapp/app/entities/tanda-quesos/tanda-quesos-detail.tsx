@@ -66,7 +66,7 @@ export const TandaQuesosDetail = (props: ITandaQuesosDetailProps) => {
         </Button>
         &nbsp;
         <Button tag={Link} to={`/tanda-quesos/${tandaQuesosEntity.id}/edit`} replace color="primary">
-          <FontAwesomeIcon icon="pencil-alt" /> <span className="d-none d-md-inline">Edit</span>
+          <FontAwesomeIcon icon="pencil-alt" /> <span className="d-none d-md-inline">Editar</span>
         </Button>
       </Col>
     </Row>

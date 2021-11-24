@@ -73,7 +73,7 @@ export const FrascosDeFermentosUpdate = (props: IFrascosDeFermentosUpdateProps) 
     <div>
       <Row className="justify-content-center">
         <Col md="8">
-          <h2 id="cCheeseApp.frascosDeFermentos.home.createOrEditLabel" data-cy="FrascosDeFermentosCreateUpdateHeading">
+          <h2 id="cCheeseApp.frascosDeFermentos.home.createOrEditarLabel" data-cy="FrascosDeFermentosCreateUpdateHeading">
             Create or edit a FrascosDeFermentos
           </h2>
         </Col>

@@ -8,9 +8,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IRootState } from 'app/shared/reducers';
 import { getEntity, deleteEntity } from './cisternas.reducer';
 
-export interface ICisternasDeleteDialogProps extends StateProps, DispatchProps, RouteComponentProps<{ id: string }> {}
+export interface ICisternasEliminarDialogProps extends StateProps, DispatchProps, RouteComponentProps<{ id: string }> {}
 
-export const CisternasDeleteDialog = (props: ICisternasDeleteDialogProps) => {
+export const CisternasEliminarDialog = (props: ICisternasEliminarDialogProps) => {
   useEffect(() => {
     props.getEntity(props.match.params.id);
   }, []);
@@ -25,14 +25,14 @@ export const CisternasDeleteDialog = (props: ICisternasDeleteDialogProps) => {
     }
   }, [props.updateSuccess]);
 
-  const confirmDelete = () => {
+  const confirmEliminar = () => {
     props.deleteEntity(props.cisternasEntity.id);
   };
 
   const { cisternasEntity } = props;
   return (
     <Modal isOpen toggle={handleClose}>
-      <ModalHeader toggle={handleClose} data-cy="cisternasDeleteDialogHeading">
+      <ModalHeader toggle={handleClose} data-cy="cisternasEliminarDialogHeading">
         Confirm delete operation
       </ModalHeader>
       <ModalBody id="cCheeseApp.cisternas.delete.question">Are you sure you want to delete this Cisternas?</ModalBody>
@@ -41,9 +41,9 @@ export const CisternasDeleteDialog = (props: ICisternasDeleteDialogProps) => {
           <FontAwesomeIcon icon="ban" />
           &nbsp; Cancel
         </Button>
-        <Button id="jhi-confirm-delete-cisternas" data-cy="entityConfirmDeleteButton" color="danger" onClick={confirmDelete}>
+        <Button id="jhi-confirm-delete-cisternas" data-cy="entityConfirmEliminarButton" color="danger" onClick={confirmEliminar}>
           <FontAwesomeIcon icon="trash" />
-          &nbsp; Delete
+          &nbsp; Eliminar
         </Button>
       </ModalFooter>
     </Modal>
@@ -60,4 +60,4 @@ const mapDispatchToProps = { getEntity, deleteEntity };
 type StateProps = ReturnType<typeof mapStateToProps>;
 type DispatchProps = typeof mapDispatchToProps;
 
-export default connect(mapStateToProps, mapDispatchToProps)(CisternasDeleteDialog);
+export default connect(mapStateToProps, mapDispatchToProps)(CisternasEliminarDialog);

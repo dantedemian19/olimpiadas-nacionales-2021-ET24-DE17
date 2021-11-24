@@ -6,7 +6,7 @@ import ErrorBoundaryRoute from 'app/shared/error/error-boundary-route';
 import FrascosDeFermentos from './frascos-de-fermentos';
 import FrascosDeFermentosDetail from './frascos-de-fermentos-detail';
 import FrascosDeFermentosUpdate from './frascos-de-fermentos-update';
-import FrascosDeFermentosDeleteDialog from './frascos-de-fermentos-delete-dialog';
+import FrascosDeFermentosEliminarDialog from './frascos-de-fermentos-delete-dialog';
 
 const Routes = ({ match }) => (
   <>
@@ -16,7 +16,7 @@ const Routes = ({ match }) => (
       <ErrorBoundaryRoute exact path={`${match.url}/:id`} component={FrascosDeFermentosDetail} />
       <ErrorBoundaryRoute path={match.url} component={FrascosDeFermentos} />
     </Switch>
-    <ErrorBoundaryRoute exact path={`${match.url}/:id/delete`} component={FrascosDeFermentosDeleteDialog} />
+    <ErrorBoundaryRoute exact path={`${match.url}/:id/delete`} component={FrascosDeFermentosEliminarDialog} />
   </>
 );
 

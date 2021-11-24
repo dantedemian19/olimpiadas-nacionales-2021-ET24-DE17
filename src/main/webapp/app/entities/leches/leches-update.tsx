@@ -75,7 +75,7 @@ export const LechesUpdate = (props: ILechesUpdateProps) => {
     <div>
       <Row className="justify-content-center">
         <Col md="8">
-          <h2 id="cCheeseApp.leches.home.createOrEditLabel" data-cy="LechesCreateUpdateHeading">
+          <h2 id="cCheeseApp.leches.home.createOrEditarLabel" data-cy="LechesCreateUpdateHeading">
             Crear o editar leches
           </h2>
         </Col>

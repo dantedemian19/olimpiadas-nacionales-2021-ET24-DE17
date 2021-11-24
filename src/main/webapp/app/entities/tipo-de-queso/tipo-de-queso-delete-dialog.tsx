@@ -8,9 +8,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IRootState } from 'app/shared/reducers';
 import { getEntity, deleteEntity } from './tipo-de-queso.reducer';
 
-export interface ITipoDeQuesoDeleteDialogProps extends StateProps, DispatchProps, RouteComponentProps<{ id: string }> {}
+export interface ITipoDeQuesoEliminarDialogProps extends StateProps, DispatchProps, RouteComponentProps<{ id: string }> {}
 
-export const TipoDeQuesoDeleteDialog = (props: ITipoDeQuesoDeleteDialogProps) => {
+export const TipoDeQuesoEliminarDialog = (props: ITipoDeQuesoEliminarDialogProps) => {
   useEffect(() => {
     props.getEntity(props.match.params.id);
   }, []);
@@ -25,14 +25,14 @@ export const TipoDeQuesoDeleteDialog = (props: ITipoDeQuesoDeleteDialogProps) =>
     }
   }, [props.updateSuccess]);
 
-  const confirmDelete = () => {
+  const confirmEliminar = () => {
     props.deleteEntity(props.tipoDeQuesoEntity.id);
   };
 
   const { tipoDeQuesoEntity } = props;
   return (
     <Modal isOpen toggle={handleClose}>
-      <ModalHeader toggle={handleClose} data-cy="tipoDeQuesoDeleteDialogHeading">
+      <ModalHeader toggle={handleClose} data-cy="tipoDeQuesoEliminarDialogHeading">
         Confirm delete operation
       </ModalHeader>
       <ModalBody id="cCheeseApp.tipoDeQueso.delete.question">Are you sure you want to delete this TipoDeQueso?</ModalBody>
@@ -41,9 +41,9 @@ export const TipoDeQuesoDeleteDialog = (props: ITipoDeQuesoDeleteDialogProps) =>
           <FontAwesomeIcon icon="ban" />
           &nbsp; Cancel
         </Button>
-        <Button id="jhi-confirm-delete-tipoDeQueso" data-cy="entityConfirmDeleteButton" color="danger" onClick={confirmDelete}>
+        <Button id="jhi-confirm-delete-tipoDeQueso" data-cy="entityConfirmEliminarButton" color="danger" onClick={confirmEliminar}>
           <FontAwesomeIcon icon="trash" />
-          &nbsp; Delete
+          &nbsp; Eliminar
         </Button>
       </ModalFooter>
     </Modal>
@@ -60,4 +60,4 @@ const mapDispatchToProps = { getEntity, deleteEntity };
 type StateProps = ReturnType<typeof mapStateToProps>;
 type DispatchProps = typeof mapDispatchToProps;
 
-export default connect(mapStateToProps, mapDispatchToProps)(TipoDeQuesoDeleteDialog);
+export default connect(mapStateToProps, mapDispatchToProps)(TipoDeQuesoEliminarDialog);

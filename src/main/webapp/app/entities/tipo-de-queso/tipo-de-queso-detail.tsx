@@ -40,7 +40,7 @@ export const TipoDeQuesoDetail = (props: ITipoDeQuesoDetailProps) => {
         </Button>
         &nbsp;
         <Button tag={Link} to={`/tipo-de-queso/${tipoDeQuesoEntity.id}/edit`} replace color="primary">
-          <FontAwesomeIcon icon="pencil-alt" /> <span className="d-none d-md-inline">Edit</span>
+          <FontAwesomeIcon icon="pencil-alt" /> <span className="d-none d-md-inline">Editar</span>
         </Button>
       </Col>
     </Row>

@@ -175,7 +175,7 @@ export const TandaQuesosUpdate = (props: ITandaQuesosUpdateProps) => {
                   {leches
                     ? leches.map(otherEntity => (
                         <option value={otherEntity.id} key={otherEntity.id}>
-                          {otherEntity.id}
+                          {otherEntity.analisis}
                         </option>
                       ))
                     : null}
