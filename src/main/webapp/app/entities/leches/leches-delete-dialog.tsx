@@ -8,9 +8,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IRootState } from 'app/shared/reducers';
 import { getEntity, deleteEntity } from './leches.reducer';
 
-export interface ILechesEliminarDialogProps extends StateProps, DispatchProps, RouteComponentProps<{ id: string }> {}
+export interface ILechesDeleteDialogProps extends StateProps, DispatchProps, RouteComponentProps<{ id: string }> {}
 
-export const LechesEliminarDialog = (props: ILechesEliminarDialogProps) => {
+export const LechesDeleteDialog = (props: ILechesDeleteDialogProps) => {
   useEffect(() => {
     props.getEntity(props.match.params.id);
   }, []);
@@ -25,14 +25,14 @@ export const LechesEliminarDialog = (props: ILechesEliminarDialogProps) => {
     }
   }, [props.updateSuccess]);
 
-  const confirmEliminar = () => {
+  const confirmDelete = () => {
     props.deleteEntity(props.lechesEntity.id);
   };
 
   const { lechesEntity } = props;
   return (
     <Modal isOpen toggle={handleClose}>
-      <ModalHeader toggle={handleClose} data-cy="lechesEliminarDialogHeading">
+      <ModalHeader toggle={handleClose} data-cy="lechesDeleteDialogHeading">
         Confirm delete operation
       </ModalHeader>
       <ModalBody id="cCheeseApp.leches.delete.question">Are you sure you want to delete this Leches?</ModalBody>
@@ -41,9 +41,9 @@ export const LechesEliminarDialog = (props: ILechesEliminarDialogProps) => {
           <FontAwesomeIcon icon="ban" />
           &nbsp; Cancel
         </Button>
-        <Button id="jhi-confirm-delete-leches" data-cy="entityConfirmEliminarButton" color="danger" onClick={confirmEliminar}>
+        <Button id="jhi-confirm-delete-leches" data-cy="entityConfirmDeleteButton" color="danger" onClick={confirmDelete}>
           <FontAwesomeIcon icon="trash" />
-          &nbsp; Eliminar
+          &nbsp; Delete
         </Button>
       </ModalFooter>
     </Modal>
@@ -60,4 +60,4 @@ const mapDispatchToProps = { getEntity, deleteEntity };
 type StateProps = ReturnType<typeof mapStateToProps>;
 type DispatchProps = typeof mapDispatchToProps;
 
-export default connect(mapStateToProps, mapDispatchToProps)(LechesEliminarDialog);
+export default connect(mapStateToProps, mapDispatchToProps)(LechesDeleteDialog);

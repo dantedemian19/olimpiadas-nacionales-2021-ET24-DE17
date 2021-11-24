@@ -7,7 +7,7 @@ export default class LechesUpdatePage {
   pageTitle: ElementFinder = element(by.id('cCheeseApp.leches.home.createOrEditLabel'));
   saveButton: ElementFinder = element(by.id('save-entity'));
   cancelButton: ElementFinder = element(by.id('cancel-save'));
-  analisisInput: ElementFinder = element(by.css('textarea#leches-analisis'));
+  analisisInput: ElementFinder = element(by.css('input#leches-analisis'));
   calidadInput: ElementFinder = element(by.css('input#leches-calidad'));
   cantidadInput: ElementFinder = element(by.css('input#leches-cantidad'));
   fechaDeIngresoInput: ElementFinder = element(by.css('input#leches-fechaDeIngreso'));
@@ -109,8 +109,8 @@ export default class LechesUpdatePage {
     await this.setFechaDeIngresoInput('01/01/2001' + protractor.Key.TAB + '02:30AM');
     expect(await this.getFechaDeIngresoInput()).to.contain('2001-01-01T02:30');
     await waitUntilDisplayed(this.saveButton);
-    await this.setTamboInput('5');
-    expect(await this.getTamboInput()).to.eq('5');
+    await this.setTamboInput('tambo');
+    expect(await this.getTamboInput()).to.match(/tambo/);
     await waitUntilDisplayed(this.saveButton);
     await this.setTemperaturaInput('5');
     expect(await this.getTemperaturaInput()).to.eq('5');

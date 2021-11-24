@@ -9,8 +9,8 @@ import { Cisternas } from './cisternas.entity';
  */
 @Entity('leches')
 export class Leches extends BaseEntity {
-    @Column({ type: 'blob', name: 'analisis' })
-    analisis: any;
+    @Column({ name: 'analisis' })
+    analisis: string;
 
     @Column({ type: 'integer', name: 'calidad' })
     calidad: number;
@@ -21,8 +21,8 @@ export class Leches extends BaseEntity {
     @Column({ type: 'datetime', name: 'fecha_de_ingreso' })
     fechaDeIngreso: any;
 
-    @Column({ type: 'integer', name: 'tambo' })
-    tambo: number;
+    @Column({ name: 'tambo' })
+    tambo: string;
 
     @Column({ type: 'integer', name: 'temperatura' })
     temperatura: number;

@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Link, RouteComponentProps } from 'react-router-dom';
 import { Button, Col, Row, Table } from 'reactstrap';
-import { byteSize, Translate, TextFormat, getSortState, IPaginationBaseState, JhiPagination, JhiItemCount } from 'react-jhipster';
+import { Translate, TextFormat, getSortState, IPaginationBaseState, JhiPagination, JhiItemCount } from 'react-jhipster';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { IRootState } from 'app/shared/reducers';
@@ -12,9 +12,6 @@ import { ILeches } from 'app/shared/model/leches.model';
 import { APP_DATE_FORMAT, APP_LOCAL_DATE_FORMAT } from 'app/config/constants';
 import { ITEMS_PER_PAGE } from 'app/shared/util/pagination.constants';
 import { overridePaginationStateWithQueryParams } from 'app/shared/util/entity-utils';
-
-import { Bar, Doughnut } from 'react-chartjs-2';
-import { CategoryScale, Chart, registerables } from 'chart.js';
 
 export interface ILechesProps extends StateProps, DispatchProps, RouteComponentProps<{ url: string }> {}
 
@@ -72,11 +69,9 @@ export const Leches = (props: ILechesProps) => {
     sortEntities();
   };
 
-  Chart.register(CategoryScale, ...registerables);
-
   const { lechesList, match, loading, totalItems } = props;
   return (
-    <div className="container-entities">
+    <div>
       <h2 id="leches-heading" data-cy="LechesHeading">
         Leches
         <div className="d-flex justify-content-end">
@@ -98,7 +93,7 @@ export const Leches = (props: ILechesProps) => {
                   ID <FontAwesomeIcon icon="sort" />
                 </th>
                 <th className="hand" onClick={sort('analisis')}>
-                  Nombre <FontAwesomeIcon icon="sort" />
+                  Analisis <FontAwesomeIcon icon="sort" />
                 </th>
                 <th className="hand" onClick={sort('calidad')}>
                   Calidad <FontAwesomeIcon icon="sort" />
@@ -141,25 +136,25 @@ export const Leches = (props: ILechesProps) => {
                   <td className="text-right">
                     <div className="btn-group flex-btn-group-container">
                       <Button tag={Link} to={`${match.url}/${leches.id}`} color="info" size="sm" data-cy="entityDetailsButton">
-                        <FontAwesomeIcon icon="eye" /> <span className="d-none d-md-inline">Detalles</span>
+                        <FontAwesomeIcon icon="eye" /> <span className="d-none d-md-inline">View</span>
                       </Button>
                       <Button
                         tag={Link}
                         to={`${match.url}/${leches.id}/edit?page=${paginationState.activePage}&sort=${paginationState.sort},${paginationState.order}`}
                         color="primary"
                         size="sm"
-                        data-cy="entityEditarButton"
+                        data-cy="entityEditButton"
                       >
-                        <FontAwesomeIcon icon="pencil-alt" /> <span className="d-none d-md-inline">Editar</span>
+                        <FontAwesomeIcon icon="pencil-alt" /> <span className="d-none d-md-inline">Edit</span>
                       </Button>
                       <Button
                         tag={Link}
                         to={`${match.url}/${leches.id}/delete?page=${paginationState.activePage}&sort=${paginationState.sort},${paginationState.order}`}
                         color="danger"
                         size="sm"
-                        data-cy="entityEliminarButton"
+                        data-cy="entityDeleteButton"
                       >
-                        <FontAwesomeIcon icon="trash" /> <span className="d-none d-md-inline">Eliminar</span>
+                        <FontAwesomeIcon icon="trash" /> <span className="d-none d-md-inline">Delete</span>
                       </Button>
                     </div>
                   </td>
@@ -189,68 +184,6 @@ export const Leches = (props: ILechesProps) => {
       ) : (
         ''
       )}
-      <div style={{ width: '45%', display: 'flex', flexDirection: 'row' }}>
-        <Bar
-          style={{ marginTop: 45, marginLeft: '15%' }}
-          data={{
-            labels: lechesList.map(leches => leches.analisis),
-            datasets: [
-              {
-                label: 'Cantidad',
-                data: lechesList.map(leches => leches.cantidad),
-                backgroundColor: ['rgba(54, 162, 235, 0.2)'],
-                borderColor: ['rgba(54, 162, 235, 1)'],
-                borderWidth: 1,
-              },
-              {
-                label: 'Temperatura',
-
-                data: lechesList.map(leches => leches.temperatura),
-                backgroundColor: ['rgba(255, 99, 132, 0.2)'],
-                borderColor: ['rgba(255, 99, 132, 1)'],
-                borderWidth: 1,
-              },
-            ],
-          }}
-          options={{
-            scales: {
-              y: {
-                beginAtZero: true,
-              },
-            },
-          }}
-        />
-        <div style={{ marginLeft: '25%' }}>
-          <h5 style={{ textAlign: 'center', fontSize: 16, color: '#222' }}>Tambos</h5>
-          <Doughnut
-            data={{
-              labels: lechesList.map(leches => leches.tambo),
-              datasets: [
-                {
-                  data: lechesList.map(leches => leches.tambo),
-                  backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)',
-                  ],
-                  borderColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)',
-                  ],
-                  borderWidth: 1,
-                },
-              ],
-            }}
-          />
-        </div>
-      </div>
     </div>
   );
 };

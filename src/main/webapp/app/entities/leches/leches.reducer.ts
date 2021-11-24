@@ -13,7 +13,6 @@ export const ACTION_TYPES = {
   UPDATE_LECHES: 'leches/UPDATE_LECHES',
   PARTIAL_UPDATE_LECHES: 'leches/PARTIAL_UPDATE_LECHES',
   DELETE_LECHES: 'leches/DELETE_LECHES',
-  SET_BLOB: 'leches/SET_BLOB',
   RESET: 'leches/RESET',
 };
 
@@ -93,17 +92,6 @@ export default (state: LechesState = initialState, action): LechesState => {
         updateSuccess: true,
         entity: {},
       };
-    case ACTION_TYPES.SET_BLOB: {
-      const { name, data, contentType } = action.payload;
-      return {
-        ...state,
-        entity: {
-          ...state.entity,
-          [name]: data,
-          [name + 'ContentType']: contentType,
-        },
-      };
-    }
     case ACTION_TYPES.RESET:
       return {
         ...initialState,
@@ -167,15 +155,6 @@ export const deleteEntity: ICrudDeleteAction<ILeches> = id => async dispatch => 
   dispatch(getEntities());
   return result;
 };
-
-export const setBlob = (name, data, contentType?) => ({
-  type: ACTION_TYPES.SET_BLOB,
-  payload: {
-    name,
-    data,
-    contentType,
-  },
-});
 
 export const reset = () => ({
   type: ACTION_TYPES.RESET,

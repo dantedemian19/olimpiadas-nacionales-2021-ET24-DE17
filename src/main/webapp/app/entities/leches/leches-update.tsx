@@ -3,18 +3,16 @@ import { connect } from 'react-redux';
 import { Link, RouteComponentProps } from 'react-router-dom';
 import { Button, Row, Col, Label } from 'reactstrap';
 import { AvFeedback, AvForm, AvGroup, AvInput, AvField } from 'availity-reactstrap-validation';
-import { setFileData, byteSize, translate } from 'react-jhipster';
+import { translate } from 'react-jhipster';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IRootState } from 'app/shared/reducers';
 
 import { ICisternas } from 'app/shared/model/cisternas.model';
 import { getEntities as getCisternas } from 'app/entities/cisternas/cisternas.reducer';
-import { getEntity, updateEntity, createEntity, setBlob, reset } from './leches.reducer';
+import { getEntity, updateEntity, createEntity, reset } from './leches.reducer';
 import { ILeches } from 'app/shared/model/leches.model';
 import { convertDateTimeFromServer, convertDateTimeToServer, displayDefaultDateTime } from 'app/shared/util/date-utils';
 import { mapIdList } from 'app/shared/util/entity-utils';
-
-import './leches.scss';
 
 export interface ILechesUpdateProps extends StateProps, DispatchProps, RouteComponentProps<{ id: string }> {}
 
@@ -22,8 +20,6 @@ export const LechesUpdate = (props: ILechesUpdateProps) => {
   const [isNew] = useState(!props.match.params || !props.match.params.id);
 
   const { lechesEntity, cisternas, loading, updating } = props;
-
-  const { analisis } = lechesEntity;
 
   const handleClose = () => {
     props.history.push('/leches' + props.location.search);
@@ -38,14 +34,6 @@ export const LechesUpdate = (props: ILechesUpdateProps) => {
 
     props.getCisternas();
   }, []);
-
-  const onBlobChange = (isAnImage, name) => event => {
-    setFileData(event, (contentType, data) => props.setBlob(name, data, contentType), isAnImage);
-  };
-
-  const clearBlob = name => () => {
-    props.setBlob(name, undefined, undefined);
-  };
 
   useEffect(() => {
     if (props.updateSuccess) {
@@ -75,8 +63,8 @@ export const LechesUpdate = (props: ILechesUpdateProps) => {
     <div>
       <Row className="justify-content-center">
         <Col md="8">
-          <h2 id="cCheeseApp.leches.home.createOrEditarLabel" data-cy="LechesCreateUpdateHeading">
-            Crear o editar leches
+          <h2 id="cCheeseApp.leches.home.createOrEditLabel" data-cy="LechesCreateUpdateHeading">
+            Create or edit a Leches
           </h2>
         </Col>
       </Row>
@@ -94,19 +82,19 @@ export const LechesUpdate = (props: ILechesUpdateProps) => {
               ) : null}
               <AvGroup>
                 <Label id="analisisLabel" for="leches-analisis">
-                  Nombre
+                  Analisis
                 </Label>
-                <AvInput
+                <AvField
                   id="leches-analisis"
                   data-cy="analisis"
-                  type="textarea"
+                  type="text"
                   name="analisis"
                   validate={{
                     required: { value: true, errorMessage: 'This field is required.' },
                   }}
                 />
               </AvGroup>
-              <AvGroup className="left-side">
+              <AvGroup>
                 <Label id="calidadLabel" for="leches-calidad">
                   Calidad
                 </Label>
@@ -114,7 +102,7 @@ export const LechesUpdate = (props: ILechesUpdateProps) => {
                   id="leches-calidad"
                   data-cy="calidad"
                   type="string"
-                  className="form-control "
+                  className="form-control"
                   name="calidad"
                   validate={{
                     required: { value: true, errorMessage: 'This field is required.' },
@@ -122,7 +110,7 @@ export const LechesUpdate = (props: ILechesUpdateProps) => {
                   }}
                 />
               </AvGroup>
-              <AvGroup className="left-side">
+              <AvGroup>
                 <Label id="cantidadLabel" for="leches-cantidad">
                   Cantidad
                 </Label>
@@ -138,7 +126,7 @@ export const LechesUpdate = (props: ILechesUpdateProps) => {
                   }}
                 />
               </AvGroup>
-              <AvGroup className="left-side">
+              <AvGroup>
                 <Label id="fechaDeIngresoLabel" for="leches-fechaDeIngreso">
                   Fecha De Ingreso
                 </Label>
@@ -155,23 +143,21 @@ export const LechesUpdate = (props: ILechesUpdateProps) => {
                   }}
                 />
               </AvGroup>
-              <AvGroup className="right-side">
+              <AvGroup>
                 <Label id="tamboLabel" for="leches-tambo">
                   Tambo
                 </Label>
                 <AvField
                   id="leches-tambo"
                   data-cy="tambo"
-                  type="string"
-                  className="form-control"
+                  type="text"
                   name="tambo"
                   validate={{
                     required: { value: true, errorMessage: 'This field is required.' },
-                    number: { value: true, errorMessage: 'This field should be a number.' },
                   }}
                 />
               </AvGroup>
-              <AvGroup className="right-side">
+              <AvGroup>
                 <Label id="temperaturaLabel" for="leches-temperatura">
                   Temperatura
                 </Label>
@@ -187,7 +173,7 @@ export const LechesUpdate = (props: ILechesUpdateProps) => {
                   }}
                 />
               </AvGroup>
-              <AvGroup className="right-side">
+              <AvGroup>
                 <Label for="leches-cisterna">Cisterna</Label>
                 <AvInput id="leches-cisterna" data-cy="cisterna" type="select" className="form-control" name="cisternaId">
                   <option value="" key="0" />
@@ -200,20 +186,13 @@ export const LechesUpdate = (props: ILechesUpdateProps) => {
                     : null}
                 </AvInput>
               </AvGroup>
-              <Button tag={Link} id="cancel-save" to="/leches" replace color="info" style={{ marginTop: '-475px' }}>
+              <Button tag={Link} id="cancel-save" to="/leches" replace color="info">
                 <FontAwesomeIcon icon="arrow-left" />
                 &nbsp;
                 <span className="d-none d-md-inline">Back</span>
               </Button>
               &nbsp;
-              <Button
-                color="primary"
-                id="save-entity"
-                data-cy="entityCreateSaveButton"
-                type="submit"
-                disabled={updating}
-                style={{ marginTop: '-475px' }}
-              >
+              <Button color="primary" id="save-entity" data-cy="entityCreateSaveButton" type="submit" disabled={updating}>
                 <FontAwesomeIcon icon="save" />
                 &nbsp; Save
               </Button>
@@ -237,7 +216,6 @@ const mapDispatchToProps = {
   getCisternas,
   getEntity,
   updateEntity,
-  setBlob,
   createEntity,
   reset,
 };

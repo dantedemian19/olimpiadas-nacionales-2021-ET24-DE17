@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { ApiProperty } from '@nestjs/swagger';
+import { ApiModelProperty } from '@nestjs/swagger';
 import { IsNotEmpty, MinLength, MaxLength, Length, Min, Max, Matches } from 'class-validator';
 import { BaseDTO } from './base.dto';
 
@@ -9,30 +9,31 @@ import { CisternasDTO } from './cisternas.dto';
  * A LechesDTO object.
  */
 export class LechesDTO extends BaseDTO {
-    @ApiProperty({ description: 'analisis field' })
-    analisis: any;
+    @IsNotEmpty()
+    @ApiModelProperty({ description: 'analisis field' })
+    analisis: string;
 
     @IsNotEmpty()
-    @ApiProperty({ description: 'calidad field' })
+    @ApiModelProperty({ description: 'calidad field' })
     calidad: number;
 
     @IsNotEmpty()
-    @ApiProperty({ description: 'cantidad field' })
+    @ApiModelProperty({ description: 'cantidad field' })
     cantidad: number;
 
     @IsNotEmpty()
-    @ApiProperty({ description: 'fechaDeIngreso field' })
+    @ApiModelProperty({ description: 'fechaDeIngreso field' })
     fechaDeIngreso: any;
 
     @IsNotEmpty()
-    @ApiProperty({ description: 'tambo field' })
-    tambo: number;
+    @ApiModelProperty({ description: 'tambo field' })
+    tambo: string;
 
     @IsNotEmpty()
-    @ApiProperty({ description: 'temperatura field' })
+    @ApiModelProperty({ description: 'temperatura field' })
     temperatura: number;
 
-    @ApiProperty({ type: CisternasDTO, description: 'cisterna relationship' })
+    @ApiModelProperty({ type: CisternasDTO, description: 'cisterna relationship' })
     cisterna: CisternasDTO;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
