@@ -3,8 +3,7 @@
   "fields": [
     {
       "fieldName": "analisis",
-      "fieldType": "byte[]",
-      "fieldTypeBlobContent": "text",
+      "fieldType": "String",
       "fieldValidateRules": ["required"]
     },
     {
@@ -24,7 +23,7 @@
     },
     {
       "fieldName": "tambo",
-      "fieldType": "Integer",
+      "fieldType": "String",
       "fieldValidateRules": ["required"]
     },
     {
