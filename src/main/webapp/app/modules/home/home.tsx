@@ -71,60 +71,36 @@ export const Home = (props: IHomeProp) => {
                     </li>
                   </ul>
                   <div className="inforgraphic-box info-pos-1">
-                    <h5 className="color-1">Infografia 1</h5>
-                    <p>
-                      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ea ab porro aut deserunt necessitatibus quae sed dolores
-                      optio nesciunt? Facilis.
-                    </p>
+                    {/* <h5 className="color-1">Infografia 1</h5> */}
+                    <p>Recepción y tratamiento de la leche</p>
                   </div>
                   <div className="inforgraphic-box info-pos-2">
-                    <h5 className="color-2">Infografia 2</h5>
-                    <p>
-                      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ea ab porro aut deserunt necessitatibus quae sed dolores
-                      optio nesciunt? Facilis.
-                    </p>
+                    {/* <h5 className="color-2">Infografia 2</h5> */}
+                    <p>Agregado de fermentos y aditivos</p>
                   </div>
                   <div className="inforgraphic-box info-pos-3">
-                    <h5 className="color-3">Infografia 3</h5>
-                    <p>
-                      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ea ab porro aut deserunt necessitatibus quae sed dolores
-                      optio nesciunt? Facilis.
-                    </p>
+                    {/* <h5 className="color-3">Infografia 3</h5> */}
+                    <p>Coagulación de la leche y manejo de la cuajada</p>
                   </div>
                   <div className="inforgraphic-box info-pos-4">
-                    <h5 className="color-4">Infografia 4</h5>
-                    <p>
-                      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ea ab porro aut deserunt necessitatibus quae sed dolores
-                      optio nesciunt? Facilis.
-                    </p>
+                    {/* <h5 className="color-4">Infografia 4</h5> */}
+                    <p>Desuerado y preprensado bajo suero</p>
                   </div>
                   <div className="inforgraphic-box info-pos-5">
-                    <h5 className="color-5">Infografia 5</h5>
-                    <p>
-                      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ea ab porro aut deserunt necessitatibus quae sed dolores
-                      optio nesciunt? Facilis.
-                    </p>
+                    {/* <h5 className="color-5">Infografia 5</h5> */}
+                    <p>Moldeo y prensado</p>
                   </div>
                   <div className="inforgraphic-box info-pos-6">
-                    <h5 className="color-6">Infografia 6</h5>
-                    <p>
-                      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ea ab porro aut deserunt necessitatibus quae sed dolores
-                      optio nesciunt? Facilis.
-                    </p>
+                    {/* <h5 className="color-6">Infografia 6</h5> */}
+                    <p>Salado por inmersión en salmuera</p>
                   </div>
                   <div className="inforgraphic-box info-pos-7">
-                    <h5 className="color-7">Infografia 7</h5>
-                    <p>
-                      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ea ab porro aut deserunt necessitatibus quae sed dolores
-                      optio nesciunt? Facilis.
-                    </p>
+                    {/* <h5 className="color-7">Infografia 7</h5> */}
+                    <p>Maduración del queso y conservación</p>
                   </div>
                   <div className="inforgraphic-box info-pos-8">
-                    <h5 className="color-8">Infografia 8</h5>
-                    <p>
-                      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ea ab porro aut deserunt necessitatibus quae sed dolores
-                      optio nesciunt? Facilis.
-                    </p>
+                    {/* <h5 className="color-8">Infografia 8</h5> */}
+                    <p>Envasado y etiquetado</p>
                   </div>
                 </div>
               </div>
@@ -134,7 +110,34 @@ export const Home = (props: IHomeProp) => {
       </main>
       <footer className="footer">
         <div className="animals">
-          <h1>C-CHEESE</h1>
+          <div className="sectorIzq">
+            <div className="lineHori"></div>
+            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" rel="noreferrer">
+              Sobre nosotros
+            </a>
+          </div>
+          <div className="sectorCent">
+            <h1>C-CHEESE</h1>
+            <div className="redes">
+              <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" rel="noreferrer">
+                <img src="../../../content/images/instagram.png" alt="instagram" />
+              </a>
+              <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" rel="noreferrer">
+                <img src="../../../content/images/facebook.png" alt="facebook" />
+              </a>
+              <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" rel="noreferrer">
+                <img src="../../../content/images/twitter.png" alt="twitter" />
+              </a>
+            </div>
+            <div className="lineVert"></div>
+            <p className="copy">© 2021</p>
+          </div>
+          <div className="sectorDer">
+            <div className="lineHori"></div>
+            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" rel="noreferrer">
+              Terminos y condiciones
+            </a>
+          </div>
         </div>
       </footer>
     </Row>
