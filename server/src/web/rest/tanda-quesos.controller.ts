@@ -28,6 +28,7 @@ import { MovimientosAlmacenService } from '../../service/movimientos-almacen.ser
 @UseGuards(AuthGuard, RolesGuard)
 @UseInterceptors(LoggingInterceptor, ClassSerializerInterceptor)
 @ApiBearerAuth()
+@Roles(RoleType.ADMIN, RoleType.PRODUCTION)
 @ApiTags('tanda-quesos')
 export class TandaQuesosController {
     logger = new Logger('TandaQuesosController');
@@ -38,7 +39,6 @@ export class TandaQuesosController {
     ) {}
 
     @Get('/')
-    @Roles(RoleType.USER)
     @ApiResponse({
         status: 200,
         description: 'List all records',
@@ -56,7 +56,6 @@ export class TandaQuesosController {
     }
 
     @Get('/:id')
-    @Roles(RoleType.USER)
     @ApiResponse({
         status: 200,
         description: 'The found record',
@@ -67,7 +66,6 @@ export class TandaQuesosController {
     }
 
     @PostMethod('/')
-    @Roles(RoleType.ADMIN)
     @ApiOperation({ summary: 'Create tandaQuesos' })
     @ApiResponse({
         status: 201,
@@ -82,7 +80,6 @@ export class TandaQuesosController {
     }
 
     @Put('/')
-    @Roles(RoleType.ADMIN)
     @ApiOperation({ summary: 'Update tandaQuesos' })
     @ApiResponse({
         status: 200,
@@ -95,7 +92,6 @@ export class TandaQuesosController {
     }
 
     @Put('/:id')
-    @Roles(RoleType.ADMIN)
     @ApiOperation({ summary: 'Update tandaQuesos with id' })
     @ApiResponse({
         status: 200,
@@ -108,7 +104,6 @@ export class TandaQuesosController {
     } 
     
     @Put('/:changeTandaQuesoEstado')
-    @Roles(RoleType.ADMIN)
     @ApiOperation({ summary: 'Update tipoDeQueso.estado with id' })
     @ApiResponse({
         status: 200,
@@ -138,7 +133,6 @@ export class TandaQuesosController {
     }
 
     @Delete('/:id')
-    @Roles(RoleType.ADMIN)
     @ApiOperation({ summary: 'Delete tandaQuesos' })
     @ApiResponse({
         status: 204,

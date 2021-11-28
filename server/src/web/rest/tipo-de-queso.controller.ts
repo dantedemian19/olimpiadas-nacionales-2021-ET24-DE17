@@ -25,6 +25,7 @@ import { LoggingInterceptor } from '../../client/interceptors/logging.intercepto
 @UseGuards(AuthGuard, RolesGuard)
 @UseInterceptors(LoggingInterceptor, ClassSerializerInterceptor)
 @ApiBearerAuth()
+@Roles(RoleType.ADMIN)
 @ApiTags('tipo-de-quesos')
 export class TipoDeQuesoController {
     logger = new Logger('TipoDeQuesoController');
@@ -32,7 +33,7 @@ export class TipoDeQuesoController {
     constructor(private readonly tipoDeQuesoService: TipoDeQuesoService) {}
 
     @Get('/')
-    @Roles(RoleType.USER)
+    @Roles(RoleType.LABORATORY, RoleType.PRODUCTION)
     @ApiResponse({
         status: 200,
         description: 'List all records',
@@ -50,7 +51,6 @@ export class TipoDeQuesoController {
     }
 
     @Get('/:id')
-    @Roles(RoleType.USER)
     @ApiResponse({
         status: 200,
         description: 'The found record',
@@ -61,7 +61,6 @@ export class TipoDeQuesoController {
     }
 
     @PostMethod('/')
-    @Roles(RoleType.ADMIN)
     @ApiOperation({ summary: 'Create tipoDeQueso' })
     @ApiResponse({
         status: 201,
@@ -76,7 +75,6 @@ export class TipoDeQuesoController {
     }
 
     @Put('/')
-    @Roles(RoleType.ADMIN)
     @ApiOperation({ summary: 'Update tipoDeQueso' })
     @ApiResponse({
         status: 200,
@@ -89,7 +87,6 @@ export class TipoDeQuesoController {
     }
 
     @Put('/:id')
-    @Roles(RoleType.ADMIN)
     @ApiOperation({ summary: 'Update tipoDeQueso with id' })
     @ApiResponse({
         status: 200,
@@ -102,7 +99,6 @@ export class TipoDeQuesoController {
     }
 
     @Delete('/:id')
-    @Roles(RoleType.ADMIN)
     @ApiOperation({ summary: 'Delete tipoDeQueso' })
     @ApiResponse({
         status: 204,

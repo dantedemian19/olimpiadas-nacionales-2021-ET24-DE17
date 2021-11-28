@@ -25,6 +25,7 @@ import { LoggingInterceptor } from '../../client/interceptors/logging.intercepto
 @UseGuards(AuthGuard, RolesGuard)
 @UseInterceptors(LoggingInterceptor, ClassSerializerInterceptor)
 @ApiBearerAuth()
+@Roles(RoleType.ADMIN)
 @ApiTags('cisternas')
 export class CisternasController {
     logger = new Logger('CisternasController');
@@ -32,7 +33,7 @@ export class CisternasController {
     constructor(private readonly cisternasService: CisternasService) {}
 
     @Get('/')
-    @Roles(RoleType.USER)
+    @Roles(RoleType.RECEPTIONIST)
     @ApiResponse({
         status: 200,
         description: 'List all records',
@@ -50,7 +51,6 @@ export class CisternasController {
     }
 
     @Get('/:id')
-    @Roles(RoleType.USER)
     @ApiResponse({
         status: 200,
         description: 'The found record',
@@ -61,7 +61,6 @@ export class CisternasController {
     }
 
     @PostMethod('/')
-    @Roles(RoleType.ADMIN)
     @ApiOperation({ summary: 'Create cisternas' })
     @ApiResponse({
         status: 201,
@@ -76,7 +75,6 @@ export class CisternasController {
     }
 
     @Put('/')
-    @Roles(RoleType.ADMIN)
     @ApiOperation({ summary: 'Update cisternas' })
     @ApiResponse({
         status: 200,
@@ -89,7 +87,6 @@ export class CisternasController {
     }
 
     @Put('/:id')
-    @Roles(RoleType.ADMIN)
     @ApiOperation({ summary: 'Update cisternas with id' })
     @ApiResponse({
         status: 200,
@@ -102,7 +99,6 @@ export class CisternasController {
     }
 
     @Delete('/:id')
-    @Roles(RoleType.ADMIN)
     @ApiOperation({ summary: 'Delete cisternas' })
     @ApiResponse({
         status: 204,

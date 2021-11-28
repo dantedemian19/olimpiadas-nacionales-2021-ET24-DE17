@@ -25,6 +25,7 @@ import { LoggingInterceptor } from '../../client/interceptors/logging.intercepto
 @UseGuards(AuthGuard, RolesGuard)
 @UseInterceptors(LoggingInterceptor, ClassSerializerInterceptor)
 @ApiBearerAuth()
+@Roles(RoleType.RECEPTIONIST, RoleType.ADMIN)
 @ApiTags('leches')
 export class LechesController {
     logger = new Logger('LechesController');
@@ -32,7 +33,7 @@ export class LechesController {
     constructor(private readonly lechesService: LechesService) {}
 
     @Get('/')
-    @Roles(RoleType.USER)
+    @Roles(RoleType.PRODUCTION)
     @ApiResponse({
         status: 200,
         description: 'List all records',
@@ -50,7 +51,6 @@ export class LechesController {
     }
 
     @Get('/:id')
-    @Roles(RoleType.USER)
     @ApiResponse({
         status: 200,
         description: 'The found record',
@@ -61,7 +61,6 @@ export class LechesController {
     }
 
     @PostMethod('/')
-    @Roles(RoleType.ADMIN)
     @ApiOperation({ summary: 'Create leches' })
     @ApiResponse({
         status: 201,
@@ -76,7 +75,6 @@ export class LechesController {
     }
 
     @Put('/')
-    @Roles(RoleType.ADMIN)
     @ApiOperation({ summary: 'Update leches' })
     @ApiResponse({
         status: 200,
@@ -89,7 +87,6 @@ export class LechesController {
     }
 
     @Put('/:id')
-    @Roles(RoleType.ADMIN)
     @ApiOperation({ summary: 'Update leches with id' })
     @ApiResponse({
         status: 200,
@@ -102,7 +99,6 @@ export class LechesController {
     }
 
     @Delete('/:id')
-    @Roles(RoleType.ADMIN)
     @ApiOperation({ summary: 'Delete leches' })
     @ApiResponse({
         status: 204,
