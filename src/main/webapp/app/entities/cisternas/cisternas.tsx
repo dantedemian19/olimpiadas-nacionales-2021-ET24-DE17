@@ -83,11 +83,11 @@ export const Cisternas = (props: ICisternasProps) => {
         Cisternas
         <div className="d-flex justify-content-end">
           <Button className="mr-2" color="info" onClick={handleSyncList} disabled={loading}>
-            <FontAwesomeIcon icon="sync" spin={loading} /> Refresh List
+            <FontAwesomeIcon icon="sync" spin={loading} /> Actualizar Lista
           </Button>
           <Link to={`${match.url}/new`} className="btn btn-success jh-create-entity" id="jh-create-entity" data-cy="entityCreateButton">
             <FontAwesomeIcon icon="plus" />
-            &nbsp; Create new Cisternas
+            &nbsp; Añadir nueva Cisterna
           </Link>
         </div>
       </h2>

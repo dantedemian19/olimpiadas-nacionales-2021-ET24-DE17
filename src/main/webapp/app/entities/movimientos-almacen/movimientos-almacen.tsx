@@ -71,16 +71,16 @@ export const MovimientosAlmacen = (props: IMovimientosAlmacenProps) => {
 
   const { movimientosAlmacenList, match, loading, totalItems } = props;
   return (
-    <div>
+    <div className="container-entities">
       <h2 id="movimientos-almacen-heading" data-cy="MovimientosAlmacenHeading">
-        Movimientos Almacens
+        Movimientos Almacenes
         <div className="d-flex justify-content-end">
           <Button className="mr-2" color="info" onClick={handleSyncList} disabled={loading}>
-            <FontAwesomeIcon icon="sync" spin={loading} /> Refresh List
+            <FontAwesomeIcon icon="sync" spin={loading} /> Actualizar Lista
           </Button>
           <Link to={`${match.url}/new`} className="btn btn-success jh-create-entity" id="jh-create-entity" data-cy="entityCreateButton">
             <FontAwesomeIcon icon="plus" />
-            &nbsp; Create new Movimientos Almacen
+            &nbsp; Añadir nuevo Movimiento Almacen
           </Link>
         </div>
       </h2>

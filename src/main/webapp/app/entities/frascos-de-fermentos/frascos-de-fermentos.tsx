@@ -81,11 +81,11 @@ export const FrascosDeFermentos = (props: IFrascosDeFermentosProps) => {
         Frascos De Fermentos
         <div className="d-flex justify-content-end">
           <Button className="mr-2" color="info" onClick={handleSyncList} disabled={loading}>
-            <FontAwesomeIcon icon="sync" spin={loading} /> Refresh List
+            <FontAwesomeIcon icon="sync" spin={loading} /> Actualizar Lista
           </Button>
           <Link to={`${match.url}/new`} className="btn btn-success jh-create-entity" id="jh-create-entity" data-cy="entityCreateButton">
             <FontAwesomeIcon icon="plus" />
-            &nbsp; Create new Frascos De Fermentos
+            &nbsp; Añadir nuevo Frasco De Fermentos
           </Link>
         </div>
       </h2>
