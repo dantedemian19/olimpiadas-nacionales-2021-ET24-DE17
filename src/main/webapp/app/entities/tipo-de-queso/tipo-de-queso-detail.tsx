@@ -39,7 +39,7 @@ export const TipoDeQuesoDetail = (props: ITipoDeQuesoDetailProps) => {
           <FontAwesomeIcon icon="arrow-left" /> <span className="d-none d-md-inline">Back</span>
         </Button>
         &nbsp;
-        <Button tag={Link} to={`/tipo-de-queso/${tipoDeQuesoEntity.id}/edit`} replace color="primary">
+        <Button tag={Link} to={`/tipo-de-queso/${tipoDeQuesoEntity.id}/edit`} replace color="success">
           <FontAwesomeIcon icon="pencil-alt" /> <span className="d-none d-md-inline">Editar</span>
         </Button>
       </Col>

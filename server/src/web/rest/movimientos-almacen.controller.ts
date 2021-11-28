@@ -32,7 +32,7 @@ export class MovimientosAlmacenController {
     constructor(private readonly movimientosAlmacenService: MovimientosAlmacenService) {}
 
     @Get('/')
-    @Roles(RoleType.USER)
+    @Roles(RoleType.ADMIN, RoleType.PRODUCTION)
     @ApiResponse({
         status: 200,
         description: 'List all records',
@@ -50,7 +50,7 @@ export class MovimientosAlmacenController {
     }
 
     @Get('/:id')
-    @Roles(RoleType.USER)
+    @Roles(RoleType.ADMIN, RoleType.PRODUCTION)
     @ApiResponse({
         status: 200,
         description: 'The found record',

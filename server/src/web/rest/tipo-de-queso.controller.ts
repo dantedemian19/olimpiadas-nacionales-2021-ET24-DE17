@@ -12,7 +12,7 @@ import {
     Req,
     UseInterceptors,
 } from '@nestjs/common';
-import { ApiBearerAuth, ApiUseTags, ApiResponse, ApiOperation } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiTags, ApiResponse, ApiOperation } from '@nestjs/swagger';
 import { TipoDeQuesoDTO } from '../../service/dto/tipo-de-queso.dto';
 import { TipoDeQuesoService } from '../../service/tipo-de-queso.service';
 import { PageRequest, Page } from '../../domain/base/pagination.entity';
@@ -25,14 +25,15 @@ import { LoggingInterceptor } from '../../client/interceptors/logging.intercepto
 @UseGuards(AuthGuard, RolesGuard)
 @UseInterceptors(LoggingInterceptor, ClassSerializerInterceptor)
 @ApiBearerAuth()
-@ApiUseTags('tipo-de-quesos')
+@Roles(RoleType.ADMIN)
+@ApiTags('tipo-de-quesos')
 export class TipoDeQuesoController {
     logger = new Logger('TipoDeQuesoController');
 
     constructor(private readonly tipoDeQuesoService: TipoDeQuesoService) {}
 
     @Get('/')
-    @Roles(RoleType.USER)
+    @Roles(RoleType.LABORATORY, RoleType.PRODUCTION)
     @ApiResponse({
         status: 200,
         description: 'List all records',
@@ -50,7 +51,6 @@ export class TipoDeQuesoController {
     }
 
     @Get('/:id')
-    @Roles(RoleType.USER)
     @ApiResponse({
         status: 200,
         description: 'The found record',
@@ -61,8 +61,7 @@ export class TipoDeQuesoController {
     }
 
     @PostMethod('/')
-    @Roles(RoleType.ADMIN)
-    @ApiOperation({ title: 'Create tipoDeQueso' })
+    @ApiOperation({ summary: 'Create tipoDeQueso' })
     @ApiResponse({
         status: 201,
         description: 'The record has been successfully created.',
@@ -76,8 +75,7 @@ export class TipoDeQuesoController {
     }
 
     @Put('/')
-    @Roles(RoleType.ADMIN)
-    @ApiOperation({ title: 'Update tipoDeQueso' })
+    @ApiOperation({ summary: 'Update tipoDeQueso' })
     @ApiResponse({
         status: 200,
         description: 'The record has been successfully updated.',
@@ -89,8 +87,7 @@ export class TipoDeQuesoController {
     }
 
     @Put('/:id')
-    @Roles(RoleType.ADMIN)
-    @ApiOperation({ title: 'Update tipoDeQueso with id' })
+    @ApiOperation({ summary: 'Update tipoDeQueso with id' })
     @ApiResponse({
         status: 200,
         description: 'The record has been successfully updated.',
@@ -102,8 +99,7 @@ export class TipoDeQuesoController {
     }
 
     @Delete('/:id')
-    @Roles(RoleType.ADMIN)
-    @ApiOperation({ title: 'Delete tipoDeQueso' })
+    @ApiOperation({ summary: 'Delete tipoDeQueso' })
     @ApiResponse({
         status: 204,
         description: 'The record has been successfully deleted.',

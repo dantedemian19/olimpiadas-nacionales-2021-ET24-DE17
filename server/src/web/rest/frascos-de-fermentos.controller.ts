@@ -25,6 +25,7 @@ import { LoggingInterceptor } from '../../client/interceptors/logging.intercepto
 @UseGuards(AuthGuard, RolesGuard)
 @UseInterceptors(LoggingInterceptor, ClassSerializerInterceptor)
 @ApiBearerAuth()
+@Roles(RoleType.ADMIN, RoleType.LABORATORY)
 @ApiTags('frascos-de-fermentos')
 export class FrascosDeFermentosController {
     logger = new Logger('FrascosDeFermentosController');
@@ -32,7 +33,7 @@ export class FrascosDeFermentosController {
     constructor(private readonly frascosDeFermentosService: FrascosDeFermentosService) {}
 
     @Get('/')
-    @Roles(RoleType.USER)
+    @Roles(RoleType.PRODUCTION)
     @ApiResponse({
         status: 200,
         description: 'List all records',
@@ -50,7 +51,6 @@ export class FrascosDeFermentosController {
     }
 
     @Get('/:id')
-    @Roles(RoleType.USER)
     @ApiResponse({
         status: 200,
         description: 'The found record',
@@ -61,7 +61,6 @@ export class FrascosDeFermentosController {
     }
 
     @PostMethod('/')
-    @Roles(RoleType.ADMIN)
     @ApiOperation({ summary: 'Create frascosDeFermentos' })
     @ApiResponse({
         status: 201,
@@ -79,7 +78,6 @@ export class FrascosDeFermentosController {
     }
 
     @Put('/')
-    @Roles(RoleType.ADMIN)
     @ApiOperation({ summary: 'Update frascosDeFermentos' })
     @ApiResponse({
         status: 200,
@@ -95,7 +93,6 @@ export class FrascosDeFermentosController {
     }
 
     @Put('/:id')
-    @Roles(RoleType.ADMIN)
     @ApiOperation({ summary: 'Update frascosDeFermentos with id' })
     @ApiResponse({
         status: 200,
@@ -111,7 +108,6 @@ export class FrascosDeFermentosController {
     }
 
     @Delete('/:id')
-    @Roles(RoleType.ADMIN)
     @ApiOperation({ summary: 'Delete frascosDeFermentos' })
     @ApiResponse({
         status: 204,

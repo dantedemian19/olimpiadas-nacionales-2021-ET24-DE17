@@ -76,16 +76,16 @@ export const TandaQuesos = (props: ITandaQuesosProps) => {
 
   const { tandaQuesosList, match, loading, totalItems } = props;
   return (
-    <div>
+    <div className="container-entities">
       <h2 id="tanda-quesos-heading" data-cy="TandaQuesosHeading">
-        Tanda Quesos
+        Tanda de Quesos
         <div className="d-flex justify-content-end">
           <Button className="mr-2" color="info" onClick={handleSyncList} disabled={loading}>
-            <FontAwesomeIcon icon="sync" spin={loading} /> Refresh List
+            <FontAwesomeIcon icon="sync" spin={loading} /> Actualizar Lista
           </Button>
-          <Link to={`${match.url}/new`} className="btn btn-primary jh-create-entity" id="jh-create-entity" data-cy="entityCreateButton">
+          <Link to={`${match.url}/new`} className="btn btn-success jh-create-entity" id="jh-create-entity" data-cy="entityCreateButton">
             <FontAwesomeIcon icon="plus" />
-            &nbsp; Create new Tanda Quesos
+            &nbsp; Añadir nueva Tanda de Quesos
           </Link>
         </div>
       </h2>

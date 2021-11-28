@@ -71,16 +71,16 @@ export const Leches = (props: ILechesProps) => {
 
   const { lechesList, match, loading, totalItems } = props;
   return (
-    <div>
+    <div className="container-entities">
       <h2 id="leches-heading" data-cy="LechesHeading">
         Leches
         <div className="d-flex justify-content-end">
           <Button className="mr-2" color="info" onClick={handleSyncList} disabled={loading}>
-            <FontAwesomeIcon icon="sync" spin={loading} /> Refresh List
+            <FontAwesomeIcon icon="sync" spin={loading} /> Actualizar Lista
           </Button>
-          <Link to={`${match.url}/new`} className="btn btn-primary jh-create-entity" id="jh-create-entity" data-cy="entityCreateButton">
+          <Link to={`${match.url}/new`} className="btn btn-success jh-create-entity" id="jh-create-entity" data-cy="entityCreateButton">
             <FontAwesomeIcon icon="plus" />
-            &nbsp; Create new Leches
+            &nbsp; Añadir nueva Leche
           </Link>
         </div>
       </h2>

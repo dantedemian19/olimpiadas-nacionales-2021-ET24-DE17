@@ -40,126 +40,92 @@ export const Home = (props: IHomeProp) => {
         <div style={{ backgroundColor: '#f6f6f6', width: '100vw' }}>
           <section className="pasos">
             <h1>Pasos a seguir para la elaboración del queso</h1>
-            <div className="container">
-              <div className="carta">
-                <div className="contenido">
-                  <h2>01</h2>
-                  {/* <h1>Paso uno</h1> */}
-                  <h3>Recepción y tratamiento previo de la leche</h3>
-                  {/* <p>
-                  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Asperiores debitis delectus esse ipsam nesciunt, vitae beatae
-                  similique voluptate, sequi animi veritatis sed qui libero cumque voluptatibus quam aliquid architecto culpa!
-                </p> */}
-                </div>
-              </div>
-              <div className="carta">
-                <div className="contenido">
-                  <h2>02</h2>
-                  {/* <h1>Paso dos</h1> */}
-                  <h3>Agregado de fermentos</h3>
-                  {/* <p>
-                  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Asperiores debitis delectus esse ipsam nesciunt, vitae beatae
-                  similique voluptate, sequi animi veritatis sed qui libero cumque voluptatibus quam aliquid architecto culpa!
-                </p> */}
-                </div>
-              </div>
-              <div className="carta">
-                <div className="contenido">
-                  <h2>03</h2>
-                  {/* <h1>Paso tres</h1> */}
-                  <h3>Agregado de Aditivos</h3>
-                  {/* <p>
-                  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Asperiores debitis delectus esse ipsam nesciunt, vitae beatae
-                  similique voluptate, sequi animi veritatis sed qui libero cumque voluptatibus quam aliquid architecto culpa!
-                </p> */}
-                </div>
-              </div>
-              <div className="carta">
-                <div className="contenido">
-                  <h2>04</h2>
-                  {/* <h1>Paso cuatro</h1> */}
-                  <h3>Coagulación de la leche</h3>
-                  {/* <p>
-                  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Asperiores debitis delectus esse ipsam nesciunt, vitae beatae
-                  similique voluptate, sequi animi veritatis sed qui libero cumque voluptatibus quam aliquid architecto culpa!
-                </p> */}
-                </div>
-              </div>
-              <div className="carta">
-                <div className="contenido">
-                  <h2>05</h2>
-                  {/* <h1>Paso cuatro</h1> */}
-                  <h3>Manejo de la cuajada</h3>
-                  {/* <p>
-                  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Asperiores debitis delectus esse ipsam nesciunt, vitae beatae
-                  similique voluptate, sequi animi veritatis sed qui libero cumque voluptatibus quam aliquid architecto culpa!
-                </p> */}
-                </div>
-              </div>
-              <div className="carta">
-                <div className="contenido">
-                  <h2>06</h2>
-                  {/* <h1>Paso cuatro</h1> */}
-                  <h3>Desuerado y preprensado bajo suero</h3>
-                  {/* <p>
-                  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Asperiores debitis delectus esse ipsam nesciunt, vitae beatae
-                  similique voluptate, sequi animi veritatis sed qui libero cumque voluptatibus quam aliquid architecto culpa!
-                </p> */}
-                </div>
-              </div>
-              <div className="carta">
-                <div className="contenido">
-                  <h2>07</h2>
-                  {/* <h1>Paso cuatro</h1> */}
-                  <h3>Moldeo y prensado</h3>
-                  {/* <p>
-                  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Asperiores debitis delectus esse ipsam nesciunt, vitae beatae
-                  similique voluptate, sequi animi veritatis sed qui libero cumque voluptatibus quam aliquid architecto culpa!
-                </p> */}
-                </div>
-              </div>
-              <div className="carta">
-                <div className="contenido">
-                  <h2>08</h2>
-                  {/* <h1>Paso cuatro</h1> */}
-                  <h3>Salado por inmersión en salmuera</h3>
-                  {/* <p>
-                  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Asperiores debitis delectus esse ipsam nesciunt, vitae beatae
-                  similique voluptate, sequi animi veritatis sed qui libero cumque voluptatibus quam aliquid architecto culpa!
-                </p> */}
-                </div>
-              </div>
-              <div className="carta">
-                <div className="contenido">
-                  <h2>09</h2>
-                  {/* <h1>Paso cuatro</h1> */}
-                  <h3>Maduración del queso</h3>
-                  {/* <p>
-                  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Asperiores debitis delectus esse ipsam nesciunt, vitae beatae
-                  similique voluptate, sequi animi veritatis sed qui libero cumque voluptatibus quam aliquid architecto culpa!
-                </p> */}
-                </div>
-              </div>
-              <div className="carta">
-                <div className="contenido">
-                  <h2>10</h2>
-                  {/* <h1>Paso cuatro</h1> */}
-                  <h3>Conservación</h3>
-                  {/* <p>
-                  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Asperiores debitis delectus esse ipsam nesciunt, vitae beatae
-                  similique voluptate, sequi animi veritatis sed qui libero cumque voluptatibus quam aliquid architecto culpa!
-                </p> */}
-                </div>
-              </div>
-              <div className="carta">
-                <div className="contenido">
-                  <h2>11</h2>
-                  {/* <h1>Paso cuatro</h1> */}
-                  <h3>Envasado y etiquetado</h3>
-                  {/* <p>
-                  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Asperiores debitis delectus esse ipsam nesciunt, vitae beatae
-                  similique voluptate, sequi animi veritatis sed qui libero cumque voluptatibus quam aliquid architecto culpa!
-                </p> */}
+            <div className="main-container" style={{ position: 'relative', top: '25px' }}>
+              <div className="container-inner">
+                <div className="container-inner-img">
+                  <img src="../../../content/images/circle-img.png" alt="" />
+                  <ul className="steps">
+                    <li className="text-style pos-1">
+                      PASO <span>01</span>
+                    </li>
+                    <li className="text-style pos-2">
+                      PASO <span>02</span>
+                    </li>
+                    <li className="text-style pos-3">
+                      PASO <span>03</span>
+                    </li>
+                    <li className="text-style pos-4">
+                      PASO <span>04</span>
+                    </li>
+                    <li className="text-style pos-5">
+                      PASO <span>05</span>
+                    </li>
+                    <li className="text-style pos-6">
+                      PASO <span>06</span>
+                    </li>
+                    <li className="text-style pos-7">
+                      PASO <span>07</span>
+                    </li>
+                    <li className="text-style pos-8">
+                      PASO <span>08</span>
+                    </li>
+                  </ul>
+                  <div className="inforgraphic-box info-pos-1">
+                    <h5 className="color-1">Infografia 1</h5>
+                    <p>
+                      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ea ab porro aut deserunt necessitatibus quae sed dolores
+                      optio nesciunt? Facilis.
+                    </p>
+                  </div>
+                  <div className="inforgraphic-box info-pos-2">
+                    <h5 className="color-2">Infografia 2</h5>
+                    <p>
+                      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ea ab porro aut deserunt necessitatibus quae sed dolores
+                      optio nesciunt? Facilis.
+                    </p>
+                  </div>
+                  <div className="inforgraphic-box info-pos-3">
+                    <h5 className="color-3">Infografia 3</h5>
+                    <p>
+                      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ea ab porro aut deserunt necessitatibus quae sed dolores
+                      optio nesciunt? Facilis.
+                    </p>
+                  </div>
+                  <div className="inforgraphic-box info-pos-4">
+                    <h5 className="color-4">Infografia 4</h5>
+                    <p>
+                      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ea ab porro aut deserunt necessitatibus quae sed dolores
+                      optio nesciunt? Facilis.
+                    </p>
+                  </div>
+                  <div className="inforgraphic-box info-pos-5">
+                    <h5 className="color-5">Infografia 5</h5>
+                    <p>
+                      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ea ab porro aut deserunt necessitatibus quae sed dolores
+                      optio nesciunt? Facilis.
+                    </p>
+                  </div>
+                  <div className="inforgraphic-box info-pos-6">
+                    <h5 className="color-6">Infografia 6</h5>
+                    <p>
+                      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ea ab porro aut deserunt necessitatibus quae sed dolores
+                      optio nesciunt? Facilis.
+                    </p>
+                  </div>
+                  <div className="inforgraphic-box info-pos-7">
+                    <h5 className="color-7">Infografia 7</h5>
+                    <p>
+                      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ea ab porro aut deserunt necessitatibus quae sed dolores
+                      optio nesciunt? Facilis.
+                    </p>
+                  </div>
+                  <div className="inforgraphic-box info-pos-8">
+                    <h5 className="color-8">Infografia 8</h5>
+                    <p>
+                      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ea ab porro aut deserunt necessitatibus quae sed dolores
+                      optio nesciunt? Facilis.
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>

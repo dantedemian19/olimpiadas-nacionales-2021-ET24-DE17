@@ -59,7 +59,7 @@ export const LechesDetail = (props: ILechesDetailProps) => {
           <FontAwesomeIcon icon="arrow-left" /> <span className="d-none d-md-inline">Back</span>
         </Button>
         &nbsp;
-        <Button tag={Link} to={`/leches/${lechesEntity.id}/edit`} replace color="primary">
+        <Button tag={Link} to={`/leches/${lechesEntity.id}/edit`} replace color="success">
           <FontAwesomeIcon icon="pencil-alt" /> <span className="d-none d-md-inline">Edit</span>
         </Button>
       </Col>
