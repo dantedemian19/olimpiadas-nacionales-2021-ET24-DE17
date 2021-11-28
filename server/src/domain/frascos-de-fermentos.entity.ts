@@ -19,8 +19,8 @@ export class FrascosDeFermentos extends BaseEntity {
     @Column({ type: 'simple-enum', name: 'estado', enum: EstadoFermentos })
     estado: EstadoFermentos;
 
-    @Column({ type: 'blob', name: 'detalles', nullable: true })
-    detalles: any;
+    @Column({ name: 'detalles', nullable: true })
+    detalles: string;
 
     @Column({ type: 'integer', name: 'peso', nullable: true })
     peso: number;

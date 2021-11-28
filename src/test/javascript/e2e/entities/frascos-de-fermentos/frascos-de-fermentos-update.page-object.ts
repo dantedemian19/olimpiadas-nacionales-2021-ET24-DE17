@@ -10,7 +10,7 @@ export default class FrascosDeFermentosUpdatePage {
   calidadInput: ElementFinder = element(by.css('input#frascos-de-fermentos-calidad'));
   fechaAnalisisInput: ElementFinder = element(by.css('input#frascos-de-fermentos-fechaAnalisis'));
   estadoSelect: ElementFinder = element(by.css('select#frascos-de-fermentos-estado'));
-  detallesInput: ElementFinder = element(by.css('textarea#frascos-de-fermentos-detalles'));
+  detallesInput: ElementFinder = element(by.css('input#frascos-de-fermentos-detalles'));
   pesoInput: ElementFinder = element(by.css('input#frascos-de-fermentos-peso'));
   tipoSelect: ElementFinder = element(by.css('select#frascos-de-fermentos-tipo'));
 

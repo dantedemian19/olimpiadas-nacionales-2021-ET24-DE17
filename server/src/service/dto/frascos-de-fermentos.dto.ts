@@ -22,7 +22,7 @@ export class FrascosDeFermentosDTO extends BaseDTO {
     estado: EstadoFermentos;
 
     @ApiProperty({ description: 'detalles field', required: false })
-    detalles: any;
+    detalles: string;
 
     @ApiProperty({ description: 'peso field', required: false })
     peso: number;

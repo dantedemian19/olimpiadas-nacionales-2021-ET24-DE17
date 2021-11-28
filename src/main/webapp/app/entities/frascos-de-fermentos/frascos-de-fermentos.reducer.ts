@@ -13,7 +13,6 @@ export const ACTION_TYPES = {
   UPDATE_FRASCOSDEFERMENTOS: 'frascosDeFermentos/UPDATE_FRASCOSDEFERMENTOS',
   PARTIAL_UPDATE_FRASCOSDEFERMENTOS: 'frascosDeFermentos/PARTIAL_UPDATE_FRASCOSDEFERMENTOS',
   DELETE_FRASCOSDEFERMENTOS: 'frascosDeFermentos/DELETE_FRASCOSDEFERMENTOS',
-  SET_BLOB: 'frascosDeFermentos/SET_BLOB',
   RESET: 'frascosDeFermentos/RESET',
 };
 
@@ -93,17 +92,6 @@ export default (state: FrascosDeFermentosState = initialState, action): FrascosD
         updateSuccess: true,
         entity: {},
       };
-    case ACTION_TYPES.SET_BLOB: {
-      const { name, data, contentType } = action.payload;
-      return {
-        ...state,
-        entity: {
-          ...state.entity,
-          [name]: data,
-          [name + 'ContentType']: contentType,
-        },
-      };
-    }
     case ACTION_TYPES.RESET:
       return {
         ...initialState,
@@ -167,15 +155,6 @@ export const deleteEntity: ICrudDeleteAction<IFrascosDeFermentos> = id => async 
   dispatch(getEntities());
   return result;
 };
-
-export const setBlob = (name, data, contentType?) => ({
-  type: ACTION_TYPES.SET_BLOB,
-  payload: {
-    name,
-    data,
-    contentType,
-  },
-});
 
 export const reset = () => ({
   type: ACTION_TYPES.RESET,

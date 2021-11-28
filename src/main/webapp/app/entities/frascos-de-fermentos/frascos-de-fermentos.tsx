@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Link, RouteComponentProps } from 'react-router-dom';
 import { Button, Col, Row, Table } from 'reactstrap';
-import { byteSize, Translate, TextFormat, getSortState, IPaginationBaseState, JhiPagination, JhiItemCount } from 'react-jhipster';
+import { Translate, TextFormat, getSortState, IPaginationBaseState, JhiPagination, JhiItemCount } from 'react-jhipster';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { IRootState } from 'app/shared/reducers';
@@ -12,9 +12,6 @@ import { IFrascosDeFermentos } from 'app/shared/model/frascos-de-fermentos.model
 import { APP_DATE_FORMAT, APP_LOCAL_DATE_FORMAT } from 'app/config/constants';
 import { ITEMS_PER_PAGE } from 'app/shared/util/pagination.constants';
 import { overridePaginationStateWithQueryParams } from 'app/shared/util/entity-utils';
-
-import { Bar } from 'react-chartjs-2';
-import { CategoryScale, Chart, registerables } from 'chart.js';
 
 export interface IFrascosDeFermentosProps extends StateProps, DispatchProps, RouteComponentProps<{ url: string }> {}
 
@@ -72,11 +69,9 @@ export const FrascosDeFermentos = (props: IFrascosDeFermentosProps) => {
     sortEntities();
   };
 
-  Chart.register(CategoryScale, ...registerables);
-
   const { frascosDeFermentosList, match, loading, totalItems } = props;
   return (
-    <div className="container-entities">
+    <div>
       <h2 id="frascos-de-fermentos-heading" data-cy="FrascosDeFermentosHeading">
         Frascos De Fermentos
         <div className="d-flex justify-content-end">
@@ -145,25 +140,25 @@ export const FrascosDeFermentos = (props: IFrascosDeFermentosProps) => {
                   <td className="text-right">
                     <div className="btn-group flex-btn-group-container">
                       <Button tag={Link} to={`${match.url}/${frascosDeFermentos.id}`} color="info" size="sm" data-cy="entityDetailsButton">
-                        <FontAwesomeIcon icon="eye" /> <span className="d-none d-md-inline">Detalles</span>
+                        <FontAwesomeIcon icon="eye" /> <span className="d-none d-md-inline">View</span>
                       </Button>
                       <Button
                         tag={Link}
                         to={`${match.url}/${frascosDeFermentos.id}/edit?page=${paginationState.activePage}&sort=${paginationState.sort},${paginationState.order}`}
                         color="primary"
                         size="sm"
-                        data-cy="entityEditarButton"
+                        data-cy="entityEditButton"
                       >
-                        <FontAwesomeIcon icon="pencil-alt" /> <span className="d-none d-md-inline">Editar</span>
+                        <FontAwesomeIcon icon="pencil-alt" /> <span className="d-none d-md-inline">Edit</span>
                       </Button>
                       <Button
                         tag={Link}
                         to={`${match.url}/${frascosDeFermentos.id}/delete?page=${paginationState.activePage}&sort=${paginationState.sort},${paginationState.order}`}
                         color="danger"
                         size="sm"
-                        data-cy="entityEliminarButton"
+                        data-cy="entityDeleteButton"
                       >
-                        <FontAwesomeIcon icon="trash" /> <span className="d-none d-md-inline">Eliminar</span>
+                        <FontAwesomeIcon icon="trash" /> <span className="d-none d-md-inline">Delete</span>
                       </Button>
                     </div>
                   </td>
@@ -193,37 +188,6 @@ export const FrascosDeFermentos = (props: IFrascosDeFermentosProps) => {
       ) : (
         ''
       )}
-      <div style={{ width: '50%', margin: '0 20%' }}>
-        <Bar
-          style={{ marginTop: 45, marginLeft: '15%' }}
-          data={{
-            labels: frascosDeFermentosList.map(frascosDeFermentos => frascosDeFermentos.id),
-            datasets: [
-              {
-                label: 'Peso',
-                data: frascosDeFermentosList.map(frascosDeFermentos => frascosDeFermentos.peso),
-                backgroundColor: ['rgba(54, 162, 235, 0.2)'],
-                borderColor: ['rgba(54, 162, 235, 1)'],
-                borderWidth: 1,
-              },
-              {
-                label: 'Calidad',
-                data: frascosDeFermentosList.map(frascosDeFermentos => frascosDeFermentos.calidad),
-                backgroundColor: ['rgba(255, 99, 132, 0.2)'],
-                borderColor: ['rgba(255, 99, 132, 1)'],
-                borderWidth: 1,
-              },
-            ],
-          }}
-          options={{
-            scales: {
-              y: {
-                beginAtZero: true,
-              },
-            },
-          }}
-        />
-      </div>
     </div>
   );
 };

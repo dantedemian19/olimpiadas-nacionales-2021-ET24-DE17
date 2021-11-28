@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Link, RouteComponentProps } from 'react-router-dom';
 import { Button, Row, Col } from 'reactstrap';
-import { byteSize, TextFormat } from 'react-jhipster';
+import { TextFormat } from 'react-jhipster';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { IRootState } from 'app/shared/reducers';
@@ -58,7 +58,7 @@ export const FrascosDeFermentosDetail = (props: IFrascosDeFermentosDetailProps) 
         </Button>
         &nbsp;
         <Button tag={Link} to={`/frascos-de-fermentos/${frascosDeFermentosEntity.id}/edit`} replace color="primary">
-          <FontAwesomeIcon icon="pencil-alt" /> <span className="d-none d-md-inline">Editar</span>
+          <FontAwesomeIcon icon="pencil-alt" /> <span className="d-none d-md-inline">Edit</span>
         </Button>
       </Col>
     </Row>
