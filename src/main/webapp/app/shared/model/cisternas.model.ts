@@ -4,7 +4,7 @@ export interface ICisternas {
   id?: number;
   capacidad?: number;
   estado?: EstadoCisterna | null;
-  reserva?: number;
+  reserva?: number | null;
 }
 
 export const defaultValue: Readonly<ICisternas> = {};

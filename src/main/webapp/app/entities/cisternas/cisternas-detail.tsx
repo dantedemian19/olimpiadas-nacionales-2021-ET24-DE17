@@ -43,8 +43,8 @@ export const CisternasDetail = (props: ICisternasDetailProps) => {
           <FontAwesomeIcon icon="arrow-left" /> <span className="d-none d-md-inline">Back</span>
         </Button>
         &nbsp;
-        <Button tag={Link} to={`/cisternas/${cisternasEntity.id}/edit`} replace color="success">
-          <FontAwesomeIcon icon="pencil-alt" /> <span className="d-none d-md-inline">Editar</span>
+        <Button tag={Link} to={`/cisternas/${cisternasEntity.id}/edit`} replace color="primary">
+          <FontAwesomeIcon icon="pencil-alt" /> <span className="d-none d-md-inline">Edit</span>
         </Button>
       </Col>
     </Row>

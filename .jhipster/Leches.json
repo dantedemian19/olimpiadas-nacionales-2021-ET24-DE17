@@ -38,6 +38,7 @@
       "otherEntityName": "cisternas",
       "otherEntityRelationshipName": "leches",
       "relationshipName": "cisterna"
+      
     }
   ],
   "entityTableName": "leches",

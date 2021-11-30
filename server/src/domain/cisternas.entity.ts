@@ -15,7 +15,7 @@ export class Cisternas extends BaseEntity {
     @Column({ type: 'simple-enum', name: 'estado', enum: EstadoCisterna })
     estado: EstadoCisterna;
 
-    @Column({ type: 'integer', name: 'reserva' })
+    @Column({ type: 'integer', name: 'reserva', nullable: true })
     reserva: number;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove

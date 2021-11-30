@@ -56,7 +56,7 @@ export const CisternasUpdate = (props: ICisternasUpdateProps) => {
     <div>
       <Row className="justify-content-center">
         <Col md="8">
-          <h2 id="cCheeseApp.cisternas.home.createOrEditarLabel" data-cy="CisternasCreateUpdateHeading">
+          <h2 id="cCheeseApp.cisternas.home.createOrEditLabel" data-cy="CisternasCreateUpdateHeading">
             Create or edit a Cisternas
           </h2>
         </Col>
@@ -110,17 +110,7 @@ export const CisternasUpdate = (props: ICisternasUpdateProps) => {
                 <Label id="reservaLabel" for="cisternas-reserva">
                   Reserva
                 </Label>
-                <AvField
-                  id="cisternas-reserva"
-                  data-cy="reserva"
-                  type="string"
-                  className="form-control"
-                  name="reserva"
-                  validate={{
-                    required: { value: true, errorMessage: 'This field is required.' },
-                    number: { value: true, errorMessage: 'This field should be a number.' },
-                  }}
-                />
+                <AvField id="cisternas-reserva" data-cy="reserva" type="string" className="form-control" name="reserva" />
               </AvGroup>
               <Button tag={Link} id="cancel-save" to="/cisternas" replace color="info">
                 <FontAwesomeIcon icon="arrow-left" />
@@ -128,7 +118,7 @@ export const CisternasUpdate = (props: ICisternasUpdateProps) => {
                 <span className="d-none d-md-inline">Back</span>
               </Button>
               &nbsp;
-              <Button color="success" id="save-entity" data-cy="entityCreateSaveButton" type="submit" disabled={updating}>
+              <Button color="primary" id="save-entity" data-cy="entityCreateSaveButton" type="submit" disabled={updating}>
                 <FontAwesomeIcon icon="save" />
                 &nbsp; Save
               </Button>

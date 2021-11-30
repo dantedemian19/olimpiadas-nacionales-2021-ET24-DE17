@@ -16,8 +16,7 @@ export class CisternasDTO extends BaseDTO {
     @ApiProperty({ enum: EstadoCisterna, description: 'estado enum field', required: false })
     estado: EstadoCisterna;
 
-    @IsNotEmpty()
-    @ApiProperty({ description: 'reserva field' })
+    @ApiProperty({ description: 'reserva field', required: false })
     reserva: number;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove

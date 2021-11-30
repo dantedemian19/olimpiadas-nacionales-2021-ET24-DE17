@@ -1,9 +1,11 @@
-import { Injectable, HttpException, HttpStatus, Logger } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
+import { Injectable, HttpException, HttpStatus, Logger, Inject } from '@nestjs/common';
+import { InjectEntityManager, InjectRepository } from '@nestjs/typeorm';
 import { FindManyOptions, FindOneOptions } from 'typeorm';
 import { LechesDTO } from '../service/dto/leches.dto';
 import { LechesMapper } from '../service/mapper/leches.mapper';
 import { LechesRepository } from '../repository/leches.repository';
+import { CisternasService } from './cisternas.service';
+import { error } from 'console';
 
 const relationshipNames = [];
 relationshipNames.push('cisterna');
@@ -12,7 +14,10 @@ relationshipNames.push('cisterna');
 export class LechesService {
     logger = new Logger('LechesService');
 
-    constructor(@InjectRepository(LechesRepository) private lechesRepository: LechesRepository) {}
+    constructor(
+        @InjectRepository(LechesRepository) private lechesRepository: LechesRepository,
+        @Inject(CisternasService) private cisternasService: CisternasService,
+    ) {}
 
     async findById(id: number): Promise<LechesDTO | undefined> {
         const options = { relations: relationshipNames };
@@ -37,6 +42,9 @@ export class LechesService {
     }
 
     async save(lechesDTO: LechesDTO, creator?: string): Promise<LechesDTO | undefined> {
+        let cisterna = (await this.cisternasService.findById(lechesDTO.cisterna.id);
+        if(cisterna){
+        if(cisterna.reserva+lechesDTO.cantidad<cisterna.capacidad){    
         const entity = LechesMapper.fromDTOtoEntity(lechesDTO);
         if (creator) {
             if (!entity.createdBy) {
@@ -45,7 +53,10 @@ export class LechesService {
             entity.lastModifiedBy = creator;
         }
         const result = await this.lechesRepository.save(entity);
+        cisterna.reserva += lechesDTO.cantidad;
         return LechesMapper.fromEntityToDTO(result);
+        } else  throw new HttpException('that Cisterna is full', HttpStatus.NOT_ACCEPTABLE);
+    } else  throw new HttpException('that Cisterna doesnt exist', HttpStatus.NOT_ACCEPTABLE);
     }
 
     async update(lechesDTO: LechesDTO, updater?: string): Promise<LechesDTO | undefined> {
