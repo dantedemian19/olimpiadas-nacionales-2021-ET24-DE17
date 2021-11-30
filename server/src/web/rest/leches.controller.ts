@@ -76,6 +76,11 @@ export class LechesController {
     @ApiResponse({ status: 400, description: 'Se alcanzo el limite de capacidad de la cisterna'})
     async post(@Req() req: Request, @Body() lechesDTO: LechesDTO): Promise<LechesDTO> {
 
+        if ( ! lechesDTO.cisterna ) {
+            req.res.status(400);
+            throw new BadRequestException("No se asignó una cisterna");
+        }
+
         // Check cisterna capacity
         if ( lechesDTO.cisterna.reserva + lechesDTO.cantidad > lechesDTO.cisterna.capacidad ) {
             req.res.status(400);
