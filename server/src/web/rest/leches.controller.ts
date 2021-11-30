@@ -23,6 +23,8 @@ import { Request } from '../../client/request';
 import { LoggingInterceptor } from '../../client/interceptors/logging.interceptor';
 
 import { CisternasService } from '../../service/cisternas.service';
+
+import { EstadoCisterna } from '../../domain/enumeration/estado-cisterna';
 @Controller('api/leches')
 @UseGuards(AuthGuard, RolesGuard)
 @UseInterceptors(LoggingInterceptor, ClassSerializerInterceptor)
