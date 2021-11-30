@@ -6,10 +6,12 @@ import { TandaQuesosService } from '../service/tanda-quesos.service';
 import { MovimientosAlmacenModule } from './movimientos-almacen.module'
 
 import { CisternasModule } from './cisternas.module'
+import { FrascosDeFermentosModule } from './frascos-de-fermentos.module'
 @Module({
     imports: [
         TypeOrmModule.forFeature([TandaQuesosRepository]), MovimientosAlmacenModule,
-        CisternasModule
+        CisternasModule,
+        FrascosDeFermentosModule
     ],
     controllers: [TandaQuesosController],
     providers: [TandaQuesosService],

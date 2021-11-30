@@ -25,6 +25,10 @@ import { MovimientosAlmacenDTO } from '../../service/dto/movimientos-almacen.dto
 import { MovimientosAlmacenService } from '../../service/movimientos-almacen.service';
 
 import { CisternasService } from '../../service/cisternas.service'
+import { FrascosDeFermentosService } from '../../service/frascos-de-fermentos.service'
+
+import { EstadoFermentos } from '../../domain/enumeration/estado-fermentos';
+
 @Controller('api/tanda-quesos')
 @UseGuards(AuthGuard, RolesGuard)
 @UseInterceptors(LoggingInterceptor, ClassSerializerInterceptor)
@@ -37,7 +41,8 @@ export class TandaQuesosController {
     constructor(
         private readonly tandaQuesosService: TandaQuesosService,
         private readonly movimientosAlmacenService: MovimientosAlmacenService,
-        private readonly cisternasService: CisternasService
+        private readonly cisternasService: CisternasService,
+        private readonly frascosDeFermentosService: FrascosDeFermentosService,
     ) {}
 
     @Get('/')
@@ -76,6 +81,9 @@ export class TandaQuesosController {
     })
     @ApiResponse({ status: 403, description: 'Forbidden.' })
     async post(@Req() req: Request, @Body() tandaQuesosDTO: TandaQuesosDTO): Promise<TandaQuesosDTO> {
+
+        tandaQuesosDTO.fermento.estado = EstadoFermentos.AGOTADO;
+        await this.frascosDeFermentosService.update(tandaQuesosDTO.fermento, req.user?.login);
 
         tandaQuesosDTO.leche.cisterna.reserva = 0;
         await this.cisternasService.save(tandaQuesosDTO.leche.cisterna);
@@ -116,7 +124,6 @@ export class TandaQuesosController {
         description: 'The record has been successfully updated.',
         type: TandaQuesosDTO,
     })
-
     async putIdforEstado(@Req() req: Request, @Body() tandaQuesosDTO: TandaQuesoChangeByIdDTO): Promise<TandaQuesosDTO> {
         HeaderUtil.addEntityCreatedHeaders(req.res, 'Tanda Queso ID:', tandaQuesosDTO.id);
         let oldTandaQuesos = await this.tandaQuesosService.findById(tandaQuesosDTO.id);
