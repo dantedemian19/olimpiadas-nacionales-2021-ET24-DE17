@@ -41,8 +41,8 @@ export class LechesService {
         return resultList;
     }
 
-    async save(lechesDTO: LechesDTO, creator?: string): Promise<LechesDTO | undefined> {
-        let cisterna = (await this.cisternasService.findById(lechesDTO.cisterna.id);
+    async save(lechesDTO: LechesDTO, creator?: string): Promise<LechesDTO | undefined>{
+        let cisterna = await this.cisternasService.findById(lechesDTO.cisterna.id);
         if(cisterna){
         if(cisterna.reserva+lechesDTO.cantidad<cisterna.capacidad){    
         const entity = LechesMapper.fromDTOtoEntity(lechesDTO);
