@@ -24,6 +24,7 @@ import { TandaQuesoChangeByIdDTO } from '../../service/dto/TandaQuesoChangeById.
 import { MovimientosAlmacenDTO } from '../../service/dto/movimientos-almacen.dto';
 import { MovimientosAlmacenService } from '../../service/movimientos-almacen.service';
 
+import { CisternasService } from '../../service/cisternas.service'
 @Controller('api/tanda-quesos')
 @UseGuards(AuthGuard, RolesGuard)
 @UseInterceptors(LoggingInterceptor, ClassSerializerInterceptor)
@@ -35,7 +36,8 @@ export class TandaQuesosController {
 
     constructor(
         private readonly tandaQuesosService: TandaQuesosService,
-        private readonly movimientosAlmacenService: MovimientosAlmacenService
+        private readonly movimientosAlmacenService: MovimientosAlmacenService,
+        private readonly cisternasService: CisternasService
     ) {}
 
     @Get('/')
@@ -74,6 +76,10 @@ export class TandaQuesosController {
     })
     @ApiResponse({ status: 403, description: 'Forbidden.' })
     async post(@Req() req: Request, @Body() tandaQuesosDTO: TandaQuesosDTO): Promise<TandaQuesosDTO> {
+
+        tandaQuesosDTO.leche.cisterna.reserva = 0;
+        await this.cisternasService.save(tandaQuesosDTO.leche.cisterna);
+
         const created = await this.tandaQuesosService.save(tandaQuesosDTO, req.user?.login);
         HeaderUtil.addEntityCreatedHeaders(req.res, 'TandaQuesos', created.id);
         return created;
