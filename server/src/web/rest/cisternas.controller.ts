@@ -11,6 +11,7 @@ import {
     UseGuards,
     Req,
     UseInterceptors,
+    BadRequestException,
 } from '@nestjs/common';
 import { ApiBearerAuth, ApiTags, ApiResponse, ApiOperation } from '@nestjs/swagger';
 import { CisternasDTO } from '../../service/dto/cisternas.dto';
@@ -21,6 +22,7 @@ import { HeaderUtil } from '../../client/header-util';
 import { Request } from '../../client/request';
 import { LoggingInterceptor } from '../../client/interceptors/logging.interceptor';
 
+import { LechesService } from '../../service/leches.service';
 @Controller('api/cisternas')
 @UseGuards(AuthGuard, RolesGuard)
 @UseInterceptors(LoggingInterceptor, ClassSerializerInterceptor)
@@ -30,7 +32,10 @@ import { LoggingInterceptor } from '../../client/interceptors/logging.intercepto
 export class CisternasController {
     logger = new Logger('CisternasController');
 
-    constructor(private readonly cisternasService: CisternasService) {}
+    constructor(
+        private readonly cisternasService: CisternasService,
+        private readonly lechesService: LechesService,
+    ) {}
 
     @Get('/')
     @Roles(RoleType.RECEPTIONIST)
@@ -105,6 +110,17 @@ export class CisternasController {
         description: 'The record has been successfully deleted.',
     })
     async deleteById(@Req() req: Request, @Param('id') id: number): Promise<void> {
+
+        const lechesRelacionadas = await this.lechesService.findByFields({
+            where: {
+                cisterna: id,
+            }
+        });
+
+        if ( lechesRelacionadas ) {
+            throw new BadRequestException('No se puede eliminar la cisterna porque tiene leches relacionadas');
+        }
+
         HeaderUtil.addEntityDeletedHeaders(req.res, 'Cisternas', id);
         return await this.cisternasService.deleteById(id);
     }
