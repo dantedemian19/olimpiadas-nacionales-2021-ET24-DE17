@@ -44,7 +44,8 @@ export class LechesService {
     async save(lechesDTO: LechesDTO, creator?: string): Promise<LechesDTO | undefined>{
         let cisterna = await this.cisternasService.findById(lechesDTO.cisterna.id);
         if(cisterna){
-        if (cisterna.reserva==0){
+        if(lechesDTO.cantidad<0){
+        if(cisterna.reserva==0){
         if(cisterna.reserva+lechesDTO.cantidad<=cisterna.capacidad){
         if(cisterna.estado=='OPERATIVO'){
         
@@ -66,6 +67,7 @@ export class LechesService {
         }else throw new HttpException('Error, la cisterna esta inoperativa', HttpStatus.NOT_ACCEPTABLE);
         }else throw new HttpException('Error, la capacidad de la cisterna no soporta tanto', HttpStatus.NOT_ACCEPTABLE);
         }else throw new HttpException('Error, la cisterna esta ocupada', HttpStatus.NOT_ACCEPTABLE);
+        }else throw new HttpException('Error, la cantidad ingresada no puede ser negativa', HttpStatus.NOT_ACCEPTABLE);
         }else throw new HttpException('Error, la cisterna no existe', HttpStatus.NOT_ACCEPTABLE);
     }
 
