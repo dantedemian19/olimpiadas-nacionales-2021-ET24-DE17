@@ -5,7 +5,7 @@ import { LechesDTO } from '../service/dto/leches.dto';
 import { LechesMapper } from '../service/mapper/leches.mapper';
 import { LechesRepository } from '../repository/leches.repository';
 import { CisternasService } from './cisternas.service';
-import { error } from 'console';
+
 
 const relationshipNames = [];
 relationshipNames.push('cisterna');
@@ -44,7 +44,7 @@ export class LechesService {
     async save(lechesDTO: LechesDTO, creator?: string): Promise<LechesDTO | undefined>{
         let cisterna = await this.cisternasService.findById(lechesDTO.cisterna.id);
         if(cisterna){
-        if(cisterna.reserva+lechesDTO.cantidad<cisterna.capacidad){    
+        if(cisterna.reserva+lechesDTO.cantidad<cisterna.capacidad){
         const entity = LechesMapper.fromDTOtoEntity(lechesDTO);
         if (creator) {
             if (!entity.createdBy) {
@@ -54,6 +54,11 @@ export class LechesService {
         }
         const result = await this.lechesRepository.save(entity);
         cisterna.reserva += lechesDTO.cantidad;
+        try {
+            await this.cisternasService.update(cisterna);
+        } catch (error) {
+            throw new HttpException('Error, saving to the cisterna', HttpStatus.NOT_FOUND);
+        }
         return LechesMapper.fromEntityToDTO(result);
         } else  throw new HttpException('that Cisterna is full', HttpStatus.NOT_ACCEPTABLE);
     } else  throw new HttpException('that Cisterna doesnt exist', HttpStatus.NOT_ACCEPTABLE);
