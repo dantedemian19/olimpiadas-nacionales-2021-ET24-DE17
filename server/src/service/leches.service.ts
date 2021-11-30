@@ -44,7 +44,10 @@ export class LechesService {
     async save(lechesDTO: LechesDTO, creator?: string): Promise<LechesDTO | undefined>{
         let cisterna = await this.cisternasService.findById(lechesDTO.cisterna.id);
         if(cisterna){
-        if(cisterna.reserva+lechesDTO.cantidad<cisterna.capacidad){
+        if (cisterna.reserva==0){
+        if(cisterna.reserva+lechesDTO.cantidad<=cisterna.capacidad){
+        if(cisterna.estado=='OPERATIVO'){
+        
         const entity = LechesMapper.fromDTOtoEntity(lechesDTO);
         if (creator) {
             if (!entity.createdBy) {
@@ -57,11 +60,13 @@ export class LechesService {
         try {
             await this.cisternasService.update(cisterna);
         } catch (error) {
-            throw new HttpException('Error, saving to the cisterna', HttpStatus.NOT_FOUND);
+            throw new HttpException('Error, guardando los datos de la cisterna', HttpStatus.NOT_FOUND);
         }
         return LechesMapper.fromEntityToDTO(result);
-        } else  throw new HttpException('that Cisterna is full', HttpStatus.NOT_ACCEPTABLE);
-    } else  throw new HttpException('that Cisterna doesnt exist', HttpStatus.NOT_ACCEPTABLE);
+        }else throw new HttpException('Error, la cisterna esta inoperativa', HttpStatus.NOT_ACCEPTABLE);
+        }else throw new HttpException('Error, la capacidad de la cisterna no soporta tanto', HttpStatus.NOT_ACCEPTABLE);
+        }else throw new HttpException('Error, la cisterna esta ocupada', HttpStatus.NOT_ACCEPTABLE);
+        }else throw new HttpException('Error, la cisterna no existe', HttpStatus.NOT_ACCEPTABLE);
     }
 
     async update(lechesDTO: LechesDTO, updater?: string): Promise<LechesDTO | undefined> {

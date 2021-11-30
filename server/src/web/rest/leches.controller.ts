@@ -81,18 +81,8 @@ export class LechesController {
             throw new BadRequestException("No se asignó una cisterna");
         }
 
-        // Check cisterna capacity
-        if ( lechesDTO.cisterna.reserva + lechesDTO.cantidad > lechesDTO.cisterna.capacidad ) {
-            req.res.status(400);
-            throw new BadRequestException("Se alcanzo el limite de capacidad de la cisterna");
-        }
-
-        // Update cisterna reserva
-        lechesDTO.cisterna.reserva = lechesDTO.cisterna.reserva + lechesDTO.cantidad;
-
         // Create leche
         const created = await this.lechesService.save(lechesDTO, req.user?.login);
-        await this.cisternasService.update(lechesDTO.cisterna, req.user?.login);
         HeaderUtil.addEntityCreatedHeaders(req.res, 'Leches', created.id);
         return created;
     }
