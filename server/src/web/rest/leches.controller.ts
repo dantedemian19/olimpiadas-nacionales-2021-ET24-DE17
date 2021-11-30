@@ -11,6 +11,7 @@ import {
     UseGuards,
     Req,
     UseInterceptors,
+    BadRequestException
 } from '@nestjs/common';
 import { ApiBearerAuth, ApiTags, ApiResponse, ApiOperation } from '@nestjs/swagger';
 import { LechesDTO } from '../../service/dto/leches.dto';
@@ -21,6 +22,7 @@ import { HeaderUtil } from '../../client/header-util';
 import { Request } from '../../client/request';
 import { LoggingInterceptor } from '../../client/interceptors/logging.interceptor';
 
+import { CisternasService } from '../../service/cisternas.service';
 @Controller('api/leches')
 @UseGuards(AuthGuard, RolesGuard)
 @UseInterceptors(LoggingInterceptor, ClassSerializerInterceptor)
@@ -30,7 +32,10 @@ import { LoggingInterceptor } from '../../client/interceptors/logging.intercepto
 export class LechesController {
     logger = new Logger('LechesController');
 
-    constructor(private readonly lechesService: LechesService) {}
+    constructor(
+        private readonly lechesService: LechesService,
+        private readonly cisternasService: CisternasService
+    ) {}
 
     @Get('/')
     @Roles(RoleType.PRODUCTION)
@@ -68,8 +73,21 @@ export class LechesController {
         type: LechesDTO,
     })
     @ApiResponse({ status: 403, description: 'Forbidden.' })
+    @ApiResponse({ status: 400, description: 'Se alcanzo el limite de capacidad de la cisterna'})
     async post(@Req() req: Request, @Body() lechesDTO: LechesDTO): Promise<LechesDTO> {
+
+        // Check cisterna capacity
+        if ( lechesDTO.cisterna.reserva + lechesDTO.cantidad > lechesDTO.cisterna.capacidad ) {
+            req.res.status(400);
+            throw new BadRequestException("Se alcanzo el limite de capacidad de la cisterna");
+        }
+
+        // Update cisterna reserva
+        lechesDTO.cisterna.reserva = lechesDTO.cisterna.reserva + lechesDTO.cantidad;
+
+        // Create leche
         const created = await this.lechesService.save(lechesDTO, req.user?.login);
+        await this.cisternasService.update(lechesDTO.cisterna, req.user?.login);
         HeaderUtil.addEntityCreatedHeaders(req.res, 'Leches', created.id);
         return created;
     }
@@ -94,6 +112,25 @@ export class LechesController {
         type: LechesDTO,
     })
     async putId(@Req() req: Request, @Body() lechesDTO: LechesDTO): Promise<LechesDTO> {
+
+        // Get info from leches and cisterna
+        let current_leches = await this.lechesService.findById(lechesDTO.id);
+        let leche_cant_diff = current_leches.cantidad - lechesDTO.cantidad;
+
+        // Check cisterna capacity
+        if( lechesDTO.cisterna.reserva - leche_cant_diff > lechesDTO.cisterna.capacidad ) {
+            req.res.status(400);
+            throw new BadRequestException("Se alcanzo el limite de capacidad de la cisterna");
+        }
+        if( lechesDTO.cisterna.reserva - leche_cant_diff < 0 ) {
+            req.res.status(400);
+            throw new BadRequestException("La reserva de la cisterna no puede ser un número negativo");
+        }
+
+        // Update cisterna reserva
+        lechesDTO.cisterna.reserva -= leche_cant_diff;
+        await this.cisternasService.update(lechesDTO.cisterna, req.user?.login);
+
         HeaderUtil.addEntityCreatedHeaders(req.res, 'Leches', lechesDTO.id);
         return await this.lechesService.update(lechesDTO, req.user?.login);
     }
@@ -105,6 +142,15 @@ export class LechesController {
         description: 'The record has been successfully deleted.',
     })
     async deleteById(@Req() req: Request, @Param('id') id: number): Promise<void> {
+
+        // Update cisterna reserva
+        const lecheDTO = await this.lechesService.findById(id);
+        if (lecheDTO.cisterna){
+            lecheDTO.cisterna.reserva = lecheDTO.cisterna.reserva - lecheDTO.cantidad;
+            await this.cisternasService.update(lecheDTO.cisterna, req.user?.login);
+        }
+
+        // Delete leche
         HeaderUtil.addEntityDeletedHeaders(req.res, 'Leches', id);
         return await this.lechesService.deleteById(id);
     }
