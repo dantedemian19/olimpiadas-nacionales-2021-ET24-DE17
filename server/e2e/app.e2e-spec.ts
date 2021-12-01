@@ -13,8 +13,7 @@ describe('App', () => {
     };
     const testUserLogin: UserLoginDTO = {
         username: 'system',
-        password: 'system',
-        rememberMe: true,
+        password: 'system'
     };
 
     beforeEach(async () => {
