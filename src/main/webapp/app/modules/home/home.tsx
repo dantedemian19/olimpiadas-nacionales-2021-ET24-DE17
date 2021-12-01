@@ -24,7 +24,7 @@ export const Home = (props: IHomeProp) => {
       <main className="main-home">
         <section className="que-es">
           <h1>¿Que es el queso?</h1>
-          <div className="raya" style={{ width: '20.5%' }}></div>
+          <div className="raya" style={{ width: '280px' }}></div>
           <p>
             El queso es un alimento sólido que se obtiene por maduración de la cuajada de la leche animal o vegetal una vez eliminado el
             suero; sus diferentes variedades dependen del origen de la leche empleada, de los métodos de elaboración seguidos y del grado de
@@ -37,7 +37,7 @@ export const Home = (props: IHomeProp) => {
             interior.
           </p>
         </section>
-        <div style={{ backgroundColor: '#f6f6f6', width: '100vw' }}>
+        <div style={{ backgroundColor: '#f6f6f6', width: '105vw' }}>
           <section className="pasos">
             <h1>Pasos a seguir para la elaboración del queso</h1>
             <div className="main-container" style={{ position: 'relative', top: '25px' }}>
@@ -71,36 +71,28 @@ export const Home = (props: IHomeProp) => {
                     </li>
                   </ul>
                   <div className="inforgraphic-box info-pos-1">
-                    {/* <h5 className="color-1">Infografia 1</h5> */}
-                    <p>Recepción y tratamiento de la leche</p>
+                    <h5 className="color-1">Recepción y tratamiento de la leche</h5>
                   </div>
                   <div className="inforgraphic-box info-pos-2">
-                    {/* <h5 className="color-2">Infografia 2</h5> */}
-                    <p>Agregado de fermentos y aditivos</p>
+                    <h5 className="color-2">Agregado de fermentos y aditivos</h5>
                   </div>
                   <div className="inforgraphic-box info-pos-3">
-                    {/* <h5 className="color-3">Infografia 3</h5> */}
-                    <p>Coagulación de la leche y manejo de la cuajada</p>
+                    <h5 className="color-3">Coagulación de la leche y manejo de la cuajada</h5>
                   </div>
                   <div className="inforgraphic-box info-pos-4">
-                    {/* <h5 className="color-4">Infografia 4</h5> */}
-                    <p>Desuerado y preprensado bajo suero</p>
+                    <h5 className="color-4">Desuerado y preprensado bajo suero</h5>
                   </div>
                   <div className="inforgraphic-box info-pos-5">
-                    {/* <h5 className="color-5">Infografia 5</h5> */}
-                    <p>Moldeo y prensado</p>
+                    <h5 className="color-5">Moldeo y prensado</h5>
                   </div>
                   <div className="inforgraphic-box info-pos-6">
-                    {/* <h5 className="color-6">Infografia 6</h5> */}
-                    <p>Salado por inmersión en salmuera</p>
+                    <h5 className="color-6">Salado por inmersión en salmuera</h5>
                   </div>
                   <div className="inforgraphic-box info-pos-7">
-                    {/* <h5 className="color-7">Infografia 7</h5> */}
-                    <p>Maduración del queso y conservación</p>
+                    <h5 className="color-7">Maduración del queso y conservación</h5>
                   </div>
                   <div className="inforgraphic-box info-pos-8">
-                    {/* <h5 className="color-8">Infografia 8</h5> */}
-                    <p>Envasado y etiquetado</p>
+                    <h5 className="color-8">Envasado y etiquetado</h5>
                   </div>
                 </div>
               </div>
@@ -112,31 +104,17 @@ export const Home = (props: IHomeProp) => {
         <div className="animals">
           <div className="sectorIzq">
             <div className="lineHori"></div>
-            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" rel="noreferrer">
-              Sobre nosotros
-            </a>
           </div>
           <div className="sectorCent">
             <h1>C-CHEESE</h1>
-            <div className="redes">
-              <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" rel="noreferrer">
-                <img src="../../../content/images/instagram.png" alt="instagram" />
-              </a>
-              <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" rel="noreferrer">
-                <img src="../../../content/images/facebook.png" alt="facebook" />
-              </a>
-              <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" rel="noreferrer">
-                <img src="../../../content/images/twitter.png" alt="twitter" />
-              </a>
-            </div>
             <div className="lineVert"></div>
+            <a href="../../../content/pdf/terminos-condiciones.pdf" download>
+              Terminos y condiciones
+            </a>
             <p className="copy">© 2021</p>
           </div>
           <div className="sectorDer">
             <div className="lineHori"></div>
-            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" rel="noreferrer">
-              Terminos y condiciones
-            </a>
           </div>
         </div>
       </footer>

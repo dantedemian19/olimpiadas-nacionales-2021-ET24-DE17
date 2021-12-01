@@ -4,6 +4,8 @@ import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Label, Alert, Row, 
 import { AvForm, AvField, AvGroup, AvInput } from 'availity-reactstrap-validation';
 import { Link } from 'react-router-dom';
 
+import './login.scss';
+
 export interface ILoginModalProps {
   showModal: boolean;
   loginError: boolean;
@@ -21,49 +23,46 @@ class LoginModal extends React.Component<ILoginModalProps> {
     const { loginError, handleClose } = this.props;
 
     return (
-      <Modal isOpen={this.props.showModal} toggle={handleClose} backdrop="static" id="login-page" autoFocus={false}>
+      <Modal isOpen={this.props.showModal} toggle={handleClose} backdrop="static" id="login-page" autoFocus={false} className="login-modal">
         <AvForm onSubmit={this.handleSubmit}>
           <ModalHeader id="login-title" data-cy="loginTitle" toggle={handleClose}>
-            Sign in
+            Iniciar sesión
           </ModalHeader>
           <ModalBody>
             <Row>
               <Col md="12">
                 {loginError ? (
                   <Alert color="danger" data-cy="loginError">
-                    <strong>Failed to sign in!</strong> Please check your credentials and try again.
+                    <strong>Error al iniciar sesión,</strong> por favor checkea los datos y vuelve a ingresarlos.
                   </Alert>
                 ) : null}
               </Col>
               <Col md="12">
                 <AvField
                   name="username"
-                  label="Username"
-                  placeholder="Your username"
+                  label="Usuario"
+                  placeholder="Tu usuario"
                   required
-                  errorMessage="Username cannot be empty!"
+                  errorMessage="El nombre de usuario es requerido"
                   autoFocus
                   data-cy="username"
                 />
                 <AvField
                   name="password"
                   type="password"
-                  label="Password"
-                  placeholder="Your password"
+                  label="Contraseña"
+                  placeholder="Tu contraseña"
                   required
-                  errorMessage="Password cannot be empty!"
+                  errorMessage="La contraseña es requerida"
                   data-cy="password"
                 />
               </Col>
             </Row>
             <div className="mt-1">&nbsp;</div>
-            <Alert color="warning">
+            <Alert color="light">
               <Link to="/account/reset/request" data-cy="forgetYourPasswordSelector">
-                Did you forget your password?
+                ¿Olvidaste tu contraseña?
               </Link>
-            </Alert>
-            <Alert color="warning">
-              <span>You don&apos;t have an account yet?</span> <Link to="/account/register">Register a new account</Link>
             </Alert>
           </ModalBody>
           <ModalFooter>
