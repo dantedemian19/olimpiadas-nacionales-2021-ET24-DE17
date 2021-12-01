@@ -20,11 +20,11 @@ const initialState = {
   loginError: false, // Errors returned from server side
   showModalLogin: false,
   account: {} as any,
-  errorMessage: (null as unknown) as string, // Errors returned from server side
-  redirectMessage: (null as unknown) as string,
+  errorMessage: null as unknown as string, // Errors returned from server side
+  redirectMessage: null as unknown as string,
   sessionHasBeenFetched: false,
-  idToken: (null as unknown) as string,
-  logoutUrl: (null as unknown) as string,
+  idToken: null as unknown as string,
+  logoutUrl: null as unknown as string,
 };
 
 export type AuthenticationState = Readonly<typeof initialState>;
@@ -105,22 +105,15 @@ export const getSession: () => void = () => (dispatch, getState) => {
   });
 };
 
-export const login: (username: string, password: string, rememberMe?: boolean) => void = (username, password, rememberMe = false) => async (
-  dispatch,
-  getState
-) => {
+export const login: (username: string, password: string) => void = (username, password) => async (dispatch, getState) => {
   const result = await dispatch({
     type: ACTION_TYPES.LOGIN,
-    payload: axios.post('api/authenticate', { username, password, rememberMe }),
+    payload: axios.post('api/authenticate', { username, password }),
   });
   const bearerToken = result.value.headers.authorization;
   if (bearerToken && bearerToken.slice(0, 7) === 'Bearer ') {
     const jwt = bearerToken.slice(7, bearerToken.length);
-    if (rememberMe) {
-      Storage.local.set(AUTH_TOKEN_KEY, jwt);
-    } else {
-      Storage.session.set(AUTH_TOKEN_KEY, jwt);
-    }
+    Storage.local.set(AUTH_TOKEN_KEY, jwt);
   }
   await dispatch(getSession());
 };

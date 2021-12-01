@@ -7,14 +7,14 @@ import { Link } from 'react-router-dom';
 export interface ILoginModalProps {
   showModal: boolean;
   loginError: boolean;
-  handleLogin: (username: string, password: string, rememberMe: boolean) => void;
+  handleLogin: (username: string, password: string) => void;
   handleClose: () => void;
 }
 
 class LoginModal extends React.Component<ILoginModalProps> {
-  handleSubmit = (event, errors, { username, password, rememberMe }) => {
+  handleSubmit = (event, errors, { username, password }) => {
     const { handleLogin } = this.props;
-    handleLogin(username, password, rememberMe);
+    handleLogin(username, password);
   };
 
   render() {
@@ -54,11 +54,6 @@ class LoginModal extends React.Component<ILoginModalProps> {
                   errorMessage="Password cannot be empty!"
                   data-cy="password"
                 />
-                <AvGroup check inline>
-                  <Label className="form-check-label">
-                    <AvInput type="checkbox" name="rememberMe" /> Remember me
-                  </Label>
-                </AvGroup>
               </Col>
             </Row>
             <div className="mt-1">&nbsp;</div>
