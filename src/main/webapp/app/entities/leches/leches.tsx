@@ -221,13 +221,13 @@ export const Leches = (props: ILechesProps) => {
           }}
         />
         <div style={{ marginLeft: '25%' }}>
-          <h5 style={{ textAlign: 'center', fontSize: 16, color: '#222' }}>Tambos</h5>
+          <h5 style={{ textAlign: 'center', fontSize: 16, color: '#222' }}>Cisternas</h5>
           <Doughnut
             data={{
-              labels: lechesList.map(leches => leches.tambo),
+              labels: lechesList.map(leches => leches.cisterna.id),
               datasets: [
                 {
-                  data: lechesList.map(leches => leches.tambo),
+                  data: lechesList.map(leches => leches.cantidad),
                   backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
                     'rgba(54, 162, 235, 0.2)',

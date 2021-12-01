@@ -145,15 +145,15 @@ export const TandaQuesos = (props: ITandaQuesosProps) => {
                       <TextFormat type="date" value={tandaQuesos.fechaSalidaCuracion} format={APP_DATE_FORMAT} />
                     ) : null}
                   </td>
-                  <td>{tandaQuesos.leche ? <Link to={`leches/${tandaQuesos.leche.id}`}>{tandaQuesos.leche.id}</Link> : ''}</td>
+                  <td>{tandaQuesos.leche ? <Link to={`leches/${tandaQuesos.leche.id}`}>{tandaQuesos.leche.analisis}</Link> : ''}</td>
                   <td>
                     {tandaQuesos.fermento ? (
-                      <Link to={`frascos-de-fermentos/${tandaQuesos.fermento.id}`}>{tandaQuesos.fermento.id}</Link>
+                      <Link to={`frascos-de-fermentos/${tandaQuesos.fermento.id}`}>{tandaQuesos.fermento.detalles}</Link>
                     ) : (
                       ''
                     )}
                   </td>
-                  <td>{tandaQuesos.tipo ? <Link to={`tipo-de-queso/${tandaQuesos.tipo.id}`}>{tandaQuesos.tipo.id}</Link> : ''}</td>
+                  <td>{tandaQuesos.tipo ? <Link to={`tipo-de-queso/${tandaQuesos.tipo.id}`}>{tandaQuesos.tipo.nombre}</Link> : ''}</td>
                   <td className="text-right">
                     <div className="btn-group flex-btn-group-container">
                       <Button tag={Link} to={`${match.url}/${tandaQuesos.id}`} color="info" size="sm" data-cy="entityDetailsButton">

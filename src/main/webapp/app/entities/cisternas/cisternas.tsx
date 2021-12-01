@@ -13,6 +13,9 @@ import { APP_DATE_FORMAT, APP_LOCAL_DATE_FORMAT } from 'app/config/constants';
 import { ITEMS_PER_PAGE } from 'app/shared/util/pagination.constants';
 import { overridePaginationStateWithQueryParams } from 'app/shared/util/entity-utils';
 
+import { Bar } from 'react-chartjs-2';
+import { CategoryScale, Chart, registerables } from 'chart.js';
+
 export interface ICisternasProps extends StateProps, DispatchProps, RouteComponentProps<{ url: string }> {}
 
 export const Cisternas = (props: ICisternasProps) => {
@@ -68,6 +71,8 @@ export const Cisternas = (props: ICisternasProps) => {
   const handleSyncList = () => {
     sortEntities();
   };
+
+  Chart.register(CategoryScale, ...registerables);
 
   const { cisternasList, match, loading, totalItems } = props;
   return (
@@ -166,6 +171,37 @@ export const Cisternas = (props: ICisternasProps) => {
       ) : (
         ''
       )}
+      <div style={{ width: '50%', margin: '0 20%' }}>
+        <Bar
+          style={{ marginTop: 45, marginLeft: '15%' }}
+          data={{
+            labels: cisternasList.map(c => c.id),
+            datasets: [
+              {
+                label: 'Capacidad',
+                data: cisternasList.map(c => c.capacidad),
+                backgroundColor: ['rgba(54, 162, 235, 0.2)'],
+                borderColor: ['rgba(54, 162, 235, 1)'],
+                borderWidth: 1,
+              },
+              {
+                label: 'Reserva',
+                data: cisternasList.map(c => c.reserva),
+                backgroundColor: ['rgba(255, 99, 132, 0.2)'],
+                borderColor: ['rgba(255, 99, 132, 1)'],
+                borderWidth: 1,
+              },
+            ],
+          }}
+          options={{
+            scales: {
+              y: {
+                beginAtZero: true,
+              },
+            },
+          }}
+        />
+      </div>
     </div>
   );
 };

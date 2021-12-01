@@ -13,6 +13,9 @@ import { APP_DATE_FORMAT, APP_LOCAL_DATE_FORMAT } from 'app/config/constants';
 import { ITEMS_PER_PAGE } from 'app/shared/util/pagination.constants';
 import { overridePaginationStateWithQueryParams } from 'app/shared/util/entity-utils';
 
+import { Bar, Doughnut } from 'react-chartjs-2';
+import { CategoryScale, Chart, registerables } from 'chart.js';
+
 export interface IFrascosDeFermentosProps extends StateProps, DispatchProps, RouteComponentProps<{ url: string }> {}
 
 export const FrascosDeFermentos = (props: IFrascosDeFermentosProps) => {
@@ -68,6 +71,8 @@ export const FrascosDeFermentos = (props: IFrascosDeFermentosProps) => {
   const handleSyncList = () => {
     sortEntities();
   };
+
+  Chart.register(CategoryScale, ...registerables);
 
   const { frascosDeFermentosList, match, loading, totalItems } = props;
   return (
@@ -188,6 +193,39 @@ export const FrascosDeFermentos = (props: IFrascosDeFermentosProps) => {
       ) : (
         ''
       )}
+      <div style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
+        <div style={{ width: '25%' }}>
+          <h5 style={{ textAlign: 'center', fontSize: 16, color: '#222', marginTop: 45 }}>Tipo de fermentos</h5>
+          <Doughnut
+            style={{ marginLeft: '30px' }}
+            data={{
+              labels: frascosDeFermentosList.map(frasco => frasco.tipo.nombre),
+              datasets: [
+                {
+                  data: frascosDeFermentosList.map(frasco => frasco.peso),
+                  backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)',
+                  ],
+                  borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)',
+                  ],
+                  borderWidth: 1,
+                },
+              ],
+            }}
+          />
+        </div>
+      </div>
     </div>
   );
 };

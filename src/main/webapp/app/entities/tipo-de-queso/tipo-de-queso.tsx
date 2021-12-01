@@ -110,7 +110,7 @@ export const TipoDeQueso = (props: ITipoDeQuesoProps) => {
                     </Button>
                   </td>
                   <td>{tipoDeQueso.nombre}</td>
-                  <td>{tipoDeQueso.tiempoDeCurado}</td>
+                  <td>{tipoDeQueso.tiempoDeCurado}hs</td>
                   <td className="text-right">
                     <div className="btn-group flex-btn-group-container">
                       <Button tag={Link} to={`${match.url}/${tipoDeQueso.id}`} color="info" size="sm" data-cy="entityDetailsButton">

@@ -14,6 +14,8 @@ import { ILeches } from 'app/shared/model/leches.model';
 import { convertDateTimeFromServer, convertDateTimeToServer, displayDefaultDateTime } from 'app/shared/util/date-utils';
 import { mapIdList } from 'app/shared/util/entity-utils';
 
+import './leches.scss';
+
 export interface ILechesUpdateProps extends StateProps, DispatchProps, RouteComponentProps<{ id: string }> {}
 
 export const LechesUpdate = (props: ILechesUpdateProps) => {
@@ -62,24 +64,18 @@ export const LechesUpdate = (props: ILechesUpdateProps) => {
   return (
     <div>
       <Row className="justify-content-center">
-        <Col md="8">
+        <Col md="9">
           <h2 id="cCheeseApp.leches.home.createOrEditLabel" data-cy="LechesCreateUpdateHeading">
             Create or edit a Leches
           </h2>
         </Col>
       </Row>
       <Row className="justify-content-center">
-        <Col md="8">
+        <Col md="9">
           {loading ? (
             <p>Loading...</p>
           ) : (
             <AvForm model={isNew ? {} : lechesEntity} onSubmit={saveEntity}>
-              {!isNew ? (
-                <AvGroup>
-                  <Label for="leches-id">ID</Label>
-                  <AvInput id="leches-id" type="text" className="form-control" name="id" required readOnly />
-                </AvGroup>
-              ) : null}
               <AvGroup>
                 <Label id="analisisLabel" for="leches-analisis">
                   Analisis
@@ -94,7 +90,7 @@ export const LechesUpdate = (props: ILechesUpdateProps) => {
                   }}
                 />
               </AvGroup>
-              <AvGroup>
+              <AvGroup className="left-side">
                 <Label id="calidadLabel" for="leches-calidad">
                   Calidad
                 </Label>
@@ -110,7 +106,7 @@ export const LechesUpdate = (props: ILechesUpdateProps) => {
                   }}
                 />
               </AvGroup>
-              <AvGroup>
+              <AvGroup className="left-side">
                 <Label id="cantidadLabel" for="leches-cantidad">
                   Cantidad
                 </Label>
@@ -126,7 +122,7 @@ export const LechesUpdate = (props: ILechesUpdateProps) => {
                   }}
                 />
               </AvGroup>
-              <AvGroup>
+              <AvGroup className="left-side">
                 <Label id="fechaDeIngresoLabel" for="leches-fechaDeIngreso">
                   Fecha De Ingreso
                 </Label>
@@ -143,7 +139,7 @@ export const LechesUpdate = (props: ILechesUpdateProps) => {
                   }}
                 />
               </AvGroup>
-              <AvGroup>
+              <AvGroup className="right-side">
                 <Label id="tamboLabel" for="leches-tambo">
                   Tambo
                 </Label>
@@ -157,7 +153,7 @@ export const LechesUpdate = (props: ILechesUpdateProps) => {
                   }}
                 />
               </AvGroup>
-              <AvGroup>
+              <AvGroup className="right-side">
                 <Label id="temperaturaLabel" for="leches-temperatura">
                   Temperatura
                 </Label>
@@ -173,7 +169,7 @@ export const LechesUpdate = (props: ILechesUpdateProps) => {
                   }}
                 />
               </AvGroup>
-              <AvGroup>
+              <AvGroup className="right-side">
                 <Label for="leches-cisterna">Cisterna</Label>
                 <AvInput id="leches-cisterna" data-cy="cisterna" type="select" className="form-control" name="cisternaId">
                   <option value="" key="0" />
@@ -186,16 +182,18 @@ export const LechesUpdate = (props: ILechesUpdateProps) => {
                     : null}
                 </AvInput>
               </AvGroup>
-              <Button tag={Link} id="cancel-save" to="/leches" replace color="info">
-                <FontAwesomeIcon icon="arrow-left" />
+              <div className="botonera">
+                <Button tag={Link} id="cancel-save" to="/leches" replace color="info">
+                  <FontAwesomeIcon icon="arrow-left" />
+                  &nbsp;
+                  <span className="d-none d-md-inline">Back</span>
+                </Button>
                 &nbsp;
-                <span className="d-none d-md-inline">Back</span>
-              </Button>
-              &nbsp;
-              <Button color="success" id="save-entity" data-cy="entityCreateSaveButton" type="submit" disabled={updating}>
-                <FontAwesomeIcon icon="save" />
-                &nbsp; Save
-              </Button>
+                <Button color="success" id="save-entity" data-cy="entityCreateSaveButton" type="submit" disabled={updating}>
+                  <FontAwesomeIcon icon="save" />
+                  &nbsp; Save
+                </Button>
+              </div>
             </AvForm>
           )}
         </Col>
