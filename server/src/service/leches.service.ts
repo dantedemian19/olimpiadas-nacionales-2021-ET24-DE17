@@ -44,7 +44,7 @@ export class LechesService {
     async save(lechesDTO: LechesDTO, creator?: string): Promise<LechesDTO | undefined>{
         let cisterna = await this.cisternasService.findById(lechesDTO.cisterna.id);
         if(cisterna){
-        if(lechesDTO.cantidad<0){
+        if(lechesDTO.cantidad>0){
         if(cisterna.reserva==0){
         if(cisterna.reserva+lechesDTO.cantidad<=cisterna.capacidad){
         if(cisterna.estado=='OPERATIVO'){
