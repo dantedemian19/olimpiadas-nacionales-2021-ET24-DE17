@@ -11,6 +11,9 @@ export type IHomeProp = StateProps;
 export const Home = (props: IHomeProp) => {
   const { account } = props;
 
+  // eslint-disable-next-line no-console
+  console.log('props home', props);
+
   return (
     <Row style={{ marginTop: '-15px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
       <section>

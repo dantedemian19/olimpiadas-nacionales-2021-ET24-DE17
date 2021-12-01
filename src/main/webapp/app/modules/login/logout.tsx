@@ -22,8 +22,8 @@ export const Logout = (props: ILogoutProps) => {
   });
 
   return (
-    <div className="p-5">
-      <h4>Logged out successfully!</h4>
+    <div className="p-5" style={{ textAlign: 'center', fontSize: 40 }}>
+      <h4>Sesión cerrada</h4>
     </div>
   );
 };

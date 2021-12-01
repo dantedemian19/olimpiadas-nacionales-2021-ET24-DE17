@@ -10,18 +10,28 @@ import FrascosDeFermentos from './frascos-de-fermentos';
 import TandaQuesos from './tanda-quesos';
 import TipoDeQueso from './tipo-de-queso';
 import MovimientosAlmacen from './movimientos-almacen';
+import PrivateRoute from 'app/shared/auth/private-route';
+import { AUTHORITIES } from 'app/config/constants';
 /* jhipster-needle-add-route-import - JHipster will add routes here */
 
 const Routes = ({ match }) => (
   <div>
     <Switch>
       {/* prettier-ignore */}
-      <ErrorBoundaryRoute path={`${match.url}leches`} component={Leches} />
-      <ErrorBoundaryRoute path={`${match.url}cisternas`} component={Cisternas} />
-      <ErrorBoundaryRoute path={`${match.url}frascos-de-fermentos`} component={FrascosDeFermentos} />
-      <ErrorBoundaryRoute path={`${match.url}tanda-quesos`} component={TandaQuesos} />
-      <ErrorBoundaryRoute path={`${match.url}tipo-de-queso`} component={TipoDeQueso} />
-      <ErrorBoundaryRoute path={`${match.url}movimientos-almacen`} component={MovimientosAlmacen} />
+      <PrivateRoute path={`${match.url}leches`} component={Leches} hasAnyAuthorities={[AUTHORITIES.RECEPTIONIST, AUTHORITIES.ADMIN]} />
+      <PrivateRoute path={`${match.url}cisternas`} component={Cisternas} hasAnyAuthorities={[AUTHORITIES.ADMIN]} />
+      <PrivateRoute
+        path={`${match.url}frascos-de-fermentos`}
+        component={FrascosDeFermentos}
+        hasAnyAuthorities={[AUTHORITIES.LABORATORY, AUTHORITIES.ADMIN]}
+      />
+      <PrivateRoute
+        path={`${match.url}tanda-quesos`}
+        component={TandaQuesos}
+        hasAnyAuthorities={[AUTHORITIES.PRODUCTION, AUTHORITIES.ADMIN]}
+      />
+      <PrivateRoute path={`${match.url}tipo-de-queso`} component={TipoDeQueso} hasAnyAuthorities={[AUTHORITIES.ADMIN]} />
+      <PrivateRoute path={`${match.url}movimientos-almacen`} component={MovimientosAlmacen} hasAnyAuthorities={[AUTHORITIES.ADMIN]} />
       {/* jhipster-needle-add-route-path - JHipster will add routes here */}
     </Switch>
   </div>

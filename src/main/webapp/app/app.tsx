@@ -41,6 +41,7 @@ export const App = (props: IAppProps) => {
             ribbonEnv={props.ribbonEnv}
             isInProduction={props.isInProduction}
             isOpenAPIEnabled={props.isOpenAPIEnabled}
+            account={props.account}
           />
         </ErrorBoundary>
         <div className="container-fluid view-container" id="app-view-container">
@@ -62,6 +63,7 @@ const mapStateToProps = ({ authentication, applicationProfile }: IRootState) => 
   ribbonEnv: applicationProfile.ribbonEnv,
   isInProduction: applicationProfile.inProduction,
   isOpenAPIEnabled: applicationProfile.isOpenAPIEnabled,
+  account: authentication.account,
 });
 
 const mapDispatchToProps = { getSession, getProfile };

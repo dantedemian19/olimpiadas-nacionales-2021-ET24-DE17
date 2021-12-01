@@ -29,17 +29,6 @@ export class AccountController {
 
     constructor(private readonly authService: AuthService) {}
 
-    @Post('/register')
-    @ApiOperation({ summary: ' Register user' })
-    @ApiResponse({
-        status: 201,
-        description: 'Registered user',
-        type: UserDTO,
-    })
-    async registerAccount(@Req() req: Request, @Body() userDTO: UserDTO & { password: string }): Promise<any> {
-        return await this.authService.registerNewUser(userDTO);
-    }
-
     @Get('/activate')
     @ApiBearerAuth()
     @UseGuards(AuthGuard, RolesGuard)

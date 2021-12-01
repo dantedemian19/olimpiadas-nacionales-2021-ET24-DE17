@@ -15,17 +15,11 @@ export interface IHeaderProps {
   ribbonEnv: string;
   isInProduction: boolean;
   isOpenAPIEnabled: boolean;
+  account: any;
 }
 
 const Header = (props: IHeaderProps) => {
   const [menuOpen, setMenuOpen] = useState(false);
-
-  const renderDevRibbon = () =>
-    props.isInProduction === false ? (
-      <div className="ribbon dev">
-        <a href="">Development</a>
-      </div>
-    ) : null;
 
   const toggleMenu = () => setMenuOpen(!menuOpen);
 
@@ -33,7 +27,6 @@ const Header = (props: IHeaderProps) => {
 
   return (
     <div id="app-header">
-      {renderDevRibbon()}
       <LoadingBar className="loading-bar" />
       <Navbar data-cy="navbar" dark expand="sm" fixed="top" className="bg-header">
         <NavbarToggler aria-label="Menu" onClick={toggleMenu} />
@@ -41,7 +34,7 @@ const Header = (props: IHeaderProps) => {
         <Collapse isOpen={menuOpen} navbar>
           <Nav id="header-tabs" className="ml-auto" navbar>
             <Home />
-            {props.isAuthenticated && <EntitiesMenu />}
+            {props.isAuthenticated && <EntitiesMenu account={props.account} isAuthenticated={props.isAuthenticated} />}
             {props.isAuthenticated && props.isAdmin && <AdminMenu showOpenAPI="true" />}
             <AccountMenu isAuthenticated={props.isAuthenticated} />
           </Nav>
