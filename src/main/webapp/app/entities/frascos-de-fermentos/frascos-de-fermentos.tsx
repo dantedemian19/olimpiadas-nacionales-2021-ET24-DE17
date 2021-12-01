@@ -71,7 +71,7 @@ export const FrascosDeFermentos = (props: IFrascosDeFermentosProps) => {
 
   const { frascosDeFermentosList, match, loading, totalItems } = props;
   return (
-    <div>
+    <div className="container-entities">
       <h2 id="frascos-de-fermentos-heading" data-cy="FrascosDeFermentosHeading">
         Frascos De Fermentos
         <div className="d-flex justify-content-end">
