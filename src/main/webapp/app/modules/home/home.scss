@@ -391,3 +391,71 @@ li.text-style.pos-8 {
   top: 140px;
   left: 45px;
 }
+
+// ---------------- RESPONSIVE ----------------
+
+@media screen and (max-width: 800px) {
+  .pasos {
+    width: auto !important;
+  }
+
+  .main-container {
+    width: 100%;
+  }
+
+  .inforgraphic-box.info-pos-1,
+  .inforgraphic-box.info-pos-2,
+  .inforgraphic-box.info-pos-3,
+  .inforgraphic-box.info-pos-4,
+  .inforgraphic-box.info-pos-5,
+  .inforgraphic-box.info-pos-6,
+  .inforgraphic-box.info-pos-7,
+  .inforgraphic-box.info-pos-8 {
+    max-width: 150px;
+  }
+
+  .inforgraphic-box.info-pos-1 {
+    top: -90px;
+    left: 40px;
+    text-align: right;
+  }
+
+  .inforgraphic-box.info-pos-2 {
+    top: -90px;
+    left: 290px;
+  }
+
+  .inforgraphic-box.info-pos-3 {
+    top: 70px;
+    left: 480px;
+    width: 246px;
+  }
+
+  .inforgraphic-box.info-pos-4 {
+    top: 290px;
+    left: 480px;
+  }
+
+  .inforgraphic-box.info-pos-5 {
+    top: 490px;
+    left: 290px;
+  }
+
+  .inforgraphic-box.info-pos-6 {
+    top: 490px;
+    left: 40px;
+    text-align: right;
+  }
+
+  .inforgraphic-box.info-pos-7 {
+    top: 290px;
+    left: -155px;
+    text-align: right;
+  }
+
+  .inforgraphic-box.info-pos-8 {
+    top: 125px;
+    left: -155px;
+    text-align: right;
+  }
+}
