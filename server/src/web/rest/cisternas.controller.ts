@@ -74,6 +74,7 @@ export class CisternasController {
     })
     @ApiResponse({ status: 403, description: 'Forbidden.' })
     async post(@Req() req: Request, @Body() cisternasDTO: CisternasDTO): Promise<CisternasDTO> {
+        cisternasDTO.reserva = 0;
         const created = await this.cisternasService.save(cisternasDTO, req.user?.login);
         HeaderUtil.addEntityCreatedHeaders(req.res, 'Cisternas', created.id);
         return created;

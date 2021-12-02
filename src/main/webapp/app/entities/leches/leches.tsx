@@ -81,11 +81,11 @@ export const Leches = (props: ILechesProps) => {
         Leches
         <div className="d-flex justify-content-end">
           <Button className="mr-2" color="info" onClick={handleSyncList} disabled={loading}>
-            <FontAwesomeIcon icon="sync" spin={loading} /> Actualizar Lista
+            <FontAwesomeIcon icon="sync" spin={loading} /> Actualizar lista
           </Button>
           <Link to={`${match.url}/new`} className="btn btn-success jh-create-entity" id="jh-create-entity" data-cy="entityCreateButton">
             <FontAwesomeIcon icon="plus" />
-            &nbsp; Añadir nueva Leche
+            &nbsp; Nuevo registro
           </Link>
         </div>
       </h2>
@@ -98,7 +98,7 @@ export const Leches = (props: ILechesProps) => {
                   ID <FontAwesomeIcon icon="sort" />
                 </th>
                 <th className="hand" onClick={sort('analisis')}>
-                  Analisis <FontAwesomeIcon icon="sort" />
+                  Análisis <FontAwesomeIcon icon="sort" />
                 </th>
                 <th className="hand" onClick={sort('calidad')}>
                   Calidad <FontAwesomeIcon icon="sort" />
@@ -107,7 +107,7 @@ export const Leches = (props: ILechesProps) => {
                   Cantidad <FontAwesomeIcon icon="sort" />
                 </th>
                 <th className="hand" onClick={sort('fechaDeIngreso')}>
-                  Fecha De Ingreso <FontAwesomeIcon icon="sort" />
+                  Fecha de ingreso <FontAwesomeIcon icon="sort" />
                 </th>
                 <th className="hand" onClick={sort('tambo')}>
                   Tambo <FontAwesomeIcon icon="sort" />
@@ -140,9 +140,6 @@ export const Leches = (props: ILechesProps) => {
                   <td>{leches.cisterna ? <Link to={`cisternas/${leches.cisterna.id}`}>{leches.cisterna.id}</Link> : ''}</td>
                   <td className="text-right">
                     <div className="btn-group flex-btn-group-container">
-                      <Button tag={Link} to={`${match.url}/${leches.id}`} color="info" size="sm" data-cy="entityDetailsButton">
-                        <FontAwesomeIcon icon="eye" /> <span className="d-none d-md-inline">View</span>
-                      </Button>
                       <Button
                         tag={Link}
                         to={`${match.url}/${leches.id}/edit?page=${paginationState.activePage}&sort=${paginationState.sort},${paginationState.order}`}
@@ -150,7 +147,7 @@ export const Leches = (props: ILechesProps) => {
                         size="sm"
                         data-cy="entityEditButton"
                       >
-                        <FontAwesomeIcon icon="pencil-alt" /> <span className="d-none d-md-inline">Edit</span>
+                        <FontAwesomeIcon icon="pencil-alt" /> <span className="d-none d-md-inline">Editar</span>
                       </Button>
                       <Button
                         tag={Link}
@@ -159,7 +156,7 @@ export const Leches = (props: ILechesProps) => {
                         size="sm"
                         data-cy="entityDeleteButton"
                       >
-                        <FontAwesomeIcon icon="trash" /> <span className="d-none d-md-inline">Delete</span>
+                        <FontAwesomeIcon icon="trash" /> <span className="d-none d-md-inline">Eliminar</span>
                       </Button>
                     </div>
                   </td>
@@ -168,7 +165,7 @@ export const Leches = (props: ILechesProps) => {
             </tbody>
           </Table>
         ) : (
-          !loading && <div className="alert alert-warning">No Leches found</div>
+          !loading && <div className="alert alert-warning">No se encontraron registros</div>
         )}
       </div>
       {props.totalItems ? (

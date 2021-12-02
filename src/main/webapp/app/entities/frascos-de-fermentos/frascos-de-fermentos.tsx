@@ -85,7 +85,7 @@ export const FrascosDeFermentos = (props: IFrascosDeFermentosProps) => {
           </Button>
           <Link to={`${match.url}/new`} className="btn btn-success jh-create-entity" id="jh-create-entity" data-cy="entityCreateButton">
             <FontAwesomeIcon icon="plus" />
-            &nbsp; Añadir nuevo Frasco De Fermentos
+            &nbsp; Nuevo frasco de fermentos
           </Link>
         </div>
       </h2>
@@ -144,9 +144,6 @@ export const FrascosDeFermentos = (props: IFrascosDeFermentosProps) => {
                   </td>
                   <td className="text-right">
                     <div className="btn-group flex-btn-group-container">
-                      <Button tag={Link} to={`${match.url}/${frascosDeFermentos.id}`} color="info" size="sm" data-cy="entityDetailsButton">
-                        <FontAwesomeIcon icon="eye" /> <span className="d-none d-md-inline">View</span>
-                      </Button>
                       <Button
                         tag={Link}
                         to={`${match.url}/${frascosDeFermentos.id}/edit?page=${paginationState.activePage}&sort=${paginationState.sort},${paginationState.order}`}
@@ -154,7 +151,7 @@ export const FrascosDeFermentos = (props: IFrascosDeFermentosProps) => {
                         size="sm"
                         data-cy="entityEditButton"
                       >
-                        <FontAwesomeIcon icon="pencil-alt" /> <span className="d-none d-md-inline">Edit</span>
+                        <FontAwesomeIcon icon="pencil-alt" /> <span className="d-none d-md-inline">Editar</span>
                       </Button>
                       <Button
                         tag={Link}
@@ -163,7 +160,7 @@ export const FrascosDeFermentos = (props: IFrascosDeFermentosProps) => {
                         size="sm"
                         data-cy="entityDeleteButton"
                       >
-                        <FontAwesomeIcon icon="trash" /> <span className="d-none d-md-inline">Delete</span>
+                        <FontAwesomeIcon icon="trash" /> <span className="d-none d-md-inline">Elimnar</span>
                       </Button>
                     </div>
                   </td>
@@ -172,7 +169,7 @@ export const FrascosDeFermentos = (props: IFrascosDeFermentosProps) => {
             </tbody>
           </Table>
         ) : (
-          !loading && <div className="alert alert-warning">No Frascos De Fermentos found</div>
+          !loading && <div className="alert alert-warning">No se encontraron frascos de fermento</div>
         )}
       </div>
       {props.totalItems ? (
