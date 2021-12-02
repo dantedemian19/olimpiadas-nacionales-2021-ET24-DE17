@@ -46,13 +46,13 @@ export const UserManagementUpdate = (props: IUserManagementUpdateProps) => {
     <div>
       <Row className="justify-content-center">
         <Col md="8">
-          <h1>Create or edit a User</h1>
+          <h1>Crear o editar usuario</h1>
         </Col>
       </Row>
       <Row className="justify-content-center">
         <Col md="8">
           {loading ? (
-            <p>Loading...</p>
+            <p>Cargando...</p>
           ) : (
             <AvForm onValidSubmit={saveUser}>
               {user.id ? (
@@ -62,7 +62,7 @@ export const UserManagementUpdate = (props: IUserManagementUpdateProps) => {
                 </AvGroup>
               ) : null}
               <AvGroup>
-                <Label for="login">Login</Label>
+                <Label for="login">Nombre de usuario</Label>
                 <AvField
                   type="text"
                   className="form-control"
@@ -89,7 +89,7 @@ export const UserManagementUpdate = (props: IUserManagementUpdateProps) => {
                 />
               </AvGroup>
               <AvGroup>
-                <Label for="firstName">First Name</Label>
+                <Label for="firstName">Nombres</Label>
                 <AvField
                   type="text"
                   className="form-control"
@@ -104,7 +104,7 @@ export const UserManagementUpdate = (props: IUserManagementUpdateProps) => {
                 />
               </AvGroup>
               <AvGroup>
-                <Label for="lastName">Last Name</Label>
+                <Label for="lastName">Apellidos</Label>
                 <AvField
                   type="text"
                   className="form-control"
@@ -145,13 +145,38 @@ export const UserManagementUpdate = (props: IUserManagementUpdateProps) => {
                   value={user.email}
                 />
               </AvGroup>
+              {user.id ? null : (
+                <AvGroup>
+                  <AvField
+                    name="password"
+                    label="Contraseña"
+                    placeholder="Contraseña del usuario"
+                    type="password"
+                    validate={{
+                      required: {
+                        value: true,
+                        errorMessage: 'La contraseña es obligatoria.',
+                      },
+                      minLength: {
+                        value: 8,
+                        errorMessage: 'La contraseña debe tener al menos 8 caracteres.',
+                      },
+                      maxLength: {
+                        value: 254,
+                        errorMessage: 'La constraseña no puede tener tantos caracteres.',
+                      },
+                    }}
+                    value={user.password}
+                  />
+                </AvGroup>
+              )}
               <AvGroup check>
                 <Label>
-                  <AvInput type="checkbox" name="activated" value={user.activated} checked={user.activated} disabled={!user.id} /> Activated
+                  <AvInput type="checkbox" name="Activado" value={user.activated} checked={user.activated} disabled={!user.id} /> Activated
                 </Label>
               </AvGroup>
               <AvGroup>
-                <Label for="authorities">Profiles</Label>
+                <Label for="authorities">Roles</Label>
                 <AvInput type="select" className="form-control" name="authorities" value={user.authorities} multiple>
                   {roles.map(role => (
                     <option value={role} key={role}>
@@ -163,12 +188,12 @@ export const UserManagementUpdate = (props: IUserManagementUpdateProps) => {
               <Button tag={Link} to="/admin/user-management" replace color="info">
                 <FontAwesomeIcon icon="arrow-left" />
                 &nbsp;
-                <span className="d-none d-md-inline">Back</span>
+                <span className="d-none d-md-inline">Volver</span>
               </Button>
               &nbsp;
               <Button color="primary" type="submit" disabled={isInvalid || updating}>
                 <FontAwesomeIcon icon="save" />
-                &nbsp; Save
+                &nbsp; Guardar
               </Button>
             </AvForm>
           )}
