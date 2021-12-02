@@ -24,7 +24,8 @@ import { LoggingInterceptor } from '../../client/interceptors/logging.intercepto
 
 import { CisternasService } from '../../service/cisternas.service';
 
-import { EstadoCisterna } from '../../domain/enumeration/estado-cisterna';
+import { TandaQuesosService } from "../../service/tanda-quesos.service";
+
 @Controller('api/leches')
 @UseGuards(AuthGuard, RolesGuard)
 @UseInterceptors(LoggingInterceptor, ClassSerializerInterceptor)
@@ -36,7 +37,8 @@ export class LechesController {
 
     constructor(
         private readonly lechesService: LechesService,
-        private readonly cisternasService: CisternasService
+        private readonly cisternasService: CisternasService,
+        private readonly tandaDeQuesoService: TandaQuesosService
     ) {}
 
     @Get('/')
@@ -139,6 +141,16 @@ export class LechesController {
         description: 'The record has been successfully deleted.',
     })
     async deleteById(@Req() req: Request, @Param('id') id: number): Promise<void> {
+
+        const qusosRelacionados = await this.tandaDeQuesoService.findByFields({
+            where: {
+                leche: id
+            }
+        });
+
+        if ( qusosRelacionados ) {
+            throw new BadRequestException('No se puede eliminar la leche porque esta asociada a una tanda de queso');
+        }
 
         // Update cisterna reserva
         const lecheDTO = await this.lechesService.findById(id);
