@@ -191,7 +191,7 @@ export const MovimientosAlmacen = (props: IMovimientosAlmacenProps) => {
           <Doughnut
             style={{ marginLeft: '30px' }}
             data={{
-              labels: movimientosAlmacenList.map(movimiento => movimiento.queso.tipo),
+              labels: movimientosAlmacenList.map(movimiento => movimiento.queso.id),
               datasets: [
                 {
                   data: movimientosAlmacenList.map(movimiento => movimiento.peso),
