@@ -59,14 +59,14 @@ export const CisternasUpdate = (props: ICisternasUpdateProps) => {
       <Row className="justify-content-center">
         <Col md="8">
           <h2 id="cCheeseApp.cisternas.home.createOrEditLabel" data-cy="CisternasCreateUpdateHeading">
-            Create or edit a Cisternas
+            Crear o editar una cisterna
           </h2>
         </Col>
       </Row>
       <Row className="justify-content-center">
         <Col md="8">
           {loading ? (
-            <p>Loading...</p>
+            <p>Cargando...</p>
           ) : (
             <AvForm model={isNew ? {} : cisternasEntity} onSubmit={saveEntity}>
               <AvGroup className="left-side-cisternas">
@@ -102,30 +102,16 @@ export const CisternasUpdate = (props: ICisternasUpdateProps) => {
                   <option value="INREPARACION">EN REPARACION</option>
                 </AvInput>
               </AvGroup>
-              <AvGroup className="right-side-cisternas">
-                <Label id="reservaLabel" for="cisternas-reserva">
-                  Reserva
-                </Label>
-                <AvField
-                  id="cisternas-reserva"
-                  data-cy="reserva"
-                  type="string"
-                  className="form-control"
-                  name="reserva"
-                  value={'0'}
-                  disabled
-                />
-              </AvGroup>
               <div className="botonera-cisternas">
                 <Button tag={Link} id="cancel-save" to="/cisternas" replace color="info">
                   <FontAwesomeIcon icon="arrow-left" />
                   &nbsp;
-                  <span className="d-none d-md-inline">Back</span>
+                  <span className="d-none d-md-inline">Volver</span>
                 </Button>
                 &nbsp;
                 <Button color="primary" id="save-entity" data-cy="entityCreateSaveButton" type="submit" disabled={updating}>
                   <FontAwesomeIcon icon="save" />
-                  &nbsp; Save
+                  &nbsp; Guardar
                 </Button>
               </div>
             </AvForm>

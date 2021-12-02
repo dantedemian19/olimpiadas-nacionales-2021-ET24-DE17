@@ -72,13 +72,13 @@ export const UserManagement = (props: IUserManagementProps) => {
   return (
     <div className="container-entities">
       <h2 id="user-management-page-heading" data-cy="userManagementPageHeading">
-        Users
+        Usuarios
         <div className="d-flex justify-content-end">
           <Button className="mr-2" color="info" onClick={handleSyncList} disabled={loading}>
             <FontAwesomeIcon icon="sync" spin={loading} /> Actualizar Lista
           </Button>
           <Link to={`${match.url}/new`} className="btn btn-primary jh-create-entity">
-            <FontAwesomeIcon icon="plus" /> Create a new user
+            <FontAwesomeIcon icon="plus" /> Crear nuevo usuario
           </Link>
         </div>
       </h2>
@@ -90,7 +90,7 @@ export const UserManagement = (props: IUserManagementProps) => {
               <FontAwesomeIcon icon="sort" />
             </th>
             <th className="hand" onClick={sort('login')}>
-              Login
+              Nombre de usuario
               <FontAwesomeIcon icon="sort" />
             </th>
             <th className="hand" onClick={sort('email')}>
@@ -98,17 +98,17 @@ export const UserManagement = (props: IUserManagementProps) => {
               <FontAwesomeIcon icon="sort" />
             </th>
             <th />
-            <th>Profiles</th>
+            <th>Roles</th>
             <th className="hand" onClick={sort('createdDate')}>
-              Created Date
+              Fecha de creación
               <FontAwesomeIcon icon="sort" />
             </th>
             <th className="hand" onClick={sort('lastModifiedBy')}>
-              Last Modified By
+              Ultima modificación realizada por
               <FontAwesomeIcon icon="sort" />
             </th>
             <th id="modified-date-sort" className="hand" onClick={sort('lastModifiedDate')}>
-              Last Modified Date
+              Fecha de ultima modificación
               <FontAwesomeIcon icon="sort" />
             </th>
             <th />
@@ -127,11 +127,11 @@ export const UserManagement = (props: IUserManagementProps) => {
               <td>
                 {user.activated ? (
                   <Button color="success" onClick={toggleActive(user)}>
-                    Activated
+                    Activado
                   </Button>
                 ) : (
                   <Button color="danger" onClick={toggleActive(user)}>
-                    Deactivated
+                    Desactivado
                   </Button>
                 )}
               </td>
