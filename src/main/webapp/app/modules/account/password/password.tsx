@@ -24,6 +24,7 @@ export const PasswordPage = (props: IUserPasswordProps) => {
 
   const handleValidSubmit = (event, values) => {
     props.savePassword(values.currentPassword, values.newPassword);
+    window.location.href = '/';
   };
 
   const updatePassword = event => setPassword(event.target.value);
@@ -32,7 +33,7 @@ export const PasswordPage = (props: IUserPasswordProps) => {
     <div>
       <Row className="justify-content-center">
         <Col md="8">
-          <h2 id="password-title">Password for {props.account.login}</h2>
+          <h2 id="password-title">Contraseña para {props.account.login}</h2>
           <AvForm id="password-form" onValidSubmit={handleValidSubmit}>
             <AvField
               name="currentPassword"

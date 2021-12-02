@@ -70,7 +70,7 @@ export const UserManagement = (props: IUserManagementProps) => {
 
   const { users, account, match, totalItems, loading } = props;
   return (
-    <div>
+    <div className="container-entities">
       <h2 id="user-management-page-heading" data-cy="userManagementPageHeading">
         Users
         <div className="d-flex justify-content-end">
