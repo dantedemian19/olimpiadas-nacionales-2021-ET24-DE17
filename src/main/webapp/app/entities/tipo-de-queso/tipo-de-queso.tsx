@@ -113,9 +113,6 @@ export const TipoDeQueso = (props: ITipoDeQuesoProps) => {
                   <td>{tipoDeQueso.tiempoDeCurado}hs</td>
                   <td className="text-right">
                     <div className="btn-group flex-btn-group-container">
-                      <Button tag={Link} to={`${match.url}/${tipoDeQueso.id}`} color="info" size="sm" data-cy="entityDetailsButton">
-                        <FontAwesomeIcon icon="eye" /> <span className="d-none d-md-inline">Detalles</span>
-                      </Button>
                       <Button
                         tag={Link}
                         to={`${match.url}/${tipoDeQueso.id}/edit?page=${paginationState.activePage}&sort=${paginationState.sort},${paginationState.order}`}
@@ -141,7 +138,7 @@ export const TipoDeQueso = (props: ITipoDeQuesoProps) => {
             </tbody>
           </Table>
         ) : (
-          !loading && <div className="alert alert-warning">No Tipo De Quesos found</div>
+          !loading && <div className="alert alert-warning">No se encontraron registros</div>
         )}
       </div>
       {props.totalItems ? (

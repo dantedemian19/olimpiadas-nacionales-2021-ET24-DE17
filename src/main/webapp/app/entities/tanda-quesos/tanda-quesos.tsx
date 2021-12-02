@@ -156,9 +156,6 @@ export const TandaQuesos = (props: ITandaQuesosProps) => {
                   <td>{tandaQuesos.tipo ? <Link to={`tipo-de-queso/${tandaQuesos.tipo.id}`}>{tandaQuesos.tipo.nombre}</Link> : ''}</td>
                   <td className="text-right">
                     <div className="btn-group flex-btn-group-container">
-                      <Button tag={Link} to={`${match.url}/${tandaQuesos.id}`} color="info" size="sm" data-cy="entityDetailsButton">
-                        <FontAwesomeIcon icon="eye" /> <span className="d-none d-md-inline">Detalles</span>
-                      </Button>
                       <Button
                         tag={Link}
                         to={`${match.url}/${tandaQuesos.id}/edit?page=${paginationState.activePage}&sort=${paginationState.sort},${paginationState.order}`}
@@ -184,7 +181,7 @@ export const TandaQuesos = (props: ITandaQuesosProps) => {
             </tbody>
           </Table>
         ) : (
-          !loading && <div className="alert alert-warning">No Tanda Quesos found</div>
+          !loading && <div className="alert alert-warning">No se encontraron registros</div>
         )}
       </div>
       {props.totalItems ? (

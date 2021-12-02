@@ -81,7 +81,7 @@ export const Cisternas = (props: ICisternasProps) => {
         Cisternas
         <div className="d-flex justify-content-end">
           <Button className="mr-2" color="info" onClick={handleSyncList} disabled={loading}>
-            <FontAwesomeIcon icon="sync" spin={loading} /> Refrescar Lista
+            <FontAwesomeIcon icon="sync" spin={loading} /> Refrescar lista
           </Button>
           <Link to={`${match.url}/new`} className="btn btn-success jh-create-entity" id="jh-create-entity" data-cy="entityCreateButton">
             <FontAwesomeIcon icon="plus" />
@@ -122,9 +122,6 @@ export const Cisternas = (props: ICisternasProps) => {
                   <td>{cisternas.reserva}</td>
                   <td className="text-right">
                     <div className="btn-group flex-btn-group-container">
-                      <Button tag={Link} to={`${match.url}/${cisternas.id}`} color="info" size="sm" data-cy="entityDetailsButton">
-                        <FontAwesomeIcon icon="eye" /> <span className="d-none d-md-inline">View</span>
-                      </Button>
                       <Button
                         tag={Link}
                         to={`${match.url}/${cisternas.id}/edit?page=${paginationState.activePage}&sort=${paginationState.sort},${paginationState.order}`}
@@ -132,7 +129,7 @@ export const Cisternas = (props: ICisternasProps) => {
                         size="sm"
                         data-cy="entityEditButton"
                       >
-                        <FontAwesomeIcon icon="pencil-alt" /> <span className="d-none d-md-inline">Edit</span>
+                        <FontAwesomeIcon icon="pencil-alt" /> <span className="d-none d-md-inline">Editar</span>
                       </Button>
                       <Button
                         tag={Link}
@@ -141,7 +138,7 @@ export const Cisternas = (props: ICisternasProps) => {
                         size="sm"
                         data-cy="entityDeleteButton"
                       >
-                        <FontAwesomeIcon icon="trash" /> <span className="d-none d-md-inline">Delete</span>
+                        <FontAwesomeIcon icon="trash" /> <span className="d-none d-md-inline">Eliminar</span>
                       </Button>
                     </div>
                   </td>
@@ -150,7 +147,7 @@ export const Cisternas = (props: ICisternasProps) => {
             </tbody>
           </Table>
         ) : (
-          !loading && <div className="alert alert-warning">No Cisternas found</div>
+          !loading && <div className="alert alert-warning">No se encontraron cisternas</div>
         )}
       </div>
       {props.totalItems ? (
