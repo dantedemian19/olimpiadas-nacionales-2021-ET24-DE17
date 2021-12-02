@@ -106,7 +106,7 @@ export const Home = (props: IHomeProp) => {
             <div className="lineHori"></div>
           </div>
           <div className="sectorCent">
-            <h1>C-CHEESE</h1>
+            <img src="../../../content/images/logo.png" alt="Logo" style={{ height: '100px', marginBottom: '15px' }} />
             <div className="lineVert"></div>
             <a href="../../../content/pdf/terminos-condiciones.pdf" download>
               Terminos y condiciones
