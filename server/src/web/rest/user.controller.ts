@@ -61,10 +61,12 @@ export class UserController {
     })
     @ApiResponse({ status: 403, description: 'Forbidden.' })
     async createUser(@Req() req: Request, @Body() userDTO: UserDTO): Promise<UserDTO> {
-        userDTO.password = userDTO.login;
-        const created = await this.userService.save(userDTO, req.user?.login, true);
-        HeaderUtil.addEntityCreatedHeaders(req.res, 'User', created.id);
-        return created;
+        userDTO.password = userDTO.password ??  userDTO.login;
+        console.log("User created: ", userDTO);
+        // const created = await this.userService.save(userDTO, req.user?.login, true);
+        // HeaderUtil.addEntityCreatedHeaders(req.res, 'User', created.id);
+        // return created;
+        return userDTO;
     }
 
     @Put('/')
