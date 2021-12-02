@@ -12,6 +12,8 @@ import { ICisternas } from 'app/shared/model/cisternas.model';
 import { convertDateTimeFromServer, convertDateTimeToServer, displayDefaultDateTime } from 'app/shared/util/date-utils';
 import { mapIdList } from 'app/shared/util/entity-utils';
 
+import './cisternas.scss';
+
 export interface ICisternasUpdateProps extends StateProps, DispatchProps, RouteComponentProps<{ id: string }> {}
 
 export const CisternasUpdate = (props: ICisternasUpdateProps) => {
@@ -67,13 +69,7 @@ export const CisternasUpdate = (props: ICisternasUpdateProps) => {
             <p>Loading...</p>
           ) : (
             <AvForm model={isNew ? {} : cisternasEntity} onSubmit={saveEntity}>
-              {!isNew ? (
-                <AvGroup>
-                  <Label for="cisternas-id">ID</Label>
-                  <AvInput id="cisternas-id" type="text" className="form-control" name="id" required readOnly />
-                </AvGroup>
-              ) : null}
-              <AvGroup>
+              <AvGroup className="left-side-cisternas">
                 <Label id="capacidadLabel" for="cisternas-capacidad">
                   Capacidad
                 </Label>
@@ -101,27 +97,37 @@ export const CisternasUpdate = (props: ICisternasUpdateProps) => {
                   name="estado"
                   value={(!isNew && cisternasEntity.estado) || 'INNOPERATIVO'}
                 >
-                  <option value="INNOPERATIVO">INNOPERATIVO</option>
+                  <option value="INNOPERATIVO">INOPERATIVO</option>
                   <option value="OPERATIVO">OPERATIVO</option>
-                  <option value="INREPARACION">INREPARACION</option>
+                  <option value="INREPARACION">EN REPARACION</option>
                 </AvInput>
               </AvGroup>
-              <AvGroup>
+              <AvGroup className="right-side-cisternas">
                 <Label id="reservaLabel" for="cisternas-reserva">
                   Reserva
                 </Label>
-                <AvField id="cisternas-reserva" data-cy="reserva" type="string" className="form-control" name="reserva" />
+                <AvField
+                  id="cisternas-reserva"
+                  data-cy="reserva"
+                  type="string"
+                  className="form-control"
+                  name="reserva"
+                  value={'0'}
+                  disabled
+                />
               </AvGroup>
-              <Button tag={Link} id="cancel-save" to="/cisternas" replace color="info">
-                <FontAwesomeIcon icon="arrow-left" />
+              <div className="botonera-cisternas">
+                <Button tag={Link} id="cancel-save" to="/cisternas" replace color="info">
+                  <FontAwesomeIcon icon="arrow-left" />
+                  &nbsp;
+                  <span className="d-none d-md-inline">Back</span>
+                </Button>
                 &nbsp;
-                <span className="d-none d-md-inline">Back</span>
-              </Button>
-              &nbsp;
-              <Button color="primary" id="save-entity" data-cy="entityCreateSaveButton" type="submit" disabled={updating}>
-                <FontAwesomeIcon icon="save" />
-                &nbsp; Save
-              </Button>
+                <Button color="primary" id="save-entity" data-cy="entityCreateSaveButton" type="submit" disabled={updating}>
+                  <FontAwesomeIcon icon="save" />
+                  &nbsp; Save
+                </Button>
+              </div>
             </AvForm>
           )}
         </Col>

@@ -16,6 +16,8 @@ import { IMovimientosAlmacen } from 'app/shared/model/movimientos-almacen.model'
 import { convertDateTimeFromServer, convertDateTimeToServer, displayDefaultDateTime } from 'app/shared/util/date-utils';
 import { mapIdList } from 'app/shared/util/entity-utils';
 
+import './movimientos-almacen.scss';
+
 export interface IMovimientosAlmacenUpdateProps extends StateProps, DispatchProps, RouteComponentProps<{ id: string }> {}
 
 export const MovimientosAlmacenUpdate = (props: IMovimientosAlmacenUpdateProps) => {
@@ -66,7 +68,7 @@ export const MovimientosAlmacenUpdate = (props: IMovimientosAlmacenUpdateProps) 
       <Row className="justify-content-center">
         <Col md="8">
           <h2 id="cCheeseApp.movimientosAlmacen.home.createOrEditarLabel" data-cy="MovimientosAlmacenCreateUpdateHeading">
-            Create or edit a MovimientosAlmacen
+            Crear o editar Movimientos de Almacen
           </h2>
         </Col>
       </Row>
@@ -76,13 +78,7 @@ export const MovimientosAlmacenUpdate = (props: IMovimientosAlmacenUpdateProps) 
             <p>Loading...</p>
           ) : (
             <AvForm model={isNew ? {} : movimientosAlmacenEntity} onSubmit={saveEntity}>
-              {!isNew ? (
-                <AvGroup>
-                  <Label for="movimientos-almacen-id">ID</Label>
-                  <AvInput id="movimientos-almacen-id" type="text" className="form-control" name="id" required readOnly />
-                </AvGroup>
-              ) : null}
-              <AvGroup>
+              <AvGroup className="left-side-movimientos">
                 <Label id="desdeLabel" for="movimientos-almacen-desde">
                   Desde
                 </Label>
@@ -101,7 +97,7 @@ export const MovimientosAlmacenUpdate = (props: IMovimientosAlmacenUpdateProps) 
                   <option value="OUTSTOCK">OUTSTOCK</option>
                 </AvInput>
               </AvGroup>
-              <AvGroup>
+              <AvGroup className="right-side-movimientos">
                 <Label id="haciaLabel" for="movimientos-almacen-hacia">
                   Hacia
                 </Label>
@@ -120,7 +116,7 @@ export const MovimientosAlmacenUpdate = (props: IMovimientosAlmacenUpdateProps) 
                   <option value="OUTSTOCK">OUTSTOCK</option>
                 </AvInput>
               </AvGroup>
-              <AvGroup>
+              <AvGroup className="movimientos-izq">
                 <Label id="pesoLabel" for="movimientos-almacen-peso">
                   Peso
                 </Label>
@@ -136,7 +132,7 @@ export const MovimientosAlmacenUpdate = (props: IMovimientosAlmacenUpdateProps) 
                   }}
                 />
               </AvGroup>
-              <AvGroup>
+              <AvGroup className="movimientos-centro">
                 <Label for="movimientos-almacen-queso">Queso</Label>
                 <AvInput id="movimientos-almacen-queso" data-cy="queso" type="select" className="form-control" name="quesoId">
                   <option value="" key="0" />
@@ -149,7 +145,7 @@ export const MovimientosAlmacenUpdate = (props: IMovimientosAlmacenUpdateProps) 
                     : null}
                 </AvInput>
               </AvGroup>
-              <AvGroup>
+              <AvGroup className="movimientos-der">
                 <Label for="movimientos-almacen-user">User</Label>
                 <AvInput id="movimientos-almacen-user" data-cy="user" type="select" className="form-control" name="userId" required>
                   <option value="" key="0" />
@@ -163,16 +159,18 @@ export const MovimientosAlmacenUpdate = (props: IMovimientosAlmacenUpdateProps) 
                 </AvInput>
                 <AvFeedback>This field is required.</AvFeedback>
               </AvGroup>
-              <Button tag={Link} id="cancel-save" to="/movimientos-almacen" replace color="info">
-                <FontAwesomeIcon icon="arrow-left" />
+              <div className="botonera-movimientos">
+                <Button tag={Link} id="cancel-save" to="/movimientos-almacen" replace color="info">
+                  <FontAwesomeIcon icon="arrow-left" />
+                  &nbsp;
+                  <span className="d-none d-md-inline">Back</span>
+                </Button>
                 &nbsp;
-                <span className="d-none d-md-inline">Back</span>
-              </Button>
-              &nbsp;
-              <Button color="success" id="save-entity" data-cy="entityCreateSaveButton" type="submit" disabled={updating}>
-                <FontAwesomeIcon icon="save" />
-                &nbsp; Save
-              </Button>
+                <Button color="success" id="save-entity" data-cy="entityCreateSaveButton" type="submit" disabled={updating}>
+                  <FontAwesomeIcon icon="save" />
+                  &nbsp; Save
+                </Button>
+              </div>
             </AvForm>
           )}
         </Col>

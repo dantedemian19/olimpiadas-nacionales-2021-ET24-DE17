@@ -14,6 +14,8 @@ import { IFrascosDeFermentos } from 'app/shared/model/frascos-de-fermentos.model
 import { convertDateTimeFromServer, convertDateTimeToServer, displayDefaultDateTime } from 'app/shared/util/date-utils';
 import { mapIdList } from 'app/shared/util/entity-utils';
 
+import './frascos-de-fermentos.scss';
+
 export interface IFrascosDeFermentosUpdateProps extends StateProps, DispatchProps, RouteComponentProps<{ id: string }> {}
 
 export const FrascosDeFermentosUpdate = (props: IFrascosDeFermentosUpdateProps) => {
@@ -64,7 +66,7 @@ export const FrascosDeFermentosUpdate = (props: IFrascosDeFermentosUpdateProps) 
       <Row className="justify-content-center">
         <Col md="8">
           <h2 id="cCheeseApp.frascosDeFermentos.home.createOrEditLabel" data-cy="FrascosDeFermentosCreateUpdateHeading">
-            Create or edit a FrascosDeFermentos
+            Crear o editar Frascos de Fermentos
           </h2>
         </Col>
       </Row>
@@ -74,13 +76,7 @@ export const FrascosDeFermentosUpdate = (props: IFrascosDeFermentosUpdateProps) 
             <p>Loading...</p>
           ) : (
             <AvForm model={isNew ? {} : frascosDeFermentosEntity} onSubmit={saveEntity}>
-              {!isNew ? (
-                <AvGroup>
-                  <Label for="frascos-de-fermentos-id">ID</Label>
-                  <AvInput id="frascos-de-fermentos-id" type="text" className="form-control" name="id" required readOnly />
-                </AvGroup>
-              ) : null}
-              <AvGroup>
+              <AvGroup className="left-side-frascos">
                 <Label id="calidadLabel" for="frascos-de-fermentos-calidad">
                   Calidad
                 </Label>
@@ -96,7 +92,7 @@ export const FrascosDeFermentosUpdate = (props: IFrascosDeFermentosUpdateProps) 
                   }}
                 />
               </AvGroup>
-              <AvGroup>
+              <AvGroup className="left-side-frascos">
                 <Label id="fechaAnalisisLabel" for="frascos-de-fermentos-fechaAnalisis">
                   Fecha Analisis
                 </Label>
@@ -113,7 +109,7 @@ export const FrascosDeFermentosUpdate = (props: IFrascosDeFermentosUpdateProps) 
                   }}
                 />
               </AvGroup>
-              <AvGroup>
+              <AvGroup className="left-side-frascos">
                 <Label id="estadoLabel" for="frascos-de-fermentos-estado">
                   Estado
                 </Label>
@@ -130,19 +126,19 @@ export const FrascosDeFermentosUpdate = (props: IFrascosDeFermentosUpdateProps) 
                   <option value="AGOTADO">AGOTADO</option>
                 </AvInput>
               </AvGroup>
-              <AvGroup>
+              <AvGroup className="right-side-frascos">
                 <Label id="detallesLabel" for="frascos-de-fermentos-detalles">
                   Detalles
                 </Label>
                 <AvField id="frascos-de-fermentos-detalles" data-cy="detalles" type="text" name="detalles" />
               </AvGroup>
-              <AvGroup>
+              <AvGroup className="right-side-frascos">
                 <Label id="pesoLabel" for="frascos-de-fermentos-peso">
                   Peso
                 </Label>
                 <AvField id="frascos-de-fermentos-peso" data-cy="peso" type="string" className="form-control" name="peso" />
               </AvGroup>
-              <AvGroup>
+              <AvGroup className="right-side-frascos">
                 <Label for="frascos-de-fermentos-tipo">Tipo</Label>
                 <AvInput id="frascos-de-fermentos-tipo" data-cy="tipo" type="select" className="form-control" name="tipoId">
                   <option value="" key="0" />
@@ -155,16 +151,18 @@ export const FrascosDeFermentosUpdate = (props: IFrascosDeFermentosUpdateProps) 
                     : null}
                 </AvInput>
               </AvGroup>
-              <Button tag={Link} id="cancel-save" to="/frascos-de-fermentos" replace color="info">
-                <FontAwesomeIcon icon="arrow-left" />
+              <div className="botonera-frascos">
+                <Button tag={Link} id="cancel-save" to="/frascos-de-fermentos" replace color="info">
+                  <FontAwesomeIcon icon="arrow-left" />
+                  &nbsp;
+                  <span className="d-none d-md-inline">Back</span>
+                </Button>
                 &nbsp;
-                <span className="d-none d-md-inline">Back</span>
-              </Button>
-              &nbsp;
-              <Button color="success" id="save-entity" data-cy="entityCreateSaveButton" type="submit" disabled={updating}>
-                <FontAwesomeIcon icon="save" />
-                &nbsp; Save
-              </Button>
+                <Button color="success" id="save-entity" data-cy="entityCreateSaveButton" type="submit" disabled={updating}>
+                  <FontAwesomeIcon icon="save" />
+                  &nbsp; Save
+                </Button>
+              </div>
             </AvForm>
           )}
         </Col>

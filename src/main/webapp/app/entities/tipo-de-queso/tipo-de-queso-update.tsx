@@ -12,6 +12,8 @@ import { ITipoDeQueso } from 'app/shared/model/tipo-de-queso.model';
 import { convertDateTimeFromServer, convertDateTimeToServer, displayDefaultDateTime } from 'app/shared/util/date-utils';
 import { mapIdList } from 'app/shared/util/entity-utils';
 
+import './tipo-de-queso.scss';
+
 export interface ITipoDeQuesoUpdateProps extends StateProps, DispatchProps, RouteComponentProps<{ id: string }> {}
 
 export const TipoDeQuesoUpdate = (props: ITipoDeQuesoUpdateProps) => {
@@ -57,7 +59,7 @@ export const TipoDeQuesoUpdate = (props: ITipoDeQuesoUpdateProps) => {
       <Row className="justify-content-center">
         <Col md="8">
           <h2 id="cCheeseApp.tipoDeQueso.home.createOrEditarLabel" data-cy="TipoDeQuesoCreateUpdateHeading">
-            Create or edit a TipoDeQueso
+            Crear o editar Tipo de Queso
           </h2>
         </Col>
       </Row>
@@ -67,13 +69,7 @@ export const TipoDeQuesoUpdate = (props: ITipoDeQuesoUpdateProps) => {
             <p>Loading...</p>
           ) : (
             <AvForm model={isNew ? {} : tipoDeQuesoEntity} onSubmit={saveEntity}>
-              {!isNew ? (
-                <AvGroup>
-                  <Label for="tipo-de-queso-id">ID</Label>
-                  <AvInput id="tipo-de-queso-id" type="text" className="form-control" name="id" required readOnly />
-                </AvGroup>
-              ) : null}
-              <AvGroup>
+              <AvGroup className="left-side-tipo">
                 <Label id="nombreLabel" for="tipo-de-queso-nombre">
                   Nombre
                 </Label>
@@ -87,7 +83,7 @@ export const TipoDeQuesoUpdate = (props: ITipoDeQuesoUpdateProps) => {
                   }}
                 />
               </AvGroup>
-              <AvGroup>
+              <AvGroup className="right-side-tipo">
                 <Label id="tiempoDeCuradoLabel" for="tipo-de-queso-tiempoDeCurado">
                   Tiempo De Curado
                 </Label>
@@ -103,16 +99,18 @@ export const TipoDeQuesoUpdate = (props: ITipoDeQuesoUpdateProps) => {
                   }}
                 />
               </AvGroup>
-              <Button tag={Link} id="cancel-save" to="/tipo-de-queso" replace color="info">
-                <FontAwesomeIcon icon="arrow-left" />
+              <div className="botonera-tipo">
+                <Button tag={Link} id="cancel-save" to="/tipo-de-queso" replace color="info">
+                  <FontAwesomeIcon icon="arrow-left" />
+                  &nbsp;
+                  <span className="d-none d-md-inline">Back</span>
+                </Button>
                 &nbsp;
-                <span className="d-none d-md-inline">Back</span>
-              </Button>
-              &nbsp;
-              <Button color="success" id="save-entity" data-cy="entityCreateSaveButton" type="submit" disabled={updating}>
-                <FontAwesomeIcon icon="save" />
-                &nbsp; Save
-              </Button>
+                <Button color="success" id="save-entity" data-cy="entityCreateSaveButton" type="submit" disabled={updating}>
+                  <FontAwesomeIcon icon="save" />
+                  &nbsp; Save
+                </Button>
+              </div>
             </AvForm>
           )}
         </Col>
