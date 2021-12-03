@@ -20,7 +20,7 @@
     "e2e:update-webdriver": "webdriver-manager update --gecko false",
     "jest": "jest --coverage --logHeapUsage --maxWorkers=2 --config jest.conf.js",
     "jest:update": "npm run jest -- --updateSnapshot",
-    "start": "npm run build && cd server && npm install -g typescript && npm install -g ts-node && npm install -g tslib @types/node && npm run start",
+    "start": "npm run build && cd server && npm install -g typescript && npm install -g ts-node && npm install -g tslib @types/node && npm run start:node",
     "start:app": "npm run build && cd server && npm run start",
     "start-tls": "npm run webapp:dev -- --env.tls",
     "build": "npm run webapp:prod",
