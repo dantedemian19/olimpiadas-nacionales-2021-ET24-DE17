@@ -40,7 +40,7 @@ describe('Header', () => {
       const { container } = render(
         <Provider store={store}>
           <Router history={history}>
-            <Header {...props} />
+            <Header account={undefined} {...props} />
           </Router>
         </Provider>
       );

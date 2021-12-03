@@ -241,7 +241,7 @@ describe('Authentication reducer tests', () => {
       const loginResponse = { headers: { authorization: 'Bearer TestToken' } };
       axios.post = sinon.stub().returns(Promise.resolve(loginResponse));
 
-      await store.dispatch(login('user', 'user', true));
+      await store.dispatch(login('user', 'user'));
       expect(Storage.session.get(AUTH_TOKEN_KEY)).toBe(undefined);
       expect(Storage.local.get(AUTH_TOKEN_KEY)).toBe('TestToken');
       clearAuthToken();
