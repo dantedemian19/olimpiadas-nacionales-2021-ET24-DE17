@@ -170,7 +170,7 @@ export const TandaQuesosUpdate = (props: ITandaQuesosUpdateProps) => {
                   {frascosDeFermentos
                     ? frascosDeFermentos.map(otherEntity => (
                         <option value={otherEntity.id} key={otherEntity.id}>
-                          {otherEntity.id}
+                          {otherEntity.detalles}
                         </option>
                       ))
                     : null}
@@ -183,7 +183,7 @@ export const TandaQuesosUpdate = (props: ITandaQuesosUpdateProps) => {
                   {tipoDeQuesos
                     ? tipoDeQuesos.map(otherEntity => (
                         <option value={otherEntity.id} key={otherEntity.id}>
-                          {otherEntity.id}
+                          {otherEntity.nombre}
                         </option>
                       ))
                     : null}

@@ -145,7 +145,7 @@ export const FrascosDeFermentosUpdate = (props: IFrascosDeFermentosUpdateProps) 
                   {tipoDeQuesos
                     ? tipoDeQuesos.map(otherEntity => (
                         <option value={otherEntity.id} key={otherEntity.id}>
-                          {otherEntity.id}
+                          {otherEntity.nombre}
                         </option>
                       ))
                     : null}

@@ -90,11 +90,11 @@ export const MovimientosAlmacenUpdate = (props: IMovimientosAlmacenUpdateProps) 
                   name="desde"
                   value={(!isNew && movimientosAlmacenEntity.desde) || 'ENPRODUCCION'}
                 >
-                  <option value="ENPRODUCCION">ENPRODUCCION</option>
-                  <option value="ENSALADO">ENSALADO</option>
-                  <option value="ENCURADO">ENCURADO</option>
-                  <option value="ENSTOCK">ENSTOCK</option>
-                  <option value="OUTSTOCK">OUTSTOCK</option>
+                  <option value="ENPRODUCCION">EN PRODUCCION</option>
+                  <option value="ENSALADO">EN SALADO</option>
+                  <option value="ENCURADO">EN CURADO</option>
+                  <option value="ENSTOCK">EN STOCK</option>
+                  <option value="OUTSTOCK">SIN STOCK</option>
                 </AvInput>
               </AvGroup>
               <AvGroup className="right-side-movimientos">
@@ -109,11 +109,11 @@ export const MovimientosAlmacenUpdate = (props: IMovimientosAlmacenUpdateProps) 
                   name="hacia"
                   value={(!isNew && movimientosAlmacenEntity.hacia) || 'ENPRODUCCION'}
                 >
-                  <option value="ENPRODUCCION">ENPRODUCCION</option>
-                  <option value="ENSALADO">ENSALADO</option>
-                  <option value="ENCURADO">ENCURADO</option>
-                  <option value="ENSTOCK">ENSTOCK</option>
-                  <option value="OUTSTOCK">OUTSTOCK</option>
+                  <option value="ENPRODUCCION">EN PRODUCCION</option>
+                  <option value="ENSALADO">EN SALADO</option>
+                  <option value="ENCURADO">EN CURADO</option>
+                  <option value="ENSTOCK">EN STOCK</option>
+                  <option value="OUTSTOCK">SIN STOCK</option>
                 </AvInput>
               </AvGroup>
               <AvGroup className="movimientos-izq">
@@ -139,7 +139,7 @@ export const MovimientosAlmacenUpdate = (props: IMovimientosAlmacenUpdateProps) 
                   {tandaQuesos
                     ? tandaQuesos.map(otherEntity => (
                         <option value={otherEntity.id} key={otherEntity.id}>
-                          {otherEntity.id}
+                          {otherEntity.tipo.nombre}
                         </option>
                       ))
                     : null}
@@ -152,7 +152,7 @@ export const MovimientosAlmacenUpdate = (props: IMovimientosAlmacenUpdateProps) 
                   {users
                     ? users.map(otherEntity => (
                         <option value={otherEntity.id} key={otherEntity.id}>
-                          {otherEntity.login}
+                          {otherEntity.login.toUpperCase()}
                         </option>
                       ))
                     : null}
