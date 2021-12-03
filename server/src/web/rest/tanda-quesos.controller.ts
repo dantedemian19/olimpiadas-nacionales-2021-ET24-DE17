@@ -113,9 +113,25 @@ export class TandaQuesosController {
         type: TandaQuesosDTO,
     })
     async putId(@Req() req: Request, @Body() tandaQuesosDTO: TandaQuesosDTO): Promise<TandaQuesosDTO> {
-        HeaderUtil.addEntityCreatedHeaders(req.res, 'TandaQuesos', tandaQuesosDTO.id);
-        return await this.tandaQuesosService.update(tandaQuesosDTO, req.user?.login);
-    } 
+        HeaderUtil.addEntityCreatedHeaders(req.res, 'Tanda Queso ID:', tandaQuesosDTO.id);
+        let oldTandaQuesos = await this.tandaQuesosService.findById(tandaQuesosDTO.id);
+        if(tandaQuesosDTO.estado == "ENCURADO" && oldTandaQuesos.estado == "ENSALADO"){
+            tandaQuesosDTO.fechaEntradaCuracion = new Date();
+        }
+        if(tandaQuesosDTO.estado == "ENSTOCK" && (oldTandaQuesos.estado == "ENCURADO" || oldTandaQuesos.estado == "ENSALADO")){
+            tandaQuesosDTO.fechaEntradaCuracion = new Date();
+        }
+        let registry = new MovimientosAlmacenDTO();
+        registry.desde = oldTandaQuesos.estado;
+        registry.hacia = tandaQuesosDTO.estado;
+        registry.queso = oldTandaQuesos;
+        registry.user = req.user;
+        registry.peso = tandaQuesosDTO.peso;
+        this.movimientosAlmacenService.save(registry, req.user?.login);
+        HeaderUtil.addEntityCreatedHeaders(req.res, 'MovimientosAlmacen', registry.id);
+        oldTandaQuesos.estado = tandaQuesosDTO.estado;
+        return await this.tandaQuesosService.update(oldTandaQuesos, req.user?.login);
+    }
     
     @Put('/:changeTandaQuesoEstado')
     @ApiOperation({ summary: 'Update tipoDeQueso.estado with id' })
