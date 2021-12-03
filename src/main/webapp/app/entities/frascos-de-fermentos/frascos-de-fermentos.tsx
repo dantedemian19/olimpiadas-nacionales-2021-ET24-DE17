@@ -196,7 +196,7 @@ export const FrascosDeFermentos = (props: IFrascosDeFermentosProps) => {
           <Doughnut
             style={{ marginLeft: '30px' }}
             data={{
-              labels: frascosDeFermentosList.map(frasco => frasco.tipo.nombre),
+              labels: frascosDeFermentosList.map(frasco => frasco.tipo?.nombre),
               datasets: [
                 {
                   data: frascosDeFermentosList.map(frasco => frasco.peso),

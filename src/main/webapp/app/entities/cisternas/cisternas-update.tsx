@@ -69,7 +69,7 @@ export const CisternasUpdate = (props: ICisternasUpdateProps) => {
             <p>Cargando...</p>
           ) : (
             <AvForm model={isNew ? {} : cisternasEntity} onSubmit={saveEntity}>
-              <AvGroup className="left-side-cisternas">
+              <AvGroup>
                 <Label id="capacidadLabel" for="cisternas-capacidad">
                   Capacidad
                 </Label>
