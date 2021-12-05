@@ -17,8 +17,8 @@
 ## Documentacion
 
 - [Consigna](http://www.inet.edu.ar/wp-content/uploads/2021/11/ONV-2021_Programacion_NACIONAL.pdf)
-- [Manual Tecnico (en proceso)]()
-- [Manual de  usuario (en proceso)]()
+- [Manual Tecnico](https://drive.google.com/file/d/1QyC5_HQVl9ANZskz9qmT3uZvNdOPGqST/view?usp=sharing)
+- [Manual de  usuario](https://drive.google.com/file/d/1R2M2r-LyvdtFXgC6KSQLtyXPlSR9qo4o/view?usp=sharing)
 - [Drive](https://drive.google.com/drive/folders/1l6sn93nIvd59LfBTZsqDZh8x-NLZonhK?usp=sharing)
 - [Trello](https://trello.com/b/TJGwhrLV/olimpiadas-nacionales-et24de17)
 
