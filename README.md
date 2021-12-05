@@ -2,7 +2,7 @@
 # olimpiadas-nacionales-ET24-DE17
 
 
-![Logo](https://i.imgur.com/wVkYUE3.png)
+![Logo](https://i.imgur.com/Iiy0AHL.png)
 
 
 ## Autores
