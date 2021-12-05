@@ -2,7 +2,7 @@
 # olimpiadas-nacionales-ET24-DE17
 
 
-![Logo](https://michiganhr.org/wp-content/uploads/2015/01/insert-logo-375x360.png)
+![Logo](https://i.imgur.com/wVkYUE3.png)
 
 
 ## Autores
@@ -23,13 +23,8 @@
 - [Trello](https://trello.com/b/TJGwhrLV/olimpiadas-nacionales-et24de17)
 
 
-## Variables de uso
-
-loque va en el .env
-
-
-## Instalacion
-    
-## Deployment
+## Usuario admin para test
+    user = admin
+    psw = admin
 
 
